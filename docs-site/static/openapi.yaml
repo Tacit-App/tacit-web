@@ -1,0 +1,473 @@
+openapi: 3.1.0
+info:
+  title: Tacit push API
+  version: 0.1.0
+  summary: Send records into Tacit. This interface is not in production.
+  description: |
+    This interface is not in production. It is the contract Tacit will build to.
+
+    Use it when a system you run already has the record: an application, an export, a partner, or the S3 agent. Send `Authorization: Bearer <ingest key>`.
+
+    Tacit issues an organization ingest key. The secret is shown once. Tacit stores a hash of the secret, plus a short prefix so you can recognize the key in a list. You can rotate it and revoke it. Revocation takes effect on the next call. This key is only for ingress. It is not a login to the product.
+
+    ## Identity
+
+    A record is your organization, plus `source`, `type`, and `id`. The id is yours. Tacit does not invent one. The organization is taken from the key, never from a field in the body. `observation_id` is a hex fingerprint of that identity, so the same id always returns the same `observation_id`.
+
+    A hash of the bytes says whether the content changed. The same id with the same bytes is recorded again and is not extracted a second time. The same id with new bytes refreshes the record.
+
+    For email, `id` is the shared Message-ID of the thread. Tacit does not change the casing of ids you send.
+
+    `source` is a name you register with Tacit (`acme_erp`, `billing`, `data_warehouse`). An unknown source is rejected.
+
+    ## Delivery
+
+    Delivery is at-least-once. Tacit deduplicates on the identity and the content hash. The optional `Idempotency-Key` header is remembered for 24 hours, scoped to your key. The same key and the same request return the original acceptance. The same key and a different request return `409`.
+
+    A new delivery writes a new object. Tacit does not overwrite bytes in place. The queue, the logs, and the status response carry a pointer and a hash. They do not carry the file.
+
+    Records with different ids can be processed in any order. Two versions of the same id are ordered by `seen_at`, then by version. `seen_at` is when the source says it happened. `ingested_at` is when Tacit accepted it.
+
+    ## What you can send
+
+    Inline `body` accepts `text/*` and `application/json`, up to 1 MB. Anything else, and anything larger, uses `POST /api/v1/artifacts` first, then sends `artifact_id`.
+
+    Tacit accepts the record before it decides the record is noise. Exclusion appears later on the status URL as `excluded`. The accept call stays `202`.
+
+    The status URL returns the stage and the outcome. It does not return the file, the claims, or the embeddings.
+
+    ## Limits
+
+    - 1 MB inline. Above that, upload first.
+    - 100 items per batch.
+    - Rate limit per key, returned as `429` with `Retry-After`.
+servers:
+  - url: https://api.tacit.guru
+    description: Not in production. Do not send customer data to this host yet.
+security:
+  - ingestKey: []
+tags:
+  - name: Artifacts
+    description: Upload bytes that should not sit in the JSON body.
+  - name: Observations
+    description: Accept a record and read its processing status.
+paths:
+  /api/v1/artifacts:
+    post:
+      tags: [Artifacts]
+      operationId: createArtifact
+      summary: Reserve an upload for a large or binary record
+      description: |
+        Returns a single-use upload URL that expires in minutes and is scoped to your organization. PUT the bytes to that URL. Tacit checks the size and the SHA-256 before an observation that names this `artifact_id` is accepted. A mismatch is `409` on the observation call.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ArtifactCreate"
+            example:
+              content_type: application/pdf
+              byte_size: 4821130
+              sha256: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+      responses:
+        "200":
+          description: Upload target. The bytes are not an observation until you POST /api/v1/observations with this artifact_id.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ArtifactReserved"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /api/v1/observations:
+    post:
+      tags: [Observations]
+      operationId: createObservation
+      summary: Accept one record
+      parameters:
+        - $ref: "#/components/parameters/IdempotencyKey"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ObservationCreate"
+            examples:
+              inline:
+                summary: Small text record
+                value:
+                  source: acme_erp
+                  type: ticket
+                  id: T-1042
+                  seen_at: "2026-09-29T18:00:00Z"
+                  member_id: optional-person-id
+                  content_type: text/plain
+                  body: The customer asked for net-60 on the renewal.
+              uploaded:
+                summary: Record that was uploaded first
+                value:
+                  source: acme_erp
+                  type: contract
+                  id: C-8831
+                  seen_at: "2026-09-29T18:00:00Z"
+                  content_type: application/pdf
+                  artifact_id: art_01HZZEXAMPLE
+      responses:
+        "202":
+          description: Accepted. Processing has not necessarily finished.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ObservationAccepted"
+              example:
+                observation_id: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+                status: accepted
+                status_url: /api/v1/observations/2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "413":
+          description: Inline body is over 1 MB. Upload it as an artifact first.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "415":
+          description: Inline body is not text or JSON. Upload it as an artifact.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /api/v1/observations:batch:
+    post:
+      tags: [Observations]
+      operationId: createObservationBatch
+      summary: Accept up to 100 uploaded records
+      description: |
+        Each item uses `artifact_id`. Upload the bytes first, so a retry is not a multi-megabyte body. Tacit accepts or rejects each item on its own. One invalid item does not reject the rest.
+      parameters:
+        - $ref: "#/components/parameters/IdempotencyKey"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ObservationBatch"
+      responses:
+        "202":
+          description: Each item was accepted or rejected on its own.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ObservationBatchResult"
+        "400":
+          description: The batch envelope itself is invalid (for example, more than 100 items). Item-level problems are returned inside a 202 body.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /api/v1/observations/{observation_id}:
+    get:
+      tags: [Observations]
+      operationId: getObservation
+      summary: Read processing status
+      description: |
+        Returns the disposition and the stage outcomes. The file, the claims, and the embeddings are absent.
+      parameters:
+        - name: observation_id
+          in: path
+          required: true
+          description: Hex fingerprint returned when the record was accepted.
+          schema:
+            type: string
+            pattern: "^[0-9a-f]{64}$"
+      responses:
+        "200":
+          description: Current disposition. `pending` means the record was accepted and processing has not finished.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ObservationStatus"
+              example:
+                observation_id: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+                disposition: pending
+                content_hash: 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+                ingested_at: "2026-09-29T18:00:01Z"
+                layers:
+                  - name: evidence
+                    outcome: passed
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          description: No record with this observation_id exists for your organization.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  securitySchemes:
+    ingestKey:
+      type: http
+      scheme: bearer
+      description: Organization ingest key. The secret is shown once at creation.
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: false
+      description: Remembered for 24 hours, scoped to this key. The same key and the same request return the original acceptance. The same key and a different request return 409.
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 255
+  responses:
+    BadRequest:
+      description: The envelope is invalid. Missing id, unknown source, or both body and artifact_id.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Unauthorized:
+      description: The ingest key is missing or unknown.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Forbidden:
+      description: The key is revoked, or member_id is not in your organization.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Conflict:
+      description: The checksum does not match the uploaded bytes, or the idempotency key was reused with a different payload.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    TooManyRequests:
+      description: Rate limit for this key. Honor Retry-After.
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+          description: Seconds to wait before retrying.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+  schemas:
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+    ArtifactCreate:
+      type: object
+      additionalProperties: false
+      required: [content_type, byte_size, sha256]
+      properties:
+        content_type:
+          type: string
+          examples: [application/pdf]
+        byte_size:
+          type: integer
+          minimum: 1
+        sha256:
+          type: string
+          description: Hex SHA-256 of the bytes you will upload.
+          pattern: "^[0-9a-f]{64}$"
+    ArtifactReserved:
+      type: object
+      required: [artifact_id, upload, expires_at]
+      properties:
+        artifact_id:
+          type: string
+        upload:
+          type: object
+          required: [method, url, headers]
+          properties:
+            method:
+              type: string
+              const: PUT
+            url:
+              type: string
+              format: uri
+            headers:
+              type: object
+              additionalProperties:
+                type: string
+        expires_at:
+          type: string
+          format: date-time
+    ObservationCreate:
+      type: object
+      additionalProperties: false
+      required: [source, type, id, content_type]
+      properties:
+        source:
+          type: string
+          minLength: 1
+          description: Registered source name for this organization.
+        type:
+          type: string
+          minLength: 1
+          description: Identity type, such as ticket, email_thread, file, or contract.
+        id:
+          type: string
+          minLength: 1
+          description: Stable id you already use. Required. Tacit does not invent one.
+        seen_at:
+          type: string
+          format: date-time
+        member_id:
+          type: string
+          description: Person in your organization who saw the record. Captured into the access list.
+        content_type:
+          type: string
+        body:
+          type: string
+          description: Inline text or JSON, up to 1 MB. Omit when artifact_id is set.
+        artifact_id:
+          type: string
+          description: From POST /api/v1/artifacts. Omit when body is set.
+      oneOf:
+        - required: [body]
+          not:
+            required: [artifact_id]
+        - required: [artifact_id]
+          not:
+            required: [body]
+    ObservationAccepted:
+      type: object
+      required: [observation_id, status, status_url]
+      properties:
+        observation_id:
+          type: string
+          pattern: "^[0-9a-f]{64}$"
+          description: Fingerprint of organization, source, type, and id.
+        status:
+          type: string
+          const: accepted
+        status_url:
+          type: string
+    ObservationReference:
+      type: object
+      additionalProperties: false
+      required: [source, type, id, content_type, artifact_id]
+      properties:
+        source:
+          type: string
+          minLength: 1
+        type:
+          type: string
+          minLength: 1
+        id:
+          type: string
+          minLength: 1
+        seen_at:
+          type: string
+          format: date-time
+        member_id:
+          type: string
+        content_type:
+          type: string
+        artifact_id:
+          type: string
+    ObservationBatch:
+      type: object
+      additionalProperties: false
+      required: [items]
+      properties:
+        items:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: "#/components/schemas/ObservationReference"
+    ObservationBatchItem:
+      oneOf:
+        - allOf:
+            - $ref: "#/components/schemas/ObservationAccepted"
+            - type: object
+              required: [http_status]
+              properties:
+                http_status:
+                  type: integer
+                  const: 202
+        - type: object
+          additionalProperties: false
+          required: [http_status, error]
+          properties:
+            http_status:
+              type: integer
+              enum: [400, 409, 413, 415]
+            error:
+              type: string
+            id:
+              type: string
+              description: The id from the request item, when it was present.
+    ObservationBatchResult:
+      type: object
+      required: [items]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ObservationBatchItem"
+    LayerOutcome:
+      type: object
+      required: [name, outcome]
+      properties:
+        name:
+          type: string
+          examples: [evidence]
+        outcome:
+          type: string
+          enum: [passed, skipped, failed]
+    ObservationStatus:
+      type: object
+      required: [observation_id, disposition, content_hash, ingested_at, layers]
+      properties:
+        observation_id:
+          type: string
+          pattern: "^[0-9a-f]{64}$"
+        disposition:
+          type: string
+          enum: [pending, new, sighting, refreshed, excluded]
+          description: |
+            pending: accepted, processing has not finished.
+            new: first time Tacit has seen this id.
+            sighting: same id, same bytes, recorded again.
+            refreshed: same id, new bytes.
+            excluded: accepted, then dropped by a noise or redaction rule.
+        content_hash:
+          type: string
+        ingested_at:
+          type: string
+          format: date-time
+        layers:
+          type: array
+          items:
+            $ref: "#/components/schemas/LayerOutcome"
