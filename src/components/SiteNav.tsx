@@ -10,14 +10,24 @@ const links = [
 
 export function SiteNav({ onDark }: { onDark: boolean }) {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const bar = scrolled && !onDark ? " is-scrolled" : "";
+
   return (
-    <header className={`site-nav${onDark ? " is-dark" : ""}${open ? " is-open" : ""}`}>
+    <header className={`site-nav${onDark ? " is-dark" : ""}${open ? " is-open" : ""}${bar}`}>
       <Link className="site-brand" to="/" aria-label="Tacit home">
         <img src="/tacit-mark.svg" alt="" width={28} height={28} />
         <span>Tacit</span>

@@ -22,23 +22,28 @@ export function SolutionsPage() {
   };
 
   return (
-    <section className="site-section" aria-labelledby="solutions-title">
-      <div className="site-panel">
-        <p className="kicker">Solutions</p>
-        <h1 id="solutions-title">Four ways in. One path.</h1>
-        <p className="lede">
-          Map how the company really works, change it with the team, leave a
-          company brain, then let agents carry that judgment.
-        </p>
+    <section className="band" aria-labelledby="solutions-title">
+      <div className="band-inner">
+        <div className="prose">
+          <p className="kicker">Solutions</p>
+          <h1 id="solutions-title">Four ways in. One path.</h1>
+          <p className="lede">
+            Map how the company really works, change it with the team, leave a
+            company brain, then let agents carry that judgment.
+          </p>
+        </div>
+        <div className="solutions-layout">
         <div
           className="offer-tabs"
           role="tablist"
           aria-label="Solutions"
           onKeyDown={(event) => {
-            if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+            const forward = event.key === "ArrowRight" || event.key === "ArrowDown";
+            const back = event.key === "ArrowLeft" || event.key === "ArrowUp";
+            if (!forward && !back) return;
             event.preventDefault();
             const index = solutions.findIndex((item) => item.slug === selected.slug);
-            const step = event.key === "ArrowRight" ? 1 : -1;
+            const step = forward ? 1 : -1;
             const next = solutions[(index + step + solutions.length) % solutions.length];
             select(next.slug);
             document.getElementById(`${baseId}-tab-${next.slug}`)?.focus();
@@ -71,7 +76,6 @@ export function SolutionsPage() {
           tabIndex={-1}
           className="offer-panel"
         >
-          <p className="step-num">{selected.stage}</p>
           <h2>{selected.title}</h2>
           <dl className="offer-facts">
             <div>
@@ -90,6 +94,7 @@ export function SolutionsPage() {
           <Link className="site-btn site-btn-primary" to={`/solutions/${selected.slug}`}>
             Read {selected.name}
           </Link>
+        </div>
         </div>
       </div>
     </section>

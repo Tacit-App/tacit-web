@@ -5,8 +5,8 @@ export function BlogIndexPage() {
   usePageTitle("Blog — Tacit");
 
   return (
-    <section className="site-section" aria-labelledby="blog-title">
-      <div className="site-panel reading">
+    <section className="band" aria-labelledby="blog-title">
+      <div className="band-inner reading">
         <p className="kicker">Blog</p>
         <h1 id="blog-title">Notes from the work.</h1>
         <p className="lede">

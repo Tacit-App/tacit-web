@@ -13,13 +13,10 @@ type Beat = {
 };
 
 const BEATS: Beat[] = [
-  { t: 0, stage: 0.85, rot: 1.05, conn: 0 },
-  { t: 0.18, stage: 1.35, rot: 0.88, conn: 0.1 },
-  { t: 0.34, stage: 1.95, rot: 0.62, conn: 0.35 },
-  { t: 0.52, stage: 3.92, rot: 0.48, conn: 1 },
-  { t: 0.72, stage: 3.2, rot: 0.34, conn: 0.75 },
-  { t: 0.88, stage: 2.35, rot: 0.22, conn: 0.4 },
-  { t: 1, stage: 2.12, rot: 0.16, conn: 0.15 },
+  { t: 0, stage: 2.05, rot: 0.42, conn: 0.55 },
+  { t: 0.4, stage: 3.85, rot: 0.32, conn: 1 },
+  { t: 0.72, stage: 2.7, rot: 0.22, conn: 0.6 },
+  { t: 1, stage: 2.15, rot: 0.14, conn: 0.3 },
 ];
 
 function clamp01(x: number) {
@@ -73,8 +70,8 @@ export function SphereField() {
     engine.debug.brightBoost = 1.28;
     engine.debug.overlays = { meteors: false, connections: false, agents: false };
     engine.debug.showLabels = false;
-    engine.debug.cxFrac = 0.72;
-    engine.debug.radiusScale = 1.08;
+    engine.debug.cxFrac = 0.78;
+    engine.debug.radiusScale = 1.22;
     engine.rebuild(particleBudget());
 
     let target = sampleBeats(0);

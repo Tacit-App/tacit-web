@@ -55,8 +55,8 @@ export function BlogPostPage() {
 
   if (!post) {
     return (
-      <section className="site-section">
-        <div className="site-panel reading">
+      <section className="band">
+        <div className="band-inner reading">
           <p className="kicker">
             <Link to="/blog">Blog</Link>
           </p>
@@ -70,8 +70,8 @@ export function BlogPostPage() {
   }
 
   return (
-    <section className="site-section">
-      <div className="site-panel reading">
+    <section className="band">
+      <div className="band-inner reading">
         <Article post={post} />
       </div>
     </section>

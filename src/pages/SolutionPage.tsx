@@ -11,8 +11,8 @@ export function SolutionPage() {
 
   if (!solution) {
     return (
-      <section className="site-section">
-        <div className="site-panel">
+      <section className="band">
+        <div className="band-inner prose">
           <h1>That offer is not on this site.</h1>
           <p className="lede">
             <Link to="/solutions">Back to solutions</Link>
@@ -25,8 +25,8 @@ export function SolutionPage() {
   const brain = solution.slug === "company-brain";
 
   return (
-    <article className="site-section">
-      <div className="site-panel offer-page">
+    <article className="band">
+      <div className="band-inner offer-page">
         <p className="kicker">
           <Link to="/solutions">Solutions</Link>
           <span aria-hidden="true"> · </span>
@@ -125,7 +125,7 @@ export function SolutionPage() {
           <a className="site-btn site-btn-primary" href={DIAGNOSTIC_MAIL}>
             Book a diagnostic
           </a>
-          <Link className="site-btn site-btn-ghost" to="/method">
+          <Link className="site-btn site-btn-text" to="/method">
             See the method
           </Link>
         </div>

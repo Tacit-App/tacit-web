@@ -19,10 +19,9 @@ function ProductFilm() {
   }, []);
 
   return (
-    <figure className="product-media">
+    <figure className="film">
       <video
         ref={videoRef}
-        className="product-video"
         autoPlay
         muted
         loop
@@ -42,67 +41,63 @@ export function HomePage() {
   return (
     <>
       <header className="hero" id="top">
-        <div className="hero-inner">
-          <div className="hero-copy">
-            <p className="kicker">{home.kicker}</p>
-            <h1>{home.headline}</h1>
-            <p className="hero-sub">{home.sub}</p>
-            <div className="cta-row">
-              <a className="site-btn site-btn-primary" href={DIAGNOSTIC_MAIL}>
-                Book a diagnostic
-              </a>
-              <a className="site-btn site-btn-ghost" href="#how">
-                See how it works
-              </a>
-            </div>
-            <p className="hero-tag">{home.tagline}</p>
+        <div className="hero-copy">
+          <p className="kicker">{home.kicker}</p>
+          <h1>{home.headline}</h1>
+          <p className="lede">{home.sub}</p>
+          <div className="cta-row">
+            <a className="site-btn site-btn-primary" href={DIAGNOSTIC_MAIL}>
+              Book a diagnostic
+            </a>
+            <a className="site-btn site-btn-text" href="#how">
+              See how it works
+            </a>
           </div>
+          <p className="hero-tag">{home.tagline}</p>
         </div>
       </header>
 
-      <section className="site-section" aria-label="Product">
-        <div className="site-panel">
+      <section className="band band-film" aria-label="Product">
+        <div className="band-inner">
           <ProductFilm />
         </div>
       </section>
 
-      <section className="site-section" aria-labelledby="problem-title">
-        <div className="site-panel">
+      <section className="band" aria-labelledby="problem-title">
+        <div className="band-inner prose">
           <p className="kicker">{home.problem.eyebrow}</p>
           <h2 id="problem-title">{home.problem.title}</h2>
           <p className="lede">{home.problem.body}</p>
-          <p className="closer-line">{home.problem.closer}</p>
+          <p className="closer">{home.problem.closer}</p>
         </div>
       </section>
 
-      <section className="site-section" aria-labelledby="premise-title">
-        <div className="site-panel with-shot">
-          <div className="section-split">
-            <div>
-              <p className="kicker">{home.premise.eyebrow}</p>
-              <h2 id="premise-title">{home.premise.title}</h2>
-              <p className="lede">{home.premise.body}</p>
-            </div>
-            <figure className="section-shot">
-              <img
-                src="/knowledge-profiles.png"
-                alt={home.premise.imageAlt}
-                width={1980}
-                height={1106}
-              />
-            </figure>
+      <section className="band" aria-labelledby="premise-title">
+        <div className="band-inner split">
+          <div className="prose">
+            <p className="kicker">{home.premise.eyebrow}</p>
+            <h2 id="premise-title">{home.premise.title}</h2>
+            <p className="lede">{home.premise.body}</p>
           </div>
+          <figure className="shot">
+            <img
+              src="/knowledge-profiles.png"
+              alt={home.premise.imageAlt}
+              width={1980}
+              height={1106}
+            />
+          </figure>
         </div>
       </section>
 
-      <section className="site-section" id="how" aria-labelledby="how-title">
-        <div className="site-panel with-shot">
-          <div className="section-split">
-            <div>
+      <section className="band" id="how" aria-labelledby="how-title">
+        <div className="band-inner">
+          <div className="split">
+            <div className="prose">
               <p className="kicker">{home.how.eyebrow}</p>
               <h2 id="how-title">{home.how.title}</h2>
             </div>
-            <figure className="section-shot">
+            <figure className="shot">
               <img
                 src="/pulse-priorities.png"
                 alt={home.how.imageAlt}
@@ -111,63 +106,63 @@ export function HomePage() {
               />
             </figure>
           </div>
-          <div className="steps">
+          <ol className="steps">
             {home.how.steps.map((step) => (
-              <article className="step" key={step.n}>
-                <div className="step-num">{step.n}</div>
+              <li key={step.n}>
+                <span>{step.n}</span>
                 <h3>{step.title}</h3>
                 <p>{step.body}</p>
-              </article>
+              </li>
             ))}
-          </div>
-          <div className="solution-row">
+          </ol>
+          <div className="index">
             {solutions.map((item) => (
               <Link key={item.slug} to={`/solutions#${item.slug}`}>
-                <span className="step-num">{item.stage}</span>
+                <span>{item.stage}</span>
                 <strong>{item.name}</strong>
-                <span>{item.homeLine}</span>
+                <em>{item.homeLine}</em>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="site-section" aria-labelledby="who-title">
-        <div className="site-panel">
+      <section className="band" aria-labelledby="who-title">
+        <div className="band-inner prose">
           <p className="kicker">{home.who.eyebrow}</p>
           <h2 id="who-title">{home.who.title}</h2>
           <p className="lede">{home.who.body}</p>
-          <p className="closer-line">{home.who.closer}</p>
+          <p className="closer">{home.who.closer}</p>
         </div>
       </section>
 
-      <section className="site-section" aria-labelledby="contrast-title">
-        <div className="site-panel">
-          <p className="kicker">{home.contrast.eyebrow}</p>
-          <h2 id="contrast-title">{home.contrast.title}</h2>
-          <div className="table-wrap">
-            <table className="contrast-table">
-              <thead>
-                <tr>
-                  <th scope="col">Usual path</th>
-                  <th scope="col">With Tacit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {home.contrast.rows.map((row) => (
-                  <tr key={row[0]}>
-                    <td>{row[0]}</td>
-                    <td>{row[1]}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      <section className="band" aria-labelledby="contrast-title">
+        <div className="band-inner">
+          <div className="prose">
+            <p className="kicker">{home.contrast.eyebrow}</p>
+            <h2 id="contrast-title">{home.contrast.title}</h2>
           </div>
+          <table className="contrast">
+            <thead>
+              <tr>
+                <th scope="col">Usual path</th>
+                <th scope="col">With Tacit</th>
+              </tr>
+            </thead>
+            <tbody>
+              {home.contrast.rows.map((row) => (
+                <tr key={row[0]}>
+                  <td>{row[0]}</td>
+                  <td>{row[1]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 
-      <section className="site-section close" aria-labelledby="close-title">
-        <div className="site-panel">
+      <section className="band close" aria-labelledby="close-title">
+        <div className="band-inner prose">
           <h2 id="close-title">{home.close.title}</h2>
           <p className="lede">{home.close.body}</p>
           <div className="cta-row">
