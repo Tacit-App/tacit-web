@@ -791,12 +791,21 @@ export function beatIndexForStage(stage: number) {
   return i >= 0 ? i : STORY_BEATS.length - 1;
 }
 
+/** Sticky panel height — stable on iOS (unlike innerHeight as the URL bar hides). */
+export function storyViewportHeight(sticky?: HTMLElement | null) {
+  return sticky?.clientHeight || window.innerHeight;
+}
+
 /** Scroll Y that lands mid-beat so the slide reads clearly */
-export function scrollYForBeatIndex(track: HTMLElement, beatIndex: number) {
+export function scrollYForBeatIndex(
+  track: HTMLElement,
+  beatIndex: number,
+  viewportHeight = window.innerHeight,
+) {
   const beat = STORY_BEATS[Math.max(0, Math.min(STORY_BEATS.length - 1, beatIndex))];
   const stage = Math.min(beat.min + 0.08, (beat.min + beat.max) / 2);
   const progress = progressForStage(stage);
-  const total = Math.max(track.offsetHeight - window.innerHeight, 1);
+  const total = Math.max(track.offsetHeight - viewportHeight, 1);
   const trackTop = track.getBoundingClientRect().top + window.scrollY;
   return trackTop + progress * total;
 }

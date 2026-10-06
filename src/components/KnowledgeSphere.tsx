@@ -6,6 +6,7 @@ import {
   beatIndexForStage,
   scrollYForBeatIndex,
   stageFromProgress,
+  storyViewportHeight,
   type StoryBeat,
 } from "../lib/knowledgeInstrument";
 import { DEMO_URL, site } from "../data/copy";
@@ -91,7 +92,8 @@ export function KnowledgeSphere() {
         frameRef.current = { stage: 2.4 };
       } else {
         const rect = track.getBoundingClientRect();
-        const total = Math.max(track.offsetHeight - window.innerHeight, 1);
+        const viewportH = storyViewportHeight(sticky);
+        const total = Math.max(track.offsetHeight - viewportH, 1);
         const scrolled = Math.min(Math.max(-rect.top, 0), total);
         const progress = scrolled / total;
         frameRef.current = stageFromProgress(progress);
@@ -111,7 +113,11 @@ export function KnowledgeSphere() {
 
     const goToBeat = (index: number) => {
       const clamped = Math.max(0, Math.min(STORY_BEATS.length - 1, index));
-      const y = scrollYForBeatIndex(track, clamped);
+      const y = scrollYForBeatIndex(
+        track,
+        clamped,
+        storyViewportHeight(sticky),
+      );
       window.scrollTo({
         top: y,
         behavior: reduceMotion ? "auto" : "smooth",
@@ -137,7 +143,7 @@ export function KnowledgeSphere() {
             track.getBoundingClientRect().top +
             window.scrollY +
             track.offsetHeight -
-            window.innerHeight +
+            storyViewportHeight(sticky) +
             8;
           window.scrollTo({
             top: end,
@@ -162,6 +168,7 @@ export function KnowledgeSphere() {
     raf = requestAnimationFrame(tick);
     window.addEventListener("scroll", updateScroll, { passive: true });
     window.addEventListener("resize", updateScroll, { passive: true });
+    window.visualViewport?.addEventListener("resize", updateScroll);
     window.addEventListener("keydown", onKeyDown);
 
     const onResizeRebuild = () => {
@@ -176,6 +183,7 @@ export function KnowledgeSphere() {
       ro.disconnect();
       window.removeEventListener("scroll", updateScroll);
       window.removeEventListener("resize", updateScroll);
+      window.visualViewport?.removeEventListener("resize", updateScroll);
       window.removeEventListener("resize", onResizeRebuild);
       window.removeEventListener("keydown", onKeyDown);
     };
@@ -217,7 +225,11 @@ export function KnowledgeSphere() {
       "(prefers-reduced-motion: reduce)",
     ).matches;
     window.scrollTo({
-      top: scrollYForBeatIndex(track, index),
+      top: scrollYForBeatIndex(
+        track,
+        index,
+        storyViewportHeight(stickyRef.current),
+      ),
       behavior: reduceMotion ? "auto" : "smooth",
     });
   };
