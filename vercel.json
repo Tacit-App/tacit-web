@@ -4,5 +4,9 @@
   "framework": null,
   "redirects": [
     { "source": "/old", "destination": "/", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/es", "destination": "/index.html" },
+    { "source": "/es/", "destination": "/index.html" }
   ]
 }
