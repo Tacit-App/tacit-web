@@ -6,8 +6,8 @@ export const home = {
   tagline: "The knowledge behind the work.",
   problem: {
     eyebrow: "Problem",
-    title: "New tools fail when habits stay the same.",
-    body: "Most tech projects stall because of people and habits, not bad software. If you do not see how work really moves, agents only speed up the mess.",
+    title: "New tools fail when workflows stay the same.",
+    body: "Most tech projects stall because of people and culture, not bad software. If you do not see how work really moves, agents only speed up the mess.",
     closer: "See the culture before you automate.",
   },
   premise: {
