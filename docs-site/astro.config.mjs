@@ -36,7 +36,8 @@ export default defineConfig({
       title: "Tacit",
       description: "Push API and Amazon S3.",
       logo: {
-        src: "./src/assets/tacit-mark.svg",
+        light: "./src/assets/tacit-mark-light.svg",
+        dark: "./src/assets/tacit-mark-dark.svg",
         alt: "Tacit",
       },
       customCss: ["./src/styles/custom.css"],

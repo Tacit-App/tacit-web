@@ -18,6 +18,14 @@
   --sl-font: "Inter", system-ui, sans-serif;
 }
 
+.site-title {
+  color: #000;
+}
+
+:root[data-theme="dark"] .site-title {
+  color: #fff;
+}
+
 .site-title span {
   font-family: "Instrument Serif", Georgia, serif;
   font-weight: 400;
