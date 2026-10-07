@@ -398,6 +398,7 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--mist);
+  background: #f4f7f6;
 }
 
 .contrast-table th:last-child {

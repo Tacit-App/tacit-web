@@ -173,8 +173,10 @@ export function HomePage() {
             <a className="site-btn site-btn-primary" href={DIAGNOSTIC_MAIL}>
               Book a diagnostic
             </a>
+            <a className="site-btn site-btn-ghost" href="https://tacit.guru">
+              tacit.guru
+            </a>
           </div>
-          <p className="hero-tag">{home.tagline}</p>
         </div>
       </section>
     </>
