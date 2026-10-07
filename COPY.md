@@ -19,7 +19,7 @@ The knowledge behind the work.
 
 **Title:** New tools fail when workflows stay the same.
 
-**Body:** Most tech projects stall because of people and habits, not bad software. If you do not see how work really moves, agents only speed up the mess.
+**Body:** Most tech projects stall because of people and culture, not bad software. If you do not see how work really moves, agents only speed up the mess.
 
 **Closer:** See the culture before you automate.
 

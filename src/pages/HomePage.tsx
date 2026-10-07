@@ -1,10 +1,8 @@
 import { useEffect, useRef } from "react";
-import { home } from "../data/home";
-import { solutions } from "../data/solutions";
-import { DIAGNOSTIC_MAIL } from "../data/site";
+import { diagnosticMailto, useI18n } from "../i18n";
 import { usePageTitle } from "../lib/usePageTitle";
 
-function ProductFilm() {
+function ProductFilm({ label }: { label: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -27,7 +25,7 @@ function ProductFilm() {
         loop
         playsInline
         preload="metadata"
-        aria-label={home.filmLabel}
+        aria-label={label}
       >
         <source src="/product-graph-menu.mp4" type="video/mp4" />
       </video>
@@ -36,7 +34,10 @@ function ProductFilm() {
 }
 
 export function HomePage() {
-  usePageTitle(home.title);
+  const { t } = useI18n();
+  const { home } = t;
+
+  usePageTitle(t.meta.title);
 
   return (
     <>
@@ -47,11 +48,14 @@ export function HomePage() {
             <h1>{home.headline}</h1>
             <p className="hero-sub">{home.sub}</p>
             <div className="cta-row">
-              <a className="site-btn site-btn-primary" href={DIAGNOSTIC_MAIL}>
-                Book a diagnostic
+              <a
+                className="site-btn site-btn-primary"
+                href={diagnosticMailto(t.diagnosticMailSubject)}
+              >
+                {t.cta.bookDiagnostic}
               </a>
               <a className="site-btn site-btn-ghost" href="#how">
-                See how it works
+                {t.cta.seeHow}
               </a>
             </div>
             <p className="hero-tag">{home.tagline}</p>
@@ -59,9 +63,9 @@ export function HomePage() {
         </div>
       </header>
 
-      <section className="site-section" aria-label="Product">
+      <section className="site-section" aria-label={t.productAria}>
         <div className="site-panel">
-          <ProductFilm />
+          <ProductFilm label={home.filmLabel} />
         </div>
       </section>
 
@@ -120,7 +124,7 @@ export function HomePage() {
             ))}
           </div>
           <div className="solution-row">
-            {solutions.map((item) => (
+            {t.solutions.map((item) => (
               <div className="offer" key={item.slug}>
                 <span className="step-num">{item.stage}</span>
                 <strong>{item.name}</strong>
@@ -148,8 +152,8 @@ export function HomePage() {
             <table className="contrast-table">
               <thead>
                 <tr>
-                  <th scope="col">Usual path</th>
-                  <th scope="col">With Tacit</th>
+                  <th scope="col">{home.contrast.usualPath}</th>
+                  <th scope="col">{home.contrast.withTacit}</th>
                 </tr>
               </thead>
               <tbody>
@@ -170,11 +174,14 @@ export function HomePage() {
           <h2 id="close-title">{home.close.title}</h2>
           <p className="lede">{home.close.body}</p>
           <div className="cta-row">
-            <a className="site-btn site-btn-primary" href={DIAGNOSTIC_MAIL}>
-              Book a diagnostic
+            <a
+              className="site-btn site-btn-primary"
+              href={diagnosticMailto(t.diagnosticMailSubject)}
+            >
+              {t.cta.bookDiagnostic}
             </a>
             <a className="site-btn site-btn-ghost" href="https://tacit.guru">
-              tacit.guru
+              {t.cta.siteUrlLabel}
             </a>
           </div>
         </div>
