@@ -8,14 +8,8 @@ import {
   stageFromProgress,
   type StoryBeat,
 } from "../lib/knowledgeInstrument";
+import { DEMO_URL, site } from "../data/copy";
 import "./KnowledgeSphere.css";
-
-type KnowledgeSphereProps = {
-  primaryHref?: string;
-  primaryLabel?: string;
-  secondaryHref?: string;
-  secondaryLabel?: string;
-};
 
 function particleBudget() {
   if (typeof window === "undefined") return 3200;
@@ -54,12 +48,7 @@ function isTypingTarget(el: EventTarget | null) {
   );
 }
 
-export function KnowledgeSphere({
-  primaryHref = "mailto:sales@tacit.guru?subject=Book%20a%20diagnostic",
-  primaryLabel = "Book a diagnostic",
-  secondaryHref = "/solutions",
-  secondaryLabel = "See the offers",
-}: KnowledgeSphereProps) {
+export function KnowledgeSphere() {
   const trackRef = useRef<HTMLElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -264,11 +253,11 @@ export function KnowledgeSphere({
             <p className="instrument-body">{shownBeat.body}</p>
             {showHeroCta && (
               <div className="instrument-cta">
-                <a className="btn btn-primary" href={primaryHref}>
-                  {primaryLabel}
+                <a className="btn btn-primary" href={DEMO_URL}>
+                  {site.ctaPrimary}
                 </a>
-                <a className="btn btn-ghost" href={secondaryHref}>
-                  {secondaryLabel}
+                <a className="btn btn-ghost" href="#captures">
+                  {site.ctaSecondary}
                 </a>
               </div>
             )}

@@ -1,26 +1,36 @@
-import { BrowserRouter, Route, Routes } from "react-router";
-import { SiteLayout } from "./components/SiteLayout";
-import { BlogIndexPage } from "./pages/BlogIndexPage";
-import { BlogPostPage } from "./pages/BlogPostPage";
-import { HomePage } from "./pages/HomePage";
-import { MethodPage } from "./pages/MethodPage";
-import { SolutionPage } from "./pages/SolutionPage";
-import { SolutionsPage } from "./pages/SolutionsPage";
-import "./styles/site.css";
+import { Nav } from "./components/Nav";
+import { Hero } from "./components/Hero";
+import { CaptureFeed } from "./components/CaptureFeed";
+import { CostContrast } from "./components/CostContrast";
+import { HowItWorks } from "./components/HowItWorks";
+import { CaptureCategories } from "./components/CaptureCategories";
+import { DayZero } from "./components/DayZero";
+import { AiLayer } from "./components/AiLayer";
+import { Comparison } from "./components/Comparison";
+import { Testimonials } from "./components/Testimonials";
+import { FounderQuote } from "./components/FounderQuote";
+import { FinalCta } from "./components/FinalCta";
+import { Footer } from "./components/Footer";
+import "./components/sections.css";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<SiteLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="solutions" element={<SolutionsPage />} />
-          <Route path="solutions/:slug" element={<SolutionPage />} />
-          <Route path="method" element={<MethodPage />} />
-          <Route path="blog" element={<BlogIndexPage />} />
-          <Route path="blog/:slug" element={<BlogPostPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <Nav />
+      <main>
+        <Hero />
+        <CaptureFeed />
+        <CostContrast />
+        <HowItWorks />
+        <CaptureCategories />
+        <DayZero />
+        <AiLayer />
+        <Comparison />
+        <Testimonials />
+        <FounderQuote />
+        <FinalCta />
+      </main>
+      <Footer />
+    </>
   );
 }

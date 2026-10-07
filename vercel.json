@@ -2,15 +2,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": null,
-  "cleanUrls": true,
   "redirects": [
     { "source": "/old", "destination": "/", "permanent": false }
-  ],
-  "rewrites": [
-    { "source": "/solutions", "destination": "/index.html" },
-    { "source": "/solutions/:slug", "destination": "/index.html" },
-    { "source": "/method", "destination": "/index.html" },
-    { "source": "/blog", "destination": "/index.html" },
-    { "source": "/blog/:slug", "destination": "/index.html" }
   ]
 }
