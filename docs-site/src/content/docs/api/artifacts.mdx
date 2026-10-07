@@ -1,0 +1,36 @@
+---
+title: Reserve an upload
+description: Reserve a short-lived URL for a file that should not sit in the JSON body.
+---
+
+import Endpoint from "../../../components/api/Endpoint.astro";
+
+<Endpoint method="POST" path="/api/v1/artifacts" />
+
+Contracts, PDFs, and spreadsheets should not sit inside the JSON body. You reserve an upload, put the bytes there, and then send only the id on [Accept a record](/api/observations/). A retry stays small, and the file never lands in your application logs on the way to Tacit.
+
+Send `Authorization: Bearer <secret>`. The key is described on the [Push API](/api/) page.
+
+## Request
+
+```json
+{
+  "content_type": "application/pdf",
+  "byte_size": 4821130,
+  "sha256": "hex digest of the bytes"
+}
+```
+
+`content_type`, `byte_size`, and `sha256` are required. `sha256` is the hex digest of the bytes you will upload.
+
+## Response
+
+`200` returns an `artifact_id` and a single-use `PUT` URL that expires in minutes. The URL is scoped to your organization. Tacit checks the size and the checksum before it will accept an observation that names this `artifact_id`. A mismatch is `409` on the observation call.
+
+| HTTP | When |
+| --- | --- |
+| `200` | Upload target reserved |
+| `400` | The request is invalid |
+| `401` | Missing or unknown key |
+| `403` | Key revoked |
+| `429` | Rate limit. Honor `Retry-After` |

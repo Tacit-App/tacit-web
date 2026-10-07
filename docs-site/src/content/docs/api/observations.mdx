@@ -1,0 +1,74 @@
+---
+title: Accept a record
+description: Send one record and receive an observation id before processing finishes.
+---
+
+import Endpoint from "../../../components/api/Endpoint.astro";
+
+<Endpoint method="POST" path="/api/v1/observations" />
+
+A short note, a ticket comment, or a JSON payload can go in the request. You get an acceptance back before Tacit finishes reading it, so your system does not wait on extraction. You keep the id your system already uses.
+
+Send `Authorization: Bearer <secret>`. See [Push API](/api/) for how the key works.
+
+## Request
+
+`source`, `type`, and `id` are required. Send either `body` or `artifact_id`, not both.
+
+Inline `body` accepts `text/*` and `application/json`, up to 1 MB. Any other media type, and any larger payload, uses [Reserve an upload](/api/artifacts/) first.
+
+`source` is a name you register with Tacit for that system (`acme_erp`, `billing`, `data_warehouse`). An unknown source is rejected, so a mistyped name cannot open a new stream by accident.
+
+For email, `id` is the shared Message-ID of the thread, the same value every mailbox already has. Two people on the same thread then share one record. Tacit does not change the casing of ids you send. Some systems treat ids as case-sensitive.
+
+```json
+{
+  "source": "acme_erp",
+  "type": "ticket",
+  "id": "T-1042",
+  "seen_at": "2026-09-29T18:00:00Z",
+  "member_id": "optional-person-id",
+  "content_type": "text/plain",
+  "body": "The customer asked for net-60 on the renewal."
+}
+```
+
+A file that was uploaded first:
+
+```json
+{
+  "source": "acme_erp",
+  "type": "contract",
+  "id": "C-8831",
+  "seen_at": "2026-09-29T18:00:00Z",
+  "content_type": "application/pdf",
+  "artifact_id": "art_01H..."
+}
+```
+
+Optional header `Idempotency-Key`. Tacit remembers it for 24 hours, scoped to your key. The same key and the same request return the original `202`. The same key and a different request return `409`.
+
+## Response
+
+`202 Accepted`. Store `observation_id` and poll it from your own job. It comes from your organization, source, type, and id, so sending the same id again returns the same value.
+
+```json
+{
+  "observation_id": "64-character hex",
+  "status": "accepted",
+  "status_url": "/api/v1/observations/64-character-hex"
+}
+```
+
+| HTTP | When |
+| --- | --- |
+| `202` | Accepted. Processing may still be running |
+| `400` | Missing `id`, unknown `source`, or both `body` and `artifact_id` |
+| `401` | Missing or unknown key |
+| `403` | Key revoked, or `member_id` is not in your organization |
+| `409` | Checksum does not match, or the idempotency key was reused with a different payload |
+| `413` | Inline body is over 1 MB |
+| `415` | Inline body is not text or JSON |
+| `429` | Rate limit. Honor `Retry-After` |
+
+Tacit accepts the record before it decides the record is noise. You still get `202`. Exclusion shows up later on [Read status](/api/observation/) as `excluded`.

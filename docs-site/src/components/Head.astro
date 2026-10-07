@@ -1,0 +1,31 @@
+---
+import Default from "@astrojs/starlight/components/Head.astro";
+import { ClientRouter } from "astro:transitions";
+---
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,400&display=swap"
+  rel="stylesheet"
+/>
+<Default />
+<ClientRouter />
+<script is:inline>
+	function tacitDocsTheme() {
+		try {
+			var stored = localStorage.getItem("starlight-theme");
+			if (stored === "light" || stored === "dark") return stored;
+		} catch (e) {}
+		return matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+	}
+	function applyTacitDocsTheme(root) {
+		if (root) root.dataset.theme = tacitDocsTheme();
+	}
+	document.addEventListener("astro:before-swap", function (event) {
+		applyTacitDocsTheme(event.newDocument && event.newDocument.documentElement);
+	});
+	document.addEventListener("astro:after-swap", function () {
+		applyTacitDocsTheme(document.documentElement);
+	});
+</script>
