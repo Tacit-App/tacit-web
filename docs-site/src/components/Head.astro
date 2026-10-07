@@ -11,3 +11,21 @@ import { ClientRouter } from "astro:transitions";
 />
 <Default />
 <ClientRouter />
+<script is:inline>
+	function tacitDocsTheme() {
+		try {
+			var stored = localStorage.getItem("starlight-theme");
+			if (stored === "light" || stored === "dark") return stored;
+		} catch (e) {}
+		return matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+	}
+	function applyTacitDocsTheme(root) {
+		if (root) root.dataset.theme = tacitDocsTheme();
+	}
+	document.addEventListener("astro:before-swap", function (event) {
+		applyTacitDocsTheme(event.newDocument && event.newDocument.documentElement);
+	});
+	document.addEventListener("astro:after-swap", function () {
+		applyTacitDocsTheme(document.documentElement);
+	});
+</script>
