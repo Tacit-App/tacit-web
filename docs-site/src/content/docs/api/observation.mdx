@@ -1,0 +1,45 @@
+---
+title: Read status
+description: Read the stage and outcome of a record. The file and the derived knowledge are not included.
+---
+
+import Endpoint from "../../../components/api/Endpoint.astro";
+
+<Endpoint method="GET" path="/api/v1/observations/{observation_id}" />
+
+This is the call your operators and your security review can use. It returns the stage and the outcome, not the file and not the knowledge Tacit wrote.
+
+`observation_id` is the hex fingerprint returned when the record was accepted.
+
+## Response
+
+```json
+{
+  "observation_id": "64-character hex",
+  "disposition": "pending",
+  "content_hash": "hex",
+  "ingested_at": "2026-09-29T18:00:01Z",
+  "layers": [
+    { "name": "evidence", "outcome": "passed" }
+  ]
+}
+```
+
+`disposition` is one of:
+
+| Value | Meaning |
+| --- | --- |
+| `pending` | Accepted, processing has not finished |
+| `new` | First time Tacit has seen this id |
+| `sighting` | Same id, same bytes, recorded again |
+| `refreshed` | Same id, new bytes |
+| `excluded` | Accepted, then dropped by a rule (noise, or a redaction rule you configured) |
+
+`layers` names each stage and whether it passed, was skipped, or failed.
+
+| HTTP | When |
+| --- | --- |
+| `200` | Current disposition |
+| `401` | Missing or unknown key |
+| `403` | Key revoked |
+| `404` | No record with this id exists for your organization |

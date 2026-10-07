@@ -2,21 +2,23 @@
   "name": "tacit-docs",
   "private": true,
   "version": "0.1.0",
+  "type": "module",
   "scripts": {
-    "dev": "docusaurus start --port 3005 --host 127.0.0.1",
-    "build": "docusaurus build --out-dir build",
-    "serve": "docusaurus serve --port 3005 --host 127.0.0.1 --dir build"
+    "dev": "astro dev --port 3005 --host 127.0.0.1",
+    "build": "astro build",
+    "preview": "astro preview --port 3005 --host 127.0.0.1"
   },
   "dependencies": {
-    "@docusaurus/core": "3.10.2",
-    "@docusaurus/preset-classic": "3.10.2",
-    "@mdx-js/react": "^3.1.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
-  },
-  "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.10.2",
-    "@docusaurus/types": "3.10.2"
+    "@astrojs/react": "^7.0.1",
+    "@astrojs/starlight": "0.42.5",
+    "@hugeicons/core-free-icons": "^4.2.3",
+    "@hugeicons/react": "^1.1.9",
+    "astro": "7.3.6",
+    "astro-mermaid": "^2.1.0",
+    "mermaid": "^11.17.2",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "sharp": "0.35.3"
   },
   "engines": {
     "node": ">=22"

@@ -1,0 +1,35 @@
+---
+title: Introduction
+description: What Tacit is, how a record becomes knowledge, and where to go next.
+---
+
+import Flow from "../../components/diagrams/Flow.astro";
+
+Tacit reads the work your company already does and turns it into knowledge your people and agents can use again. Mail, meetings, documents, and chat are the usual sources. If a record lives somewhere else, in your own app, a partner system, or a bucket of files, you can send that in too.
+
+You do not have to use one door for everything. Each option fits a different place the data already sits. All of them become the same kind of record inside Tacit, so a ticket from your app and a file from S3 can show up together.
+
+<Flow
+  steps={["Observations", "Tacit Engine", "Knowledge Graph", "Agents"]}
+  loop
+/>
+
+## How a record moves
+
+1. Your organization is the boundary. Keys, records, and the knowledge Tacit writes from them stay inside that organization.
+2. A source is where the record came from: a tool your team already uses, a push from one of your systems, or an S3 prefix.
+3. A record is one item, named with the id you already use. The same id with the same bytes is recorded as another sighting and is not extracted again. New bytes on the same id refresh the record.
+4. The bytes are stored once. Later steps work from a pointer and a hash, so the file is not copied through logs and queues.
+5. From the record, Tacit writes entities, claims, and the links between them. An ambiguous match waits for a person.
+6. You can read the status of a record at any time. It names the stage and the outcome. It does not hand back the file or the knowledge Tacit derived.
+
+## Which option to use
+
+- [Overview](/overview/) is the shared path: how Tacit accepts a record, names it, and processes it, whether it arrived by push or from S3.
+- [Push API](/api/) fits when your application, an export, or a partner already has the record and can send it over HTTPS. You decide when it leaves your system.
+- [Amazon S3](/s3/) fits when the files are already in a bucket. Tacit can read a prefix you choose, pick up new files from event notifications, or wait for a small agent you run if Tacit should not hold a role in your account.
+- [openapi.yaml](/docs/openapi.yaml) is the contract your engineers can generate a client from.
+
+## Need help?
+
+If you want help choosing a source, or you need the derived knowledge to stay in your account, write to [sales@tacit.guru](mailto:sales@tacit.guru).

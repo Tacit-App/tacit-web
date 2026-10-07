@@ -12,15 +12,5 @@
     { "source": "/method", "destination": "/index.html" },
     { "source": "/blog", "destination": "/index.html" },
     { "source": "/blog/:slug", "destination": "/index.html" }
-  ],
-  "headers": [
-    {
-      "source": "/docs",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
-    },
-    {
-      "source": "/docs/:path*",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
-    }
   ]
 }
