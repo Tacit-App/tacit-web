@@ -1,0 +1,52 @@
+---
+interface Props {
+  method: "GET" | "POST";
+  path: string;
+}
+
+const { method, path } = Astro.props;
+---
+
+<div class="endpoint">
+  <span class:list={["method", method.toLowerCase()]}>{method}</span>
+  <code class="path">{path}</code>
+</div>
+
+<style>
+  .endpoint {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0 0 1.25rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.6rem;
+    background: var(--sl-color-gray-6, #f6f7f9);
+  }
+
+  .method {
+    flex: none;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.35rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+    font-weight: 650;
+    letter-spacing: 0.04em;
+    color: #fff;
+  }
+
+  .method.post {
+    background: #1a9e78;
+  }
+
+  .method.get {
+    background: #18232e;
+  }
+
+  .path {
+    font-size: 0.95rem;
+    color: var(--sl-color-white);
+    background: transparent;
+    overflow-wrap: anywhere;
+  }
+</style>

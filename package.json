@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && npm --prefix docs-site ci && npm --prefix docs-site run build && mkdir -p dist/docs && cp -R docs-site/dist/. dist/docs/",
+    "docs:dev": "npm --prefix docs-site run dev",
     "lint": "oxlint",
     "preview": "vite preview"
   },

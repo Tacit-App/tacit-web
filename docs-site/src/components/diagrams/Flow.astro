@@ -1,0 +1,117 @@
+---
+interface Props {
+  steps: string[];
+  /** Draw an arrow from the last step back to the first. */
+  loop?: boolean;
+}
+
+const { steps, loop = false } = Astro.props;
+const boxW = 176;
+const boxH = 52;
+const gap = 44;
+const padX = 4;
+const padY = 8;
+const width = padX * 2 + steps.length * boxW + Math.max(0, steps.length - 1) * gap;
+const loopDrop = 36;
+const height = padY + boxH + (loop ? loopDrop + 18 : padY);
+const midY = padY + boxH / 2;
+const markerId = "flow-arrow";
+
+function boxX(index: number) {
+  return padX + index * (boxW + gap);
+}
+---
+
+<svg
+  class="flow"
+  viewBox={`0 0 ${width} ${height}`}
+  role="img"
+  aria-label={loop
+    ? `${steps.join(", ")}, and ${steps.at(-1)} connects back to ${steps[0]}`
+    : steps.join(", ")}
+>
+  <defs>
+    <marker
+      id={markerId}
+      viewBox="0 0 12 12"
+      refX="10"
+      refY="6"
+      markerWidth="8"
+      markerHeight="8"
+      orient="auto"
+    >
+      <path d="M2 1.5 L10.5 6 L2 10.5" fill="none" stroke="#1a9e78" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+  </defs>
+
+  {
+    steps.slice(0, -1).map((_, index) => {
+      const x1 = boxX(index) + boxW + 2;
+      const x2 = boxX(index + 1) - 8;
+      return (
+        <path
+          d={`M ${x1} ${midY} L ${x2} ${midY}`}
+          fill="none"
+          stroke="#1a9e78"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          marker-end={`url(#${markerId})`}
+        />
+      );
+    })
+  }
+
+  {
+    loop && steps.length > 1 && (
+      <path
+        d={`M ${boxX(steps.length - 1) + boxW / 2} ${padY + boxH}
+            L ${boxX(steps.length - 1) + boxW / 2} ${padY + boxH + loopDrop}
+            L ${boxX(0) + boxW / 2} ${padY + boxH + loopDrop}
+            L ${boxX(0) + boxW / 2} ${padY + boxH + 2}`}
+        fill="none"
+        stroke="#1a9e78"
+        stroke-width="1.75"
+        stroke-linejoin="miter"
+        marker-end={`url(#${markerId})`}
+      />
+    )
+  }
+
+  {
+    steps.map((label, index) => (
+      <g>
+        <rect
+          x={boxX(index)}
+          y={padY}
+          width={boxW}
+          height={boxH}
+          rx="14"
+          fill="#ebf7f3"
+          stroke="#1a9e78"
+          stroke-width="1.5"
+        />
+        <text
+          x={boxX(index) + boxW / 2}
+          y={midY}
+          text-anchor="middle"
+          dominant-baseline="middle"
+          fill="#18232e"
+          font-family="Inter, system-ui, sans-serif"
+          font-size="14"
+          font-weight="500"
+        >
+          {label}
+        </text>
+      </g>
+    ))
+  }
+</svg>
+
+<style>
+  .flow {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 1.25rem 0 1.5rem;
+  }
+</style>

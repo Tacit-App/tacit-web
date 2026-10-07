@@ -1,0 +1,30 @@
+---
+title: Accept a batch
+description: Send up to 100 uploaded records. One bad item does not reject the rest.
+---
+
+import Endpoint from "../../../components/api/Endpoint.astro";
+
+<Endpoint method="POST" path="/api/v1/observations:batch" />
+
+Use this for an export or a backfill. Each item uses `artifact_id`, so you [upload the bytes first](/api/artifacts/) and the batch itself stays a list of references. A retry is not a multi-megabyte body.
+
+Send `Authorization: Bearer <secret>`.
+
+## Request
+
+Up to 100 items. The same fields as [Accept a record](/api/observations/), except every item must use `artifact_id` and must not include `body`.
+
+Optional header `Idempotency-Key`, remembered for 24 hours and scoped to your key.
+
+## Response
+
+`202`. Tacit accepts or rejects each item on its own. One invalid item does not reject the rest. The response lists a status for every item: `202` with an `observation_id`, or `400`, `409`, `413`, or `415` with an `error`.
+
+| HTTP | When |
+| --- | --- |
+| `202` | The batch was processed item by item |
+| `400` | The batch envelope itself is invalid, for example more than 100 items |
+| `401` | Missing or unknown key |
+| `403` | Key revoked |
+| `429` | Rate limit. Honor `Retry-After` |
