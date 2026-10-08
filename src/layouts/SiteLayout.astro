@@ -1,0 +1,50 @@
+---
+import "../styles/global.css";
+import "../styles/site.css";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteNav from "../components/SiteNav.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="site">
+      <canvas class="sphere-field" aria-hidden="true"></canvas>
+      <SiteNav />
+      <main class="site-main" id="main">
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+    <script>
+      import { bindProductFilm } from "../scripts/product-film";
+      import { startSphereField } from "../scripts/sphere-field";
+
+      const canvas = document.querySelector<HTMLCanvasElement>(".sphere-field");
+      if (canvas) startSphereField(canvas);
+
+      const video = document.querySelector<HTMLVideoElement>(".product-video");
+      if (video) bindProductFilm(video);
+    </script>
+  </body>
+</html>

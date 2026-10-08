@@ -1,0 +1,161 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { home } from "../data/home";
+import { solutions } from "../data/solutions";
+import { DIAGNOSTIC_MAIL } from "../data/site";
+
+const description =
+  "Powered by the tacit knowledge inside your company. Map how work really happens, then build tools and agents that fit.";
+---
+
+<SiteLayout title={home.title} description={description}>
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="kicker">{home.kicker}</p>
+        <h1>{home.headline}</h1>
+        <p class="hero-sub">{home.sub}</p>
+        <div class="cta-row">
+          <a class="site-btn site-btn-primary" href={DIAGNOSTIC_MAIL}>Book a diagnostic</a>
+          <a class="site-btn site-btn-ghost" href="#how">See how it works</a>
+        </div>
+        <p class="hero-tag">{home.tagline}</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="site-section" aria-label="Product">
+    <div class="site-panel">
+      <figure class="product-media">
+        <video
+          class="product-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-label={home.filmLabel}
+        >
+          <source src="/product-graph-menu.mp4" type="video/mp4" />
+        </video>
+      </figure>
+    </div>
+  </section>
+
+  <section class="site-section" aria-labelledby="problem-title">
+    <div class="site-panel">
+      <p class="kicker">{home.problem.eyebrow}</p>
+      <h2 id="problem-title">{home.problem.title}</h2>
+      <p class="lede">{home.problem.body}</p>
+      <p class="closer-line">{home.problem.closer}</p>
+    </div>
+  </section>
+
+  <section class="site-section" aria-labelledby="premise-title">
+    <div class="site-panel with-shot">
+      <div class="section-split">
+        <div>
+          <p class="kicker">{home.premise.eyebrow}</p>
+          <h2 id="premise-title">{home.premise.title}</h2>
+          <p class="lede">{home.premise.body}</p>
+        </div>
+        <figure class="section-shot">
+          <img
+            src="/knowledge-profiles.png"
+            alt={home.premise.imageAlt}
+            width="1980"
+            height="1106"
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="site-section" id="how" aria-labelledby="how-title">
+    <div class="site-panel with-shot">
+      <div class="section-split">
+        <div>
+          <p class="kicker">{home.how.eyebrow}</p>
+          <h2 id="how-title">{home.how.title}</h2>
+        </div>
+        <figure class="section-shot">
+          <img
+            src="/pulse-priorities.png"
+            alt={home.how.imageAlt}
+            width="2950"
+            height="1386"
+          />
+        </figure>
+      </div>
+      <div class="steps">
+        {
+          home.how.steps.map((step) => (
+            <article class="step">
+              <div class="step-num">{step.n}</div>
+              <h3>{step.title}</h3>
+              <p>{step.body}</p>
+            </article>
+          ))
+        }
+      </div>
+      <div class="solution-row">
+        {
+          solutions.map((item) => (
+            <div class="offer">
+              <span class="step-num">{item.stage}</span>
+              <strong>{item.name}</strong>
+              <span>{item.homeLine}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="site-section" aria-labelledby="who-title">
+    <div class="site-panel">
+      <p class="kicker">{home.who.eyebrow}</p>
+      <h2 id="who-title">{home.who.title}</h2>
+      <p class="lede">{home.who.body}</p>
+      <p class="closer-line">{home.who.closer}</p>
+    </div>
+  </section>
+
+  <section class="site-section" aria-labelledby="contrast-title">
+    <div class="site-panel">
+      <p class="kicker">{home.contrast.eyebrow}</p>
+      <h2 id="contrast-title">{home.contrast.title}</h2>
+      <div class="table-wrap">
+        <table class="contrast-table">
+          <thead>
+            <tr>
+              <th scope="col">Usual path</th>
+              <th scope="col">With Tacit</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              home.contrast.rows.map((row) => (
+                <tr>
+                  <td>{row[0]}</td>
+                  <td>{row[1]}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="site-section close" aria-labelledby="close-title">
+    <div class="site-panel">
+      <h2 id="close-title">{home.close.title}</h2>
+      <p class="lede">{home.close.body}</p>
+      <div class="cta-row">
+        <a class="site-btn site-btn-primary" href={DIAGNOSTIC_MAIL}>Book a diagnostic</a>
+        <a class="site-btn site-btn-ghost" href="https://tacit.guru">tacit.guru</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
