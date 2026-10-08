@@ -1,8 +1,8 @@
 # Tacit marketing site
 
-Vite + React marketing site.
+Astro marketing site.
 
-Hero instrument: Canvas 2D knowledge sphere with scroll stages (chaos → order → clusters → connections). Engine: [`src/lib/knowledgeInstrument.ts`](src/lib/knowledgeInstrument.ts).
+Hero instrument: Canvas 2D knowledge sphere with scroll stages (chaos → order → clusters → connections). Engine: [`src/lib/knowledgeInstrument.slides.ts`](src/lib/knowledgeInstrument.slides.ts).
 
 Previous static HTML drafts live in [`legacy/`](legacy/).
 

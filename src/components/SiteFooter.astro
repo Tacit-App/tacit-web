@@ -1,0 +1,17 @@
+---
+import { CONTACT_MAIL, TAGLINE } from "../data/site";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer-brand">
+    <img src="/tacit-mark.svg" alt="" width="22" height="22" />
+    <span>Tacit</span>
+  </div>
+  <p class="site-footer-tag">{TAGLINE}</p>
+  <nav class="site-footer-links" aria-label="Footer">
+    <a href={CONTACT_MAIL}>sales@tacit.guru</a>
+  </nav>
+  <p class="site-footer-meta">© {year} Tacit</p>
+</footer>
