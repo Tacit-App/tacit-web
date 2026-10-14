@@ -3,9 +3,9 @@ import type { LandingCopy } from "../types";
 /** Spanish landing copy. Brand name "Tacit" stays untranslated. */
 export const es: LandingCopy = {
   meta: {
-    title: "Tacit — Entiende, transforma y automatiza tus operaciones",
+    title: "Tacit — Automatiza tu empresa desde la experiencia real de tu equipo",
     description:
-      "Impulsado por el conocimiento tácito dentro de tu empresa. Mapea cómo ocurre realmente el trabajo y luego construye herramientas y agentes que encajen.",
+      "Capa consultiva, implementación de agentes, un agente en el ciclo y un SLA más alto. El núcleo es cómo trabaja realmente tu gente.",
   },
   nav: {
     homeAria: "Inicio de Tacit",
@@ -14,22 +14,21 @@ export const es: LandingCopy = {
   },
   cta: {
     bookDiagnostic: "Reservar un diagnóstico",
-    seeHow: "Ver cómo funciona",
+    seeHow: "Ver los servicios",
     siteUrlLabel: "tacit.guru",
   },
   diagnosticMailSubject: "Reservar un diagnóstico",
   productAria: "Producto",
   home: {
     kicker: "Para empresas B2B",
-    headline: "Entiende, transforma y automatiza tus operaciones.",
-    sub: "Impulsado por el conocimiento tácito dentro de tu empresa.",
+    headline: "Automatiza tu empresa desde la experiencia real de tu equipo.",
+    sub: "Cuatro servicios. Un núcleo.",
     tagline: "El conocimiento detrás del trabajo.",
     problem: {
-      eyebrow: "Problema",
-      title:
-        "Las herramientas nuevas fallan cuando los flujos de trabajo siguen igual.",
-      body: "La mayoría de los proyectos tecnológicos se estancan por las personas y la cultura, no por un mal software. Si no ves cómo se mueve realmente el trabajo, los agentes solo aceleran el desorden.",
-      closer: "Ve la cultura antes de automatizar.",
+      eyebrow: "El núcleo",
+      title: "Cada servicio parte de cómo ocurre realmente el trabajo.",
+      body: "Cómo se comunica la gente, qué herramientas usa, hacia dónde se inclina el juicio y dónde se atasca el trabajo. Sin eso, las herramientas y los agentes solo aceleran el desorden.",
+      closer: "El cliente se lleva el servicio. El núcleo es lo que lo sostiene.",
     },
     premise: {
       eyebrow: "Qué hacemos",
@@ -38,32 +37,77 @@ export const es: LandingCopy = {
       imageAlt: "Mapa de tipos de conocimiento y perfil de competencia cognitiva",
     },
     how: {
-      eyebrow: "Cómo funciona",
-      title: "Tres pasos.",
+      eyebrow: "Servicios",
+      title: "Lo que hacemos para las empresas",
       imageAlt:
         "Prioridades Pulse: Hacer ahora, Planificar, Delegar y Baja prioridad",
       steps: [
         {
-          n: "01 · Mapear",
-          title: "Ver el trabajo real",
-          body: "Cómo habla la gente, qué herramientas usa, quién decide y cómo se mueve la información.",
+          n: "01",
+          id: "consulting",
+          title: "Capa consultiva",
+          body: "Vemos cómo se comunican tus empleados y cómo trabajan en el día a día.",
+          detail:
+            "Extraemos ese conocimiento para que el siguiente empleado no tenga curva de aprendizaje. Detectamos la ineficiencia cuando se está creando y actuamos antes de que el cliente se queje.",
+          points: [
+            "Qué herramientas usan, hacia qué se inclinan y dónde encontrar los cuellos de botella.",
+            "Esa imagen se extrae, para que el siguiente empleado no tenga curva de aprendizaje.",
+            "La ineficiencia se detecta cuando se está creando. Actuamos entonces, antes de que el cliente se queje.",
+          ],
+          imageAlt: "Mapa de tipos de conocimiento de cómo trabaja el equipo",
+          media: "knowledge-left",
         },
         {
-          n: "02 · Cambiar",
-          title: "Corregir flujos y adaptar la cultura",
-          body: "Formar equipos, cambiar cómo ocurre el trabajo e instalar Tacit con las herramientas que encajan.",
+          n: "02",
+          id: "agents",
+          title: "Implementar agentes",
+          body: "Los agentes se implementan a partir del conocimiento real y los flujos de trabajo tácitos.",
+          detail:
+            "Una tesis 80/20 decide exactamente dónde, cómo y con quién, para subir la productividad y el crecimiento de la empresa.",
+          points: [
+            "La fuente es el conocimiento real y los flujos de trabajo tácitos.",
+            "Una tesis 80/20 decide exactamente dónde, cómo y con quién.",
+            "El fin es subir la productividad y el crecimiento de la empresa.",
+          ],
+          imageAlt: "Flujo de conocimiento del área de trabajo al tipo",
+          media: "none",
         },
         {
-          n: "03 · Automatizar",
-          title: "Agentes con juicio",
-          body: "Automatiza con agentes y asistentes que llevan el juicio de tus mejores personas.",
+          n: "03",
+          id: "loop",
+          title: "Agente en el ciclo",
+          body: "Un agente permanece en el ciclo mientras la empresa se agentifica.",
+          detail:
+            "Puede vivir en un área, en un proceso o en la operación completa.",
+          points: [
+            "El agente permanece en el ciclo del trabajo.",
+            "La agentificación puede cubrir un área.",
+            "Puede cubrir un proceso, o la operación completa.",
+          ],
+          imageAlt: "Grafo de Tacit y menú de la app",
+          media: "none",
+        },
+        {
+          n: "04",
+          id: "sla",
+          title: "SLA más alto",
+          body: "Los clientes piden un SLA más alto. Hoy el cliente es una caja negra, y eso impide la alta eficiencia.",
+          detail:
+            "Integra Tacit para entender su comportamiento y su conocimiento, e implementa soluciones cuyo único fin es subir el SLA y hacer crecer la relación con el cliente.",
+          points: [
+            "El cliente es una caja negra, y esa caja negra impide la alta eficiencia.",
+            "Tacit se integra para entender el comportamiento y el conocimiento del cliente.",
+            "Las soluciones tienen un solo fin: un SLA más alto y el crecimiento de la relación con el cliente.",
+          ],
+          imageAlt: "Un SOP verificado con sus pasos",
+          media: "none",
         },
       ],
     },
     who: {
       eyebrow: "Para quién",
-      title: "Hecho para una transformación agéntica de abajo hacia arriba.",
-      body: "Logística, tecnología y otros equipos B2B cuyo trabajo depende de cómo opera el cliente. Cuando entiendes los procesos y decisiones del cliente, puedes hacer su operación más rápida y la tuya más fuerte.",
+      title: "Para quién son estos servicios.",
+      body: "Operaciones complejas que por naturaleza tienen alta rotación, dependen por completo de unos pocos gerentes con mucha experiencia, o sostienen una relación delicada con clientes que necesitan un nivel de servicio más alto.",
       closer: "La eficiencia del cliente es el objetivo. La tuya mejora con ella.",
     },
     contrast: {
@@ -72,25 +116,19 @@ export const es: LandingCopy = {
       usualPath: "Camino habitual",
       withTacit: "Con Tacit",
       rows: [
-        [
-          "Comprar herramientas / agentes primero",
-          "Mapear primero cómo ocurre realmente el trabajo",
-        ],
+        ["Comprar herramientas o agentes primero", "Empezar por la capa consultiva"],
         [
           "Confiar en el organigrama",
-          "Ver la comunicación y las herramientas reales",
+          "Ver cómo trabaja la gente y qué herramientas usa",
         ],
-        ["Culpar al software", "Corregir hábitos y luego automatizar"],
-        [
-          "Adivinar cómo trabaja el cliente",
-          "Conocer su flujo y luego optimizarlo",
-        ],
+        ["Agentes en todas partes", "80/20: exactamente dónde, cómo y con quién"],
+        ["El cliente sigue siendo una caja negra", "Entenderlo y luego subir el SLA"],
       ],
     },
     close: {
       title:
-        "Empieza por cómo trabaja tácitamente tu propia empresa para optimizar las operaciones de tus clientes.",
-      body: "Reserva un diagnóstico. Obtén el mapa. Luego construye herramientas y agentes que encajen.",
+        "Empieza por cómo piensa tu equipo y lo que sabe, y convierte esa experiencia real en crecimiento rentable a través de agentes e infraestructura.",
+      body: "Reserva un diagnóstico. Partimos del núcleo y entregamos el servicio: capa consultiva, agentes, un agente en el ciclo o un SLA más alto.",
     },
     filmLabel: "Grafo de Tacit y menú de la app",
   },

@@ -25,10 +25,54 @@ function ProductFilm({ label }: { label: string }) {
         loop
         playsInline
         preload="metadata"
+        poster="/product-graph-poster.png"
         aria-label={label}
       >
         <source src="/product-graph-menu.mp4" type="video/mp4" />
       </video>
+    </figure>
+  );
+}
+
+function ServiceVisual({
+  id,
+  alt,
+  pulseAlt,
+  filmLabel,
+}: {
+  id: string;
+  alt: string;
+  pulseAlt: string;
+  filmLabel: string;
+}) {
+  if (id === "consulting") {
+    return (
+      <div className="service-gallery">
+        <figure className="section-shot">
+          <img src="/knowledge-profiles.png" alt={alt} width={1980} height={1106} />
+        </figure>
+        <figure className="section-shot">
+          <img src="/pulse-priorities.png" alt={pulseAlt} width={2950} height={1386} />
+        </figure>
+      </div>
+    );
+  }
+
+  if (id === "agents") {
+    return (
+      <figure className="section-shot service-shot">
+        <img src="/knowledge-flow.png" alt={alt} width={1024} height={504} />
+      </figure>
+    );
+  }
+
+  if (id === "loop") {
+    return <ProductFilm label={filmLabel} />;
+  }
+
+  return (
+    <figure className="section-shot service-shot">
+      <img src="/knowledge-sop-detail.png" alt={alt} width={1024} height={481} />
     </figure>
   );
 }
@@ -47,6 +91,16 @@ export function HomePage() {
             <p className="kicker">{home.kicker}</p>
             <h1>{home.headline}</h1>
             <p className="hero-sub">{home.sub}</p>
+            <ul className="hero-services">
+              {home.how.steps.map((step) => (
+                <li key={step.id}>
+                  <a href={`#${step.id}`}>
+                    <span>{step.n}</span>
+                    {step.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
             <div className="cta-row">
               <a
                 className="site-btn site-btn-primary"
@@ -54,7 +108,7 @@ export function HomePage() {
               >
                 {t.cta.bookDiagnostic}
               </a>
-              <a className="site-btn site-btn-ghost" href="#how">
+              <a className="site-btn site-btn-ghost" href="#services">
                 {t.cta.seeHow}
               </a>
             </div>
@@ -63,11 +117,44 @@ export function HomePage() {
         </div>
       </header>
 
-      <section className="site-section" aria-label={t.productAria}>
-        <div className="site-panel">
+      <section className="site-section" id="services" aria-labelledby="services-title">
+        <div className="site-panel service-intro">
+          <p className="kicker">{home.how.eyebrow}</p>
+          <h2 id="services-title">{home.how.title}</h2>
+          <p className="lede">{home.problem.title}</p>
           <ProductFilm label={home.filmLabel} />
         </div>
       </section>
+
+      {home.how.steps.map((step) => (
+        <section
+          className="site-section"
+          id={step.id}
+          key={step.id}
+          aria-labelledby={`${step.id}-title`}
+        >
+          <div className="site-panel service-block">
+            <div className="service-copy">
+              <p className="service-index">{step.n}</p>
+              <p className="kicker">{step.title}</p>
+              <h2 id={`${step.id}-title`}>{step.body}</h2>
+              <ul className="service-points">
+                {step.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="service-visual">
+              <ServiceVisual
+                id={step.id}
+                alt={step.imageAlt}
+                pulseAlt={home.how.imageAlt}
+                filmLabel={home.filmLabel}
+              />
+            </div>
+          </div>
+        </section>
+      ))}
 
       <section className="site-section" aria-labelledby="problem-title">
         <div className="site-panel">
@@ -75,63 +162,6 @@ export function HomePage() {
           <h2 id="problem-title">{home.problem.title}</h2>
           <p className="lede">{home.problem.body}</p>
           <p className="closer-line">{home.problem.closer}</p>
-        </div>
-      </section>
-
-      <section className="site-section" aria-labelledby="premise-title">
-        <div className="site-panel with-shot">
-          <div className="section-split">
-            <div>
-              <p className="kicker">{home.premise.eyebrow}</p>
-              <h2 id="premise-title">{home.premise.title}</h2>
-              <p className="lede">{home.premise.body}</p>
-            </div>
-            <figure className="section-shot">
-              <img
-                src="/knowledge-profiles.png"
-                alt={home.premise.imageAlt}
-                width={1980}
-                height={1106}
-              />
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <section className="site-section" id="how" aria-labelledby="how-title">
-        <div className="site-panel with-shot">
-          <div className="section-split">
-            <div>
-              <p className="kicker">{home.how.eyebrow}</p>
-              <h2 id="how-title">{home.how.title}</h2>
-            </div>
-            <figure className="section-shot">
-              <img
-                src="/pulse-priorities.png"
-                alt={home.how.imageAlt}
-                width={2950}
-                height={1386}
-              />
-            </figure>
-          </div>
-          <div className="steps">
-            {home.how.steps.map((step) => (
-              <article className="step" key={step.n}>
-                <div className="step-num">{step.n}</div>
-                <h3>{step.title}</h3>
-                <p>{step.body}</p>
-              </article>
-            ))}
-          </div>
-          <div className="solution-row">
-            {t.solutions.map((item) => (
-              <div className="offer" key={item.slug}>
-                <span className="step-num">{item.stage}</span>
-                <strong>{item.name}</strong>
-                <span>{item.homeLine}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

@@ -44,8 +44,13 @@ export type LandingCopy = {
       imageAlt: string;
       steps: Array<{
         n: string;
+        id: string;
         title: string;
         body: string;
+        detail: string;
+        points: string[];
+        imageAlt: string;
+        media: "knowledge-left" | "knowledge-right" | "pulse" | "film" | "none";
       }>;
     };
     who: {
