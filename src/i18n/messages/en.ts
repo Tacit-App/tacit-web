@@ -13,11 +13,11 @@ export const en: LandingCopy = {
     languageLabel: "Language",
     menuLabel: "Sections",
     links: [
-      { href: "#services", label: "Servicios" },
-      { href: "#nosotros", label: "Nosotros" },
+      { href: "#services", label: "Services" },
+      { href: "#nosotros", label: "About" },
       { href: "#research", label: "Research" },
       { href: "#demo", label: "Book a demo" },
-      { href: "#tesis", label: "Tesis" },
+      { href: "#tesis", label: "Thesis" },
     ],
   },
   cta: {
