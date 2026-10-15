@@ -64,18 +64,14 @@ body {
 }
 
 .site-menu {
-  margin-left: auto;
-  padding: 0.4rem 0.7rem;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: transparent;
-  color: inherit;
-  font-size: 0.875rem;
-  font-weight: 600;
+  display: none;
 }
 
 .site-nav-links {
-  display: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.15rem;
 }
 
 .site-nav.is-open .site-nav-links {
@@ -96,8 +92,10 @@ body {
 }
 
 .site-nav-links a {
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   padding: 0.45rem 0.2rem;
   color: var(--ink-muted);
 }
@@ -178,26 +176,28 @@ body {
 }
 
 .site-nav-cta {
-  font-size: 0.875rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  padding: 0.5rem 0.9rem;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: rgb(255 255 255 / 40%);
-  color: var(--ink);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
 }
 
 .site-nav.is-dark .site-nav-cta {
-  color: var(--sand);
-  border-color: rgb(244 239 230 / 28%);
-  background: transparent;
+  color: var(--ink);
+  border-color: #fff;
+  background: #fff;
 }
 
 .site-nav-cta:hover,
 .site-nav.is-dark .site-nav-cta:hover {
   border-color: var(--pulse);
-  background: var(--pulse-tint);
-  color: var(--ink);
+  background: var(--pulse);
+  color: #fff;
 }
 
 .site-main {
@@ -879,6 +879,12 @@ body {
 }
 
 @media (min-width: 860px) {
+  .site-nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+
   .site-menu {
     display: none;
   }
@@ -886,12 +892,18 @@ body {
   .site-nav-links {
     display: flex;
     align-items: center;
-    gap: 0.35rem;
-    margin-left: auto;
+    gap: 1.35rem;
+    margin-left: 0;
     position: static;
     padding: 0;
     background: none;
     border: 0;
+    justify-self: center;
+  }
+
+  .site-nav-actions {
+    justify-self: end;
+    margin-left: 0;
   }
 
   .site-nav.is-open .site-nav-links,

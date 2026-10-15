@@ -11,6 +11,14 @@ export const es: LandingCopy = {
     homeAria: "Inicio de Tacit",
     bookDiagnostic: "Reservar un diagnóstico",
     languageLabel: "Idioma",
+    menuLabel: "Secciones",
+    links: [
+      { href: "#services", label: "Servicios" },
+      { href: "#nosotros", label: "Nosotros" },
+      { href: "#research", label: "Research" },
+      { href: "#demo", label: "Book a demo" },
+      { href: "#tesis", label: "Tesis" },
+    ],
   },
   cta: {
     bookDiagnostic: "Reservar un diagnóstico",
@@ -109,6 +117,11 @@ export const es: LandingCopy = {
       title: "Para quién son estos servicios.",
       body: "Operaciones complejas que por naturaleza tienen alta rotación, dependen por completo de unos pocos gerentes con mucha experiencia, o sostienen una relación delicada con clientes que necesitan un nivel de servicio más alto.",
       closer: "La eficiencia del cliente es el objetivo. La tuya mejora con ella.",
+    },
+    research: {
+      eyebrow: "Research",
+      title: "Un engine que comprende las organizaciones como están.",
+      body: "Somos dos ingenieros, con estudios en neurociencias, inteligencia artificial y matemáticas. Desde la academia y la empresa creamos un engine que conjuga sistemas complejos, los principios matemáticos de la lógica proposicional, la teoría bayesiana, la teoría de grafos, LIWC y las teorías modernas del pensamiento. El fin es un engine que comprenda las organizaciones como están, para potenciar su transformación digital por medio de agentes.",
     },
     contrast: {
       eyebrow: "Contraste",

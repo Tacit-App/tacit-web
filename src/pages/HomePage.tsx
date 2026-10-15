@@ -165,7 +165,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="site-section" aria-labelledby="who-title">
+      <section className="site-section" id="nosotros" aria-labelledby="who-title">
         <div className="site-panel">
           <p className="kicker">{home.who.eyebrow}</p>
           <h2 id="who-title">{home.who.title}</h2>
@@ -174,7 +174,15 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="site-section" aria-labelledby="contrast-title">
+      <section className="site-section" id="research" aria-labelledby="research-title">
+        <div className="site-panel">
+          <p className="kicker">{home.research.eyebrow}</p>
+          <h2 id="research-title">{home.research.title}</h2>
+          <p className="lede">{home.research.body}</p>
+        </div>
+      </section>
+
+      <section className="site-section" id="tesis" aria-labelledby="contrast-title">
         <div className="site-panel">
           <p className="kicker">{home.contrast.eyebrow}</p>
           <h2 id="contrast-title">{home.contrast.title}</h2>
@@ -199,7 +207,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="site-section close" aria-labelledby="close-title">
+      <section className="site-section close" id="demo" aria-labelledby="close-title">
         <div className="site-panel">
           <h2 id="close-title">{home.close.title}</h2>
           <p className="lede">{home.close.body}</p>

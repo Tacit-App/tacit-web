@@ -11,6 +11,14 @@ export const en: LandingCopy = {
     homeAria: "Tacit home",
     bookDiagnostic: "Book a diagnostic",
     languageLabel: "Language",
+    menuLabel: "Sections",
+    links: [
+      { href: "#services", label: "Servicios" },
+      { href: "#nosotros", label: "Nosotros" },
+      { href: "#research", label: "Research" },
+      { href: "#demo", label: "Book a demo" },
+      { href: "#tesis", label: "Tesis" },
+    ],
   },
   cta: {
     bookDiagnostic: "Book a diagnostic",
@@ -108,6 +116,11 @@ export const en: LandingCopy = {
       title: "Who these services are for.",
       body: "Complex operations that inherently have high turnover, depend entirely on a few highly experienced managers, or keep a delicate relationship with clients who need a higher level of service.",
       closer: "Client efficiency is the goal. Yours improves with it.",
+    },
+    research: {
+      eyebrow: "Research",
+      title: "An engine that understands organizations as they are.",
+      body: "We are two engineers, trained in neuroscience, artificial intelligence, and mathematics. From academia and from the company, we are building an engine that joins complex systems, the mathematics of propositional logic, Bayesian theory, graph theory, LIWC, and modern theories of thought. The aim is an engine that understands organizations as they are, and strengthens their digital transformation through agents.",
     },
     contrast: {
       eyebrow: "Contrast",

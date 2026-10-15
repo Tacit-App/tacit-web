@@ -13,6 +13,8 @@ export type LandingCopy = {
     homeAria: string;
     bookDiagnostic: string;
     languageLabel: string;
+    menuLabel: string;
+    links: Array<{ href: string; label: string }>;
   };
   cta: {
     bookDiagnostic: string;
@@ -58,6 +60,11 @@ export type LandingCopy = {
       title: string;
       body: string;
       closer: string;
+    };
+    research: {
+      eyebrow: string;
+      title: string;
+      body: string;
     };
     contrast: {
       eyebrow: string;
