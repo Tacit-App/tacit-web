@@ -1,4 +1,4 @@
-import { LOCALES, useI18n, type Locale } from "../i18n";
+import { LOCALES, pathForLocale, useI18n, type Locale } from "../i18n";
 
 const LABELS: Record<Locale, string> = {
   en: "EN",
@@ -6,14 +6,11 @@ const LABELS: Record<Locale, string> = {
 };
 
 export function LocaleToggle() {
-  const { locale, setLocale, t } = useI18n();
+  const { locale, t } = useI18n();
+  const hash = window.location.hash;
 
   return (
-    <div
-      className="locale-toggle"
-      role="group"
-      aria-label={t.nav.languageLabel}
-    >
+    <div className="locale-toggle" role="group" aria-label={t.nav.languageLabel}>
       <svg
         className="locale-toggle-icon"
         viewBox="0 0 24 24"
@@ -25,19 +22,23 @@ export function LocaleToggle() {
         <path d="M3.5 12h17M5 8.2h14M5 15.8h14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
       </svg>
       {LOCALES.map((code) => (
-        <button
+        <a
           key={code}
-          type="button"
+          href={pathForLocale(code, hash)}
+          hrefLang={code}
           className={
             code === locale
               ? "locale-toggle-btn is-active"
               : "locale-toggle-btn"
           }
-          aria-pressed={code === locale}
-          onClick={() => setLocale(code)}
+          aria-current={code === locale ? "true" : undefined}
+          onClick={(event) => {
+            event.preventDefault();
+            window.location.assign(pathForLocale(code, window.location.hash));
+          }}
         >
           {LABELS[code]}
-        </button>
+        </a>
       ))}
     </div>
   );

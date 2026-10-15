@@ -121,7 +121,7 @@ export const es: LandingCopy = {
     research: {
       eyebrow: "Research",
       title: "Un engine que comprende las organizaciones como están.",
-      body: "Somos dos ingenieros, con estudios en neurociencias, inteligencia artificial y matemáticas. Desde la academia y la empresa creamos un engine que conjuga sistemas complejos, los principios matemáticos de la lógica proposicional, la teoría bayesiana, la teoría de grafos, LIWC y las teorías modernas del pensamiento. El fin es un engine que comprenda las organizaciones como están, para potenciar su transformación digital por medio de agentes.",
+      body: "Un equipo empresarial y académico — dos ingenieros con formación en neurociencias, inteligencia artificial y matemáticas — construye, desde la academia y la empresa, un engine que integra sistemas complejos, la lógica proposicional, la teoría bayesiana, la teoría de grafos, LIWC y las teorías modernas del pensamiento. Ese engine comprende las organizaciones tal como son, para potenciar su transformación digital mediante agentes.",
     },
     contrast: {
       eyebrow: "Contraste",

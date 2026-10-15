@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
-import { diagnosticMailto, useI18n } from "../i18n";
+import { DemoCalendar } from "../components/DemoCalendar";
+import { useI18n } from "../i18n";
 import { usePageTitle } from "../lib/usePageTitle";
 
 function ProductFilm({ label }: { label: string }) {
@@ -102,10 +103,7 @@ export function HomePage() {
               ))}
             </ul>
             <div className="cta-row">
-              <a
-                className="site-btn site-btn-primary"
-                href={diagnosticMailto(t.diagnosticMailSubject)}
-              >
+              <a className="site-btn site-btn-primary" href="#demo">
                 {t.cta.bookDiagnostic}
               </a>
               <a className="site-btn site-btn-ghost" href="#services">
@@ -211,17 +209,7 @@ export function HomePage() {
         <div className="site-panel">
           <h2 id="close-title">{home.close.title}</h2>
           <p className="lede">{home.close.body}</p>
-          <div className="cta-row">
-            <a
-              className="site-btn site-btn-primary"
-              href={diagnosticMailto(t.diagnosticMailSubject)}
-            >
-              {t.cta.bookDiagnostic}
-            </a>
-            <a className="site-btn site-btn-ghost" href="https://tacit.guru">
-              {t.cta.siteUrlLabel}
-            </a>
-          </div>
+          <DemoCalendar label={t.nav.links[3].label} />
         </div>
       </section>
     </>

@@ -120,7 +120,7 @@ export const en: LandingCopy = {
     research: {
       eyebrow: "Research",
       title: "An engine that understands organizations as they are.",
-      body: "We are two engineers, trained in neuroscience, artificial intelligence, and mathematics. From academia and from the company, we are building an engine that joins complex systems, the mathematics of propositional logic, Bayesian theory, graph theory, LIWC, and modern theories of thought. The aim is an engine that understands organizations as they are, and strengthens their digital transformation through agents.",
+      body: "An entrepreneurial and academic team — two engineers trained in neuroscience, artificial intelligence, and mathematics — is building, from academia and from the company, an engine that joins complex systems, propositional logic, Bayesian theory, graph theory, LIWC, and modern theories of thought. The engine understands organizations as they are, and strengthens their digital transformation through agents.",
     },
     contrast: {
       eyebrow: "Contrast",
