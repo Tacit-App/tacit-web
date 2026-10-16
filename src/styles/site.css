@@ -1047,7 +1047,156 @@ body {
   }
 
   .nav-mark,
-  .nav-mark i {
+  .nav-mark i,
+  .platform-motion span,
+  .industry-list li::before {
     animation: none;
   }
+}
+
+.chapter {
+  scroll-snap-align: start;
+  scroll-margin-top: 4.5rem;
+}
+
+html {
+  scroll-snap-type: y proximity;
+}
+
+.platform {
+  margin: 0;
+}
+
+.platform-intro,
+.platform-part,
+.industries {
+  min-height: calc(100vh - 4.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(4.5rem, 10vh, 7rem) clamp(1.25rem, 6vw, 5rem);
+}
+
+.platform-intro h2,
+.industries h2 {
+  max-width: 14ch;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.platform-part {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  transition: background 0.6s var(--ease);
+}
+
+.part-consulting { background: #fff; }
+.part-agents { background: #f3f7f5; }
+.part-apps { background: #f6f3ee; }
+.part-development { background: #eef2f6; }
+
+.platform-index {
+  margin: 0 0 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  color: var(--mist);
+}
+
+.platform-part h3 {
+  margin: 0;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+.platform-part p {
+  max-width: 36rem;
+  margin: 1rem 0 0;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.platform-motion {
+  position: absolute;
+  right: 8vw;
+  top: 50%;
+  width: min(28vw, 16rem);
+  height: min(28vw, 16rem);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.platform-motion span {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #1a9e78;
+}
+
+.part-consulting .platform-motion span:nth-child(1) { top: 18%; left: 42%; animation: nav-cluster 3.2s ease-in-out infinite; }
+.part-consulting .platform-motion span:nth-child(2) { top: 58%; left: 12%; background: #5b8def; animation: nav-cluster 3.2s ease-in-out 0.25s infinite; }
+.part-consulting .platform-motion span:nth-child(3) { top: 58%; left: 72%; background: #e08a3c; animation: nav-cluster 3.2s ease-in-out 0.5s infinite; }
+
+.part-agents .platform-motion { animation: nav-orbit 8s linear infinite; }
+.part-agents .platform-motion span:nth-child(1) { top: 8%; left: 46%; background: #8b6cf0; }
+.part-agents .platform-motion span:nth-child(2) { top: 70%; left: 10%; background: #1a9e78; }
+.part-agents .platform-motion span:nth-child(3) { top: 70%; left: 78%; background: #5b8def; }
+
+.part-apps .platform-motion span:nth-child(1) { top: 20%; left: 46%; animation: nav-blink 1.8s ease-in-out infinite; }
+.part-apps .platform-motion span:nth-child(2) { top: 62%; left: 16%; background: #e05a6a; animation: nav-blink 1.8s ease-in-out 0.3s infinite; }
+.part-apps .platform-motion span:nth-child(3) { top: 62%; left: 74%; background: #e08a3c; animation: nav-blink 1.8s ease-in-out 0.6s infinite; }
+
+.part-development .platform-motion span { width: 18px; height: 18px; animation: nav-pulse 2s ease-out infinite; }
+.part-development .platform-motion span:nth-child(2) { top: 38%; left: 38%; background: #5b8def; animation-delay: 0.4s; }
+.part-development .platform-motion span:nth-child(3) { top: 58%; left: 62%; background: #8b6cf0; animation-delay: 0.8s; }
+
+.industries {
+  background: #18232e;
+  color: #fff;
+}
+
+.industries .kicker { color: #8fd8c0; }
+
+.industry-list,
+.industries ul {
+  display: grid;
+  gap: 0.35rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.industries li {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.industries li::before {
+  content: "";
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-right: 0.7rem;
+  border-radius: 50%;
+  background: #1a9e78;
+  vertical-align: 0.15em;
+  animation: nav-pulse 2.4s ease-out infinite;
+}
+
+.industries li:nth-child(2)::before { animation-delay: 0.3s; background: #5b8def; }
+.industries li:nth-child(3)::before { animation-delay: 0.6s; background: #e08a3c; }
+.industries li:nth-child(4)::before { animation-delay: 0.9s; background: #8b6cf0; }
+.industries li:nth-child(5)::before { animation-delay: 1.2s; background: #e05a6a; }
+
+@media (max-width: 720px) {
+  .platform-motion { display: none; }
 }

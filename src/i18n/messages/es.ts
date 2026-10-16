@@ -123,6 +123,37 @@ export const es: LandingCopy = {
       title: "Un engine que comprende las organizaciones como están.",
       body: "Un equipo empresarial y académico — dos ingenieros con formación en neurociencias, inteligencia artificial y matemáticas — construye, desde la academia y la empresa, un engine que integra sistemas complejos, la lógica proposicional, la teoría bayesiana, la teoría de grafos, LIWC y las teorías modernas del pensamiento. Ese engine comprende las organizaciones tal como son, para potenciar su transformación digital mediante agentes.",
     },
+    platform: {
+      eyebrow: "Plataforma",
+      title: "Cuatro partes del mismo trabajo.",
+      parts: [
+        {
+          id: "consulting",
+          name: "Consulting",
+          body: "Vemos cómo se comunican los empleados y cómo trabajan en el día a día.",
+        },
+        {
+          id: "agents",
+          name: "Agents",
+          body: "Los agentes se implementan desde el conocimiento real y los flujos tácitos.",
+        },
+        {
+          id: "apps",
+          name: "Apps",
+          body: "La app mantiene ese conocimiento visible: el mapa, el flujo y los procedimientos.",
+        },
+        {
+          id: "development",
+          name: "Development",
+          body: "Implementamos los cambios organizacionales y los agentes sobre la operación.",
+        },
+      ],
+    },
+    industries: {
+      eyebrow: "Industrias",
+      title: "Las operaciones en las que trabajamos.",
+      items: ["Tecnología", "IT Sourcing", "Logística", "Fintech", "Healthcare"],
+    },
     contrast: {
       eyebrow: "Contraste",
       title: "Camino habitual vs. Tacit",

@@ -66,6 +66,16 @@ export type LandingCopy = {
       title: string;
       body: string;
     };
+    platform: {
+      eyebrow: string;
+      title: string;
+      parts: Array<{ id: string; name: string; body: string }>;
+    };
+    industries: {
+      eyebrow: string;
+      title: string;
+      items: string[];
+    };
     contrast: {
       eyebrow: string;
       title: string;

@@ -84,9 +84,24 @@ export function HomePage() {
 
   usePageTitle(t.meta.title);
 
+  useEffect(() => {
+    const nodes = document.querySelectorAll(".chapter");
+    if (!nodes.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          entry.target.classList.toggle("is-here", entry.isIntersecting);
+        }
+      },
+      { threshold: 0.45 },
+    );
+    nodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
-      <header className="hero" id="top">
+      <header className="hero chapter" id="top">
         <div className="hero-inner">
           <div className="hero-copy">
             <p className="kicker">{home.kicker}</p>
@@ -115,7 +130,36 @@ export function HomePage() {
         </div>
       </header>
 
-      <section className="site-section" id="services" aria-labelledby="services-title">
+      <section className="platform" id="platform" aria-labelledby="platform-title">
+        <div className="platform-intro chapter">
+          <p className="kicker">{home.platform.eyebrow}</p>
+          <h2 id="platform-title">{home.platform.title}</h2>
+        </div>
+        {home.platform.parts.map((part, index) => (
+          <article className={`platform-part chapter part-${part.id}`} key={part.id} id={`part-${part.id}`}>
+            <p className="platform-index">{String(index + 1).padStart(2, "0")}</p>
+            <div className="platform-motion" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
+            <h3>{part.name}</h3>
+            <p>{part.body}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="industries chapter" id="industries" aria-labelledby="industries-title">
+        <p className="kicker">{home.industries.eyebrow}</p>
+        <h2 id="industries-title">{home.industries.title}</h2>
+        <ul>
+          {home.industries.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="site-section chapter" id="services" aria-labelledby="services-title">
         <div className="site-panel service-intro">
           <p className="kicker">{home.how.eyebrow}</p>
           <h2 id="services-title">{home.how.title}</h2>
@@ -126,7 +170,7 @@ export function HomePage() {
 
       {home.how.steps.map((step) => (
         <section
-          className="site-section"
+          className="site-section chapter"
           id={step.id}
           key={step.id}
           aria-labelledby={`${step.id}-title`}
@@ -154,7 +198,7 @@ export function HomePage() {
         </section>
       ))}
 
-      <section className="site-section" aria-labelledby="problem-title">
+      <section className="site-section chapter" aria-labelledby="problem-title">
         <div className="site-panel">
           <p className="kicker">{home.problem.eyebrow}</p>
           <h2 id="problem-title">{home.problem.title}</h2>
@@ -163,7 +207,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="site-section" id="nosotros" aria-labelledby="who-title">
+      <section className="site-section chapter" id="nosotros" aria-labelledby="who-title">
         <div className="site-panel">
           <p className="kicker">{home.who.eyebrow}</p>
           <h2 id="who-title">{home.who.title}</h2>
@@ -172,7 +216,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="site-section" id="research" aria-labelledby="research-title">
+      <section className="site-section chapter" id="research" aria-labelledby="research-title">
         <div className="site-panel">
           <p className="kicker">{home.research.eyebrow}</p>
           <h2 id="research-title">{home.research.title}</h2>
@@ -180,7 +224,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="site-section" id="tesis" aria-labelledby="contrast-title">
+      <section className="site-section chapter" id="tesis" aria-labelledby="contrast-title">
         <div className="site-panel">
           <p className="kicker">{home.contrast.eyebrow}</p>
           <h2 id="contrast-title">{home.contrast.title}</h2>
@@ -205,11 +249,11 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="site-section close" id="demo" aria-labelledby="close-title">
+      <section className="site-section close chapter" id="demo" aria-labelledby="close-title">
         <div className="site-panel">
           <h2 id="close-title">{home.close.title}</h2>
           <p className="lede">{home.close.body}</p>
-          <DemoCalendar label={t.nav.links[3].label} />
+          <DemoCalendar label={t.cta.bookDiagnostic} />
         </div>
       </section>
     </>

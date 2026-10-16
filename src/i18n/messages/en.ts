@@ -122,6 +122,37 @@ export const en: LandingCopy = {
       title: "An engine that understands organizations as they are.",
       body: "An entrepreneurial and academic team — two engineers trained in neuroscience, artificial intelligence, and mathematics — is building, from academia and from the company, an engine that joins complex systems, propositional logic, Bayesian theory, graph theory, LIWC, and modern theories of thought. The engine understands organizations as they are, and strengthens their digital transformation through agents.",
     },
+    platform: {
+      eyebrow: "Platform",
+      title: "Four parts of the same work.",
+      parts: [
+        {
+          id: "consulting",
+          name: "Consulting",
+          body: "We see how employees actually communicate and how they work day to day.",
+        },
+        {
+          id: "agents",
+          name: "Agents",
+          body: "Agents are implemented from the real knowledge and the tacit workflows.",
+        },
+        {
+          id: "apps",
+          name: "Apps",
+          body: "The app keeps that knowledge visible: the map, the flow, and the procedures.",
+        },
+        {
+          id: "development",
+          name: "Development",
+          body: "We implement the organizational changes and the agents on the operation.",
+        },
+      ],
+    },
+    industries: {
+      eyebrow: "Industries",
+      title: "The operations we work in.",
+      items: ["Technology", "IT Sourcing", "Logistics", "Fintech", "Healthcare"],
+    },
     contrast: {
       eyebrow: "Contrast",
       title: "Usual path vs. Tacit",
