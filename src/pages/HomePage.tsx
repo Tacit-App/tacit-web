@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import { DemoCalendar } from "../components/DemoCalendar";
+import { ServiceStage } from "../components/ServiceDiagrams";
+import { IndustryIcon } from "../components/SiteNav";
 import { useI18n } from "../i18n";
 import { usePageTitle } from "../lib/usePageTitle";
 
@@ -137,14 +139,12 @@ export function HomePage() {
         </div>
         {home.platform.parts.map((part, index) => (
           <article className={`platform-part chapter part-${part.id}`} key={part.id} id={`part-${part.id}`}>
-            <p className="platform-index">{String(index + 1).padStart(2, "0")}</p>
-            <div className="platform-motion" aria-hidden="true">
-              <span />
-              <span />
-              <span />
+            <div className="platform-copy">
+              <p className="platform-index">{String(index + 1).padStart(2, "0")}</p>
+              <h3>{part.name}</h3>
+              <p>{part.body}</p>
             </div>
-            <h3>{part.name}</h3>
-            <p>{part.body}</p>
+            <ServiceStage id={part.id} />
           </article>
         ))}
       </section>
@@ -154,7 +154,10 @@ export function HomePage() {
         <h2 id="industries-title">{home.industries.title}</h2>
         <ul>
           {home.industries.items.map((item) => (
-            <li key={item}>{item}</li>
+            <li id={item.id} key={item.id}>
+              <IndustryIcon id={item.id} />
+              {item.name}
+            </li>
           ))}
         </ul>
       </section>

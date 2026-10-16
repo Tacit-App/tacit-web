@@ -12,8 +12,7 @@ export const en: LandingCopy = {
     bookDiagnostic: "Book a diagnostic",
     languageLabel: "Language",
     menuLabel: "Sections",
-    links: [
-      { href: "#services", label: "Services" },
+      links: [
       { href: "#nosotros", label: "About" },
       { href: "#research", label: "Research" },
       { href: "#demo", label: "Book a demo" },
@@ -129,29 +128,43 @@ export const en: LandingCopy = {
         {
           id: "consulting",
           name: "Consulting",
-          body: "We see how employees actually communicate and how they work day to day.",
+          summary:
+            "AI transformation is contingent on human workflows. It succeeds only when AI is given a defined place within the organization as it actually operates. Tacit maps that operational reality, so every AI initiative is positioned where it creates measurable value.",
+          body: "AI transformation is contingent on human workflows. It succeeds only when AI is given a defined place within the organization as it actually operates. Tacit maps that operational reality, so every AI initiative is positioned where it creates measurable value.",
+          marks: ["Human workflows", "A defined place", "Measurable value"],
         },
         {
           id: "agents",
           name: "Agents",
-          body: "Agents are implemented from the real knowledge and the tacit workflows.",
+          summary: "Simple, controllable agents at core points, then a human-agent symbiosis.",
+          body: "We start with simple agents, controllable and measurable, at core points of the company. That first step is for quick results and adoption. We then expand the agents until the work becomes a human-agent symbiosis.",
+          marks: ["Simple and measurable", "Core points", "Quick results", "Adoption", "Human-agent symbiosis"],
         },
         {
           id: "apps",
           name: "Apps",
-          body: "The app keeps that knowledge visible: the map, the flow, and the procedures.",
+          summary: "Systems to centralize, evaluate, and manage their own operation, empowered by Tacit.",
+          body: "We create systems so our clients can centralize, evaluate, and manage their own system. Tacit empowers that system, so they can deliver to their clients and to other stakeholders.",
+          marks: ["Centralize", "Evaluate", "Manage", "Their system", "Empowered by Tacit", "Clients", "Stakeholders"],
         },
         {
           id: "development",
           name: "Development",
-          body: "We implement the organizational changes and the agents on the operation.",
+          summary: "Intelligent infrastructure through the Tacit layer, for the client's core problems.",
+          body: "We assist in the creation of intelligent infrastructure through the Tacit layer, to solve our clients' core problems.",
+          marks: ["Core problems", "Tacit layer", "Intelligent infrastructure"],
         },
       ],
     },
     industries: {
       eyebrow: "Industries",
       title: "The operations we work in.",
-      items: ["Technology", "IT Sourcing", "Logistics", "Fintech", "Healthcare"],
+      items: [
+        { id: "technology", name: "Technology / IT Sourcing" },
+        { id: "logistics", name: "Logistics" },
+        { id: "fintech", name: "Fintech" },
+        { id: "healthcare", name: "Healthcare" },
+      ],
     },
     contrast: {
       eyebrow: "Contrast",

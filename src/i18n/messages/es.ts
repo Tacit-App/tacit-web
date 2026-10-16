@@ -12,8 +12,7 @@ export const es: LandingCopy = {
     bookDiagnostic: "Reservar un diagnóstico",
     languageLabel: "Idioma",
     menuLabel: "Secciones",
-    links: [
-      { href: "#services", label: "Servicios" },
+      links: [
       { href: "#nosotros", label: "Nosotros" },
       { href: "#research", label: "Research" },
       { href: "#demo", label: "Book a demo" },
@@ -130,29 +129,43 @@ export const es: LandingCopy = {
         {
           id: "consulting",
           name: "Consulting",
-          body: "Vemos cómo se comunican los empleados y cómo trabajan en el día a día.",
+          summary:
+            "La transformación con IA depende de los flujos de trabajo humanos. Solo tiene éxito cuando la IA ocupa un lugar definido dentro de la organización tal como opera de verdad. Tacit mapea esa realidad operativa, para que cada iniciativa de IA quede donde crea valor medible.",
+          body: "La transformación con IA depende de los flujos de trabajo humanos. Solo tiene éxito cuando la IA ocupa un lugar definido dentro de la organización tal como opera de verdad. Tacit mapea esa realidad operativa, para que cada iniciativa de IA quede donde crea valor medible.",
+          marks: ["Flujos humanos", "Un lugar definido", "Valor medible"],
         },
         {
           id: "agents",
           name: "Agents",
-          body: "Los agentes se implementan desde el conocimiento real y los flujos tácitos.",
+          summary: "Agentes simples y controlables en puntos core, y después una simbiosis humana y agéntica.",
+          body: "Empezamos con agentes simples, controlables y medibles, en puntos core de la empresa. Ese primer paso es para resultados rápidos y adopción. Después ampliamos los agentes hasta que el trabajo se vuelve una simbiosis humana y agéntica.",
+          marks: ["Simples y medibles", "Puntos core", "Resultados rápidos", "Adopción", "Simbiosis humana y agéntica"],
         },
         {
           id: "apps",
           name: "Apps",
-          body: "La app mantiene ese conocimiento visible: el mapa, el flujo y los procedimientos.",
+          summary: "Sistemas para centralizar, evaluar y manejar su propia operación, empoderados por Tacit.",
+          body: "Creamos sistemas para que nuestros clientes centralicen, evalúen y manejen su propio sistema. Tacit empodera ese sistema, para que entreguen a sus clientes y a otros stakeholders.",
+          marks: ["Centralizar", "Evaluar", "Manejar", "Su sistema", "Empoderado por Tacit", "Clientes", "Stakeholders"],
         },
         {
           id: "development",
           name: "Development",
-          body: "Implementamos los cambios organizacionales y los agentes sobre la operación.",
+          summary: "Infraestructura inteligente por medio de la capa de Tacit, para los problemas core del cliente.",
+          body: "Asistimos en la creación de infraestructura inteligente por medio de la capa de Tacit, para resolver los problemas core de nuestros clientes.",
+          marks: ["Problemas core", "Capa de Tacit", "Infraestructura inteligente"],
         },
       ],
     },
     industries: {
       eyebrow: "Industrias",
       title: "Las operaciones en las que trabajamos.",
-      items: ["Tecnología", "IT Sourcing", "Logística", "Fintech", "Healthcare"],
+      items: [
+        { id: "technology", name: "Tecnología / IT Sourcing" },
+        { id: "logistics", name: "Logística" },
+        { id: "fintech", name: "Fintech" },
+        { id: "healthcare", name: "Healthcare" },
+      ],
     },
     contrast: {
       eyebrow: "Contraste",
