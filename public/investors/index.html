@@ -1391,27 +1391,21 @@ Invest in a commercial structure and positioning.<title>Tacit · VC pitch · cul
  --ease: cubic-bezier(0.22, 1, 0.36, 1);
  }
 
- /* Sand stage from the app, with a soft pulse glow behind the sphere. */
- .deck-bg {
- background:
-  radial-gradient(ellipse 52% 62% at 78% 46%, rgba(26, 158, 120, 0.16), rgba(26, 158, 120, 0) 70%),
-  radial-gradient(ellipse 40% 40% at 8% 100%, rgba(26, 158, 120, 0.08), rgba(26, 158, 120, 0) 70%),
-  var(--sand) !important;
- }
+ .deck-bg { background: #ffffff !important; }
  .light-veil {
  position: absolute;
  inset: 0;
  z-index: 1;
  pointer-events: none;
- background: linear-gradient(90deg, #F4EFE6 0%, rgba(244,239,230,0.92) 28%, rgba(244,239,230,0.3) 50%, rgba(244,239,230,0) 66%);
+ background: linear-gradient(90deg, #ffffff 0%, rgba(255,255,255,0.9) 30%, rgba(255,255,255,0.22) 56%, rgba(255,255,255,0) 76%);
  }
  .deck-bg-layer.is-active {
- opacity: 1 !important;
+ opacity: 0.9 !important;
  animation: tacit-pan 14s ease-in-out infinite alternate;
  }
  @keyframes tacit-pan {
- from { object-position: 88% 42%; scale: 1; }
- to { object-position: 52% 58%; scale: 1.045; }
+ from { object-position: 88% 42%; }
+ to { object-position: 52% 58%; }
  }
 
  .slide .reveal {
@@ -1718,207 +1712,16 @@ Invest in a commercial structure and positioning.<title>Tacit · VC pitch · cul
  background: #ffffff;
  }
 
- /* === APP COLOR === */
- .slide.slide--light .slide-label {
- display: inline-flex;
- align-items: center;
- gap: 10px;
- padding: 9px 16px 9px 14px;
- border-radius: var(--radius-pill);
- background: var(--pulse-tint);
- border: 1px solid rgba(26, 158, 120, 0.28);
- color: var(--pulse-deep);
- }
- .slide.slide--light .slide-label::before {
- content: "";
- width: 8px;
- height: 8px;
- border-radius: 50%;
- background: var(--pulse);
- box-shadow: 0 0 0 0 rgba(26, 158, 120, 0.5);
- }
- .slide.active.slide--light .slide-label::before {
- animation: tacit-beacon 2.4s ease-out 0.6s infinite;
- }
- @keyframes tacit-beacon {
- 0% { box-shadow: 0 0 0 0 rgba(26, 158, 120, 0.5); }
- 70%, 100% { box-shadow: 0 0 0 10px rgba(26, 158, 120, 0); }
- }
-
- /* Title accent: a pulse highlighter sweeps under the italic word. */
- .slide.slide--light .title em {
- background-image: linear-gradient(transparent 64%, rgba(26, 158, 120, 0.2) 64%, rgba(26, 158, 120, 0.2) 92%, transparent 92%);
- background-repeat: no-repeat;
- background-size: 0% 100%;
- padding: 0 0.06em;
- }
- .slide.active.slide--light .title em {
- animation: tacit-mark 0.9s var(--ease) 0.45s forwards;
- }
- @keyframes tacit-mark { to { background-size: 100% 100%; } }
-
- .slide.slide--light .panel:not(.panel--cross) {
- background: var(--pulse-tint);
- border-color: rgba(26, 158, 120, 0.35);
- box-shadow: inset 4px 0 0 var(--pulse);
- }
- .slide.slide--light .panel:not(.panel--cross) h3 { color: var(--pulse-deep); }
- .slide.slide--light .panel--cross {
- background: #FBF8F3;
- }
- .slide.slide--light .panel--cross p { color: var(--mist); }
-
- .svc,
- .logo-card,
- .team-card,
- .shot-cell,
- .ask-fund {
- transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
- }
- .svc:hover,
- .logo-card:hover,
- .team-card:hover,
- .shot-cell:hover,
- .ask-fund:hover {
- transform: translateY(-4px);
- box-shadow: 0 16px 34px rgba(24, 35, 46, 0.1);
- }
-
- .logo-card {
- position: relative;
- overflow: hidden;
- box-shadow: 0 6px 18px rgba(24, 35, 46, 0.04);
- }
- .logo-card::after {
- content: "";
- position: absolute;
- left: 0;
- right: 0;
- top: 0;
- height: 4px;
- background: var(--pulse);
- }
- .logo-card:nth-child(3n + 2)::after { background: #7fcfb5; }
- .logo-card:nth-child(3n + 3)::after { background: #b7e6d6; }
-
- .team-card {
- box-shadow: inset 4px 0 0 var(--pulse), 0 6px 18px rgba(24, 35, 46, 0.04);
- }
- .team-card:nth-child(n + 3) {
- box-shadow: inset 4px 0 0 var(--ink), 0 6px 18px rgba(24, 35, 46, 0.04);
- }
- .team-card:nth-child(n + 3) .team-role { color: var(--ink-soft); }
-
- .shot-cell figcaption::before {
- content: "";
- width: 8px;
- height: 8px;
- margin-right: 10px;
- border-radius: 50%;
- background: var(--pulse);
- }
- .shot-cell img { transform-origin: left top; }
- .slide.active .shot-cell img {
- animation: tacit-settle 1.6s var(--ease) both;
- }
- @keyframes tacit-settle { from { scale: 1.06; } to { scale: 1; } }
-
- /* Ask: each share fills its own bar. */
- .ask-funds .ask-fund { position: relative; overflow: hidden; }
- .ask-funds .ask-fund::after {
- content: "";
- position: absolute;
- left: 28px;
- bottom: 20px;
- height: 6px;
- width: 0;
- border-radius: 3px;
- background: var(--pulse);
- }
- .ask-funds .ask-fund:nth-child(1)::after { background: #ffffff; --fill: 0.5; }
- .ask-funds .ask-fund:nth-child(2)::after { --fill: 0.3; }
- .ask-funds .ask-fund:nth-child(3)::after { --fill: 0.2; }
- .slide.active .ask-funds .ask-fund::after {
- animation: tacit-fill 1.2s var(--ease) 0.7s forwards;
- }
- @keyframes tacit-fill { to { width: calc((100% - 56px) * var(--fill, 0)); } }
-
- /* Roadmap: nodes light up as the line reaches them. */
- .road-node i { scale: 0; }
- .slide.active .road-node i { animation: tacit-pop 0.5s var(--ease) both; }
- .slide.active .road-node:nth-child(1) i { animation-delay: 0.2s; }
- .slide.active .road-node:nth-child(2) i { animation-delay: 0.5s; }
- .slide.active .road-node:nth-child(3) i { animation-delay: 0.8s; }
- .slide.active .road-node:nth-child(4) i { animation-delay: 1.1s; }
- .slide.active .road-node:nth-child(5) i { animation-delay: 1.4s; }
- @keyframes tacit-pop { from { scale: 0; } 70% { scale: 1.3; } to { scale: 1; } }
- .slide.active .road-node.is-now i {
- animation: tacit-pop 0.5s var(--ease) 0.8s both, tacit-beacon 2.4s ease-out 1.4s infinite;
- }
-
- /* === MOTION: cards cascade in on every slide === */
- .slide .svc-row > *,
- .slide .shot-grid > *,
- .slide .logo-grid > *,
- .slide .team-grid > *,
- .slide .ask-funds > *,
- .slide .split > *,
- .slide .road > .road-node {
- opacity: 0;
- }
- .slide.active .svc-row > *,
- .slide.active .shot-grid > *,
- .slide.active .logo-grid > *,
- .slide.active .team-grid > *,
- .slide.active .ask-funds > *,
- .slide.active .split > *,
- .slide.active .road > .road-node {
- animation: tacit-card 0.75s var(--ease) both;
- animation-delay: calc(0.22s + var(--i, 0) * 0.09s);
- }
- .slide.active .road > .road-node { animation-delay: calc(0.15s + var(--i, 0) * 0.3s); }
- .slide :is(.svc-row, .shot-grid, .logo-grid, .team-grid, .ask-funds, .split, .road) > :nth-child(2) { --i: 1; }
- .slide :is(.svc-row, .shot-grid, .logo-grid, .team-grid, .ask-funds, .split, .road) > :nth-child(3) { --i: 2; }
- .slide :is(.svc-row, .shot-grid, .logo-grid, .team-grid, .ask-funds, .split, .road) > :nth-child(4) { --i: 3; }
- .slide :is(.svc-row, .shot-grid, .logo-grid, .team-grid, .ask-funds, .split, .road) > :nth-child(5) { --i: 4; }
- .slide :is(.svc-row, .shot-grid, .logo-grid, .team-grid, .ask-funds, .split, .road) > :nth-child(6) { --i: 5; }
- .slide :is(.svc-row, .shot-grid, .logo-grid, .team-grid, .ask-funds, .split, .road) > :nth-child(7) { --i: 6; }
- .slide :is(.svc-row, .shot-grid, .logo-grid, .team-grid, .ask-funds, .split, .road) > :nth-child(8) { --i: 7; }
- @keyframes tacit-card {
- from { opacity: 0; translate: 0 28px; scale: 0.97; }
- to { opacity: 1; translate: 0 0; scale: 1; }
- }
-
- /* Cover + horizon: the brand mark draws a slow breath. */
- .slide.active .cover-brand svg { animation: tacit-breathe 4.8s ease-in-out 1s infinite; }
- @keyframes tacit-breathe { 50% { scale: 1.08; } }
-
  html.deck-paused .deck-bg-layer,
  html.deck-paused .reveal,
- html.deck-paused .road::after,
- html.deck-paused .slide *,
- html.deck-paused .slide *::before,
- html.deck-paused .slide *::after { animation: none !important; }
- html.deck-paused .slide :is(.svc-row, .shot-grid, .logo-grid, .team-grid, .ask-funds, .split, .road) > * { opacity: 1; }
- html.deck-paused .road-node i { scale: 1; }
- html.deck-paused .slide.slide--light .title em { background-size: 100% 100%; }
- html.deck-paused .ask-funds .ask-fund::after { width: calc((100% - 56px) * var(--fill, 0)); }
- html.deck-paused .slide.active .road::after { width: calc(100% - 48px); }
+ html.deck-paused .road::after { animation: none !important; }
  @media (prefers-reduced-motion: reduce) {
  .deck-bg-layer.is-active,
  .slide .reveal,
  .slide.active .reveal,
- .slide.active .road::after,
- .slide *,
- .slide *::before,
- .slide *::after { animation: none !important; }
+ .slide.active .road::after { animation: none !important; }
  .slide .reveal { opacity: 1; transform: none; }
  .slide.active .road::after { width: calc(100% - 48px); }
- .slide :is(.svc-row, .shot-grid, .logo-grid, .team-grid, .ask-funds, .split, .road) > *,
- .slide .road > .road-node { opacity: 1; }
- .road-node i { scale: 1; }
- .slide.slide--light .title em { background-size: 100% 100%; }
- .ask-funds .ask-fund::after { width: calc((100% - 56px) * var(--fill, 0)); }
  }
 
 </style>
