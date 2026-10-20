@@ -2,7 +2,7 @@ import type { Locale } from "../i18n";
 
 /** Legal identity shown in the policy. Fill in before publishing. */
 export const LEGAL_ENTITY = "Tacit";
-export const PRIVACY_EMAIL = "privacy@tacit.guru";
+export const PRIVACY_EMAIL = "sales@tacit.guru";
 export const PRIVACY_MAIL = `mailto:${PRIVACY_EMAIL}`;
 
 export type PrivacyBlock = { h?: string; p?: string; ul?: string[] };
@@ -285,7 +285,7 @@ const en: PrivacyPolicy = {
       title: "15. Contact",
       blocks: [
         {
-          p: `${LEGAL_ENTITY}. Privacy and data protection requests: ${PRIVACY_EMAIL}. Sales and general questions: sales@tacit.guru.`,
+          p: `${LEGAL_ENTITY}. Privacy and data protection requests, and general questions: ${PRIVACY_EMAIL}. Please write "Privacy request" in the subject line.`,
         },
       ],
     },
@@ -557,7 +557,7 @@ const es: PrivacyPolicy = {
       title: "15. Contacto",
       blocks: [
         {
-          p: `${LEGAL_ENTITY}. Solicitudes de privacidad y protección de datos: ${PRIVACY_EMAIL}. Ventas y preguntas generales: sales@tacit.guru.`,
+          p: `${LEGAL_ENTITY}. Solicitudes de privacidad y protección de datos, y preguntas generales: ${PRIVACY_EMAIL}. Escribe "Solicitud de privacidad" en el asunto.`,
         },
       ],
     },
