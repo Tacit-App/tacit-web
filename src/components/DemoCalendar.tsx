@@ -65,7 +65,7 @@ export function DemoCalendar({ label }: { label: string }) {
     <div className="calendly-wrapper">
       <div
         ref={mountRef}
-        className="calendly-inline-widget"
+        className="demo-calendar"
         aria-label={label}
       />
     </div>

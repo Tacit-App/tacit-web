@@ -13,7 +13,7 @@ export type PrivacySection = {
   blocks: PrivacyBlock[];
 };
 
-export type PrivacyPolicy = {
+export type LegalDoc = {
   metaTitle: string;
   metaDescription: string;
   crumb: string;
@@ -24,7 +24,7 @@ export type PrivacyPolicy = {
   sections: PrivacySection[];
 };
 
-const en: PrivacyPolicy = {
+const en: LegalDoc = {
   metaTitle: "Privacy Policy — Tacit",
   metaDescription:
     "How Tacit collects, uses, shares, and protects personal data, and the rights you have under GDPR, CCPA/CPRA, LFPDPPP, LGPD, PIPEDA, and other privacy laws.",
@@ -292,7 +292,7 @@ const en: PrivacyPolicy = {
   ],
 };
 
-const es: PrivacyPolicy = {
+const es: LegalDoc = {
   metaTitle: "Aviso de privacidad — Tacit",
   metaDescription:
     "Cómo Tacit recaba, usa, comparte y protege datos personales, y los derechos que tienes bajo la LFPDPPP, el GDPR, la CCPA/CPRA, la LGPD, la PIPEDA y otras leyes de privacidad.",
@@ -564,4 +564,4 @@ const es: PrivacyPolicy = {
   ],
 };
 
-export const privacy: Record<Locale, PrivacyPolicy> = { en, es };
+export const privacy: Record<Locale, LegalDoc> = { en, es };

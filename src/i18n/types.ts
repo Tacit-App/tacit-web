@@ -99,5 +99,6 @@ export type LandingCopy = {
     aria: string;
     tagline: string;
     privacy: string;
+    terms: string;
   };
 };

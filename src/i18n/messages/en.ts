@@ -215,5 +215,6 @@ export const en: LandingCopy = {
     aria: "Footer",
     tagline: "The knowledge behind the work.",
     privacy: "Privacy",
+    terms: "Terms",
   },
 };

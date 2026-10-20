@@ -1,11 +1,14 @@
 import { useEffect } from "react";
-import { PRIVACY_EMAIL, PRIVACY_MAIL, privacy } from "../data/privacy";
-import { pathForLocale, useI18n } from "../i18n";
+import { PRIVACY_EMAIL, PRIVACY_MAIL, privacy, type LegalDoc } from "../data/privacy";
+import { terms } from "../data/terms";
+import { pathForLocale, useI18n, type Locale } from "../i18n";
 import { usePageTitle } from "../lib/usePageTitle";
 
-export function PrivacyPage() {
+const DOCS: Record<"privacy" | "terms", Record<Locale, LegalDoc>> = { privacy, terms };
+
+export function LegalPage({ page }: { page: "privacy" | "terms" }) {
   const { locale } = useI18n();
-  const policy = privacy[locale];
+  const policy = DOCS[page][locale];
 
   usePageTitle(policy.metaTitle);
 

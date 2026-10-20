@@ -1,18 +1,16 @@
 import { SiteLayout } from "./components/SiteLayout";
 import { I18nProvider, pageFromPathname } from "./i18n";
 import { HomePage } from "./pages/HomePage";
-import { PrivacyPage } from "./pages/PrivacyPage";
+import { LegalPage } from "./pages/LegalPage";
 import "./styles/site.css";
 
 export default function App() {
+  const page = pageFromPathname(window.location.pathname);
+
   return (
     <I18nProvider>
       <SiteLayout>
-        {pageFromPathname(window.location.pathname) === "privacy" ? (
-          <PrivacyPage />
-        ) : (
-          <HomePage />
-        )}
+        {page === "home" ? <HomePage /> : <LegalPage page={page} />}
       </SiteLayout>
     </I18nProvider>
   );

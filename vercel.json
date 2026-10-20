@@ -27,6 +27,14 @@
       "destination": "/index.html"
     },
     {
+      "source": "/terms",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/es/terms",
+      "destination": "/index.html"
+    },
+    {
       "source": "/investors",
       "destination": "/investors/index.html"
     },

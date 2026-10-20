@@ -46,7 +46,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // Canonicalize `/en` → `/` so English stays at the root.
-    if (/^\/en(\/privacy)?\/?$/.test(window.location.pathname)) {
+    if (/^\/en(\/privacy|\/terms)?\/?$/.test(window.location.pathname)) {
       window.history.replaceState(
         { locale: DEFAULT_LOCALE },
         "",

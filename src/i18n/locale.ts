@@ -13,18 +13,21 @@ export function localeFromPathname(pathname: string): Locale {
   return DEFAULT_LOCALE;
 }
 
-export type Page = "home" | "privacy";
+export type Page = "home" | "privacy" | "terms";
 
-/** Page from the path: `/privacy` and `/es/privacy` → privacy, else home. */
+const LEGAL_PAGES = ["privacy", "terms"] as const;
+
+/** Page from the path: `/privacy`, `/es/terms`, … → that page, else home. */
 export function pageFromPathname(pathname: string): Page {
   const segments = pathname.replace(/\/+$/, "").split("/").filter(Boolean);
-  return segments.at(-1) === "privacy" ? "privacy" : "home";
+  const last = segments.at(-1);
+  return LEGAL_PAGES.find((page) => page === last) ?? "home";
 }
 
-/** Href for a locale and page (`/`, `/es`, `/privacy`, `/es/privacy`). Keeps hash. */
+/** Href for a locale and page (`/`, `/es`, `/privacy`, `/es/terms`). Keeps hash. */
 export function pathForLocale(locale: Locale, hash = "", page: Page = "home"): string {
   const prefix = locale === DEFAULT_LOCALE ? "" : `/${locale}`;
-  const base = page === "privacy" ? `${prefix}/privacy` : prefix || "/";
+  const base = page === "home" ? prefix || "/" : `${prefix}/${page}`;
   const normalizedHash = hash && !hash.startsWith("#") ? `#${hash}` : hash;
   return `${base}${normalizedHash}`;
 }

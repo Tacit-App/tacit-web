@@ -793,7 +793,7 @@ body {
   border: 1px solid var(--line);
 }
 
-.calendly-inline-widget {
+.demo-calendar {
   min-width: 320px;
   height: 700px;
 }

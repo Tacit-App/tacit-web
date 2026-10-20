@@ -15,6 +15,7 @@ export function SiteFooter() {
       <nav className="site-footer-links" aria-label={t.footer.aria}>
         <a href={CONTACT_MAIL}>sales@tacit.guru</a>
         <a href={pathForLocale(locale, "", "privacy")}>{t.footer.privacy}</a>
+        <a href={pathForLocale(locale, "", "terms")}>{t.footer.terms}</a>
       </nav>
       <p className="site-footer-meta">© {year} Tacit</p>
     </footer>
