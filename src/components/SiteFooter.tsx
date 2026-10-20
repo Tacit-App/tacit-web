@@ -1,9 +1,9 @@
 import { CONTACT_MAIL } from "../data/site";
-import { useI18n } from "../i18n";
+import { pathForLocale, useI18n } from "../i18n";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
-  const { t } = useI18n();
+  const { locale, t } = useI18n();
 
   return (
     <footer className="site-footer">
@@ -14,6 +14,7 @@ export function SiteFooter() {
       <p className="site-footer-tag">{t.footer.tagline}</p>
       <nav className="site-footer-links" aria-label={t.footer.aria}>
         <a href={CONTACT_MAIL}>sales@tacit.guru</a>
+        <a href={pathForLocale(locale, "", "privacy")}>{t.footer.privacy}</a>
       </nav>
       <p className="site-footer-meta">© {year} Tacit</p>
     </footer>

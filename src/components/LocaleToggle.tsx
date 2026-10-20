@@ -1,4 +1,4 @@
-import { LOCALES, pathForLocale, useI18n, type Locale } from "../i18n";
+import { LOCALES, pageFromPathname, pathForLocale, useI18n, type Locale } from "../i18n";
 
 const LABELS: Record<Locale, string> = {
   en: "EN",
@@ -8,6 +8,7 @@ const LABELS: Record<Locale, string> = {
 export function LocaleToggle() {
   const { locale, t } = useI18n();
   const hash = window.location.hash;
+  const page = pageFromPathname(window.location.pathname);
 
   return (
     <div className="locale-toggle" role="group" aria-label={t.nav.languageLabel}>
@@ -24,7 +25,7 @@ export function LocaleToggle() {
       {LOCALES.map((code) => (
         <a
           key={code}
-          href={pathForLocale(code, hash)}
+          href={pathForLocale(code, hash, page)}
           hrefLang={code}
           className={
             code === locale
@@ -34,7 +35,7 @@ export function LocaleToggle() {
           aria-current={code === locale ? "true" : undefined}
           onClick={(event) => {
             event.preventDefault();
-            window.location.assign(pathForLocale(code, window.location.hash));
+            window.location.assign(pathForLocale(code, window.location.hash, page));
           }}
         >
           {LABELS[code]}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { pathForLocale, useI18n } from "../i18n";
+import { pageFromPathname, pathForLocale, useI18n } from "../i18n";
 import { LocaleToggle } from "./LocaleToggle";
 
 const MARKS = ["nosotros", "research", "demo", "tesis"] as const;
@@ -118,6 +118,8 @@ function ServiceIcon({ id }: { id: string }) {
 export function SiteNav() {
   const { locale, t } = useI18n();
   const [open, setOpen] = useState<"platform" | "industries" | null>(null);
+  const home =
+    pageFromPathname(window.location.pathname) === "home" ? "" : pathForLocale(locale);
 
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
@@ -159,7 +161,7 @@ export function SiteNav() {
           </button>
           <div className="nav-panel" id="nav-platform" hidden={open !== "platform"}>
             {t.home.platform.parts.map((part) => (
-              <a key={part.id} href={`#part-${part.id}`} onClick={() => setOpen(null)}>
+              <a key={part.id} href={`${home}#part-${part.id}`} onClick={() => setOpen(null)}>
                 <ServiceIcon id={part.id} />
                 <strong>{part.name}</strong>
                 <span>{part.summary}</span>
@@ -184,7 +186,7 @@ export function SiteNav() {
           </button>
           <div className="nav-panel nav-panel-industries" id="nav-industries" hidden={open !== "industries"}>
             {t.home.industries.items.map((item) => (
-              <a key={item.id} href={`#${item.id}`} onClick={() => setOpen(null)}>
+              <a key={item.id} href={`${home}#${item.id}`} onClick={() => setOpen(null)}>
                 <IndustryIcon id={item.id} />
                 <strong>{item.name}</strong>
               </a>
@@ -193,7 +195,7 @@ export function SiteNav() {
         </div>
 
         {t.nav.links.map((link, index) => (
-          <a key={link.href} href={link.href}>
+          <a key={link.href} href={`${home}${link.href}`}>
             <NavMark kind={MARKS[index] ?? "services"} />
             {link.label}
           </a>
@@ -201,7 +203,7 @@ export function SiteNav() {
       </nav>
       <div className="site-nav-actions">
         <LocaleToggle />
-        <a className="site-nav-cta" href="#demo">
+        <a className="site-nav-cta" href={`${home}#demo`}>
           {t.nav.bookDiagnostic}
         </a>
       </div>

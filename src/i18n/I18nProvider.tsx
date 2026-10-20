@@ -7,11 +7,12 @@ import {
 } from "react";
 import { I18nContext } from "./context";
 import { messages } from "./messages";
-import { localeFromPathname, pathForLocale } from "./locale";
+import { localeFromPathname, pageFromPathname, pathForLocale } from "./locale";
 import { DEFAULT_LOCALE, type LandingCopy, type Locale } from "./types";
 
 function applyDocumentLocale(locale: Locale, copy: LandingCopy) {
   document.documentElement.lang = locale;
+  if (pageFromPathname(window.location.pathname) !== "home") return;
   document.title = copy.meta.title;
   const description = document.querySelector('meta[name="description"]');
   if (description) {
@@ -31,7 +32,11 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     window.history.pushState(
       { locale: next },
       "",
-      pathForLocale(next, window.location.hash),
+      pathForLocale(
+        next,
+        window.location.hash,
+        pageFromPathname(window.location.pathname),
+      ),
     );
   }, []);
 
@@ -41,14 +46,15 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // Canonicalize `/en` → `/` so English stays at the root.
-    if (
-      window.location.pathname === "/en" ||
-      window.location.pathname === "/en/"
-    ) {
+    if (/^\/en(\/privacy)?\/?$/.test(window.location.pathname)) {
       window.history.replaceState(
         { locale: DEFAULT_LOCALE },
         "",
-        pathForLocale(DEFAULT_LOCALE, window.location.hash),
+        pathForLocale(
+          DEFAULT_LOCALE,
+          window.location.hash,
+          pageFromPathname(window.location.pathname),
+        ),
       );
       setLocaleState(DEFAULT_LOCALE);
     }

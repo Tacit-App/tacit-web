@@ -218,5 +218,6 @@ export const es: LandingCopy = {
   footer: {
     aria: "Pie de página",
     tagline: "El conocimiento detrás del trabajo.",
+    privacy: "Aviso de privacidad",
   },
 };

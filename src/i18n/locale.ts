@@ -13,9 +13,18 @@ export function localeFromPathname(pathname: string): Locale {
   return DEFAULT_LOCALE;
 }
 
-/** Homepage href for a locale (`/` for EN, `/es` for ES). Keeps hash. */
-export function pathForLocale(locale: Locale, hash = ""): string {
-  const base = locale === DEFAULT_LOCALE ? "/" : `/${locale}`;
+export type Page = "home" | "privacy";
+
+/** Page from the path: `/privacy` and `/es/privacy` → privacy, else home. */
+export function pageFromPathname(pathname: string): Page {
+  const segments = pathname.replace(/\/+$/, "").split("/").filter(Boolean);
+  return segments.at(-1) === "privacy" ? "privacy" : "home";
+}
+
+/** Href for a locale and page (`/`, `/es`, `/privacy`, `/es/privacy`). Keeps hash. */
+export function pathForLocale(locale: Locale, hash = "", page: Page = "home"): string {
+  const prefix = locale === DEFAULT_LOCALE ? "" : `/${locale}`;
+  const base = page === "privacy" ? `${prefix}/privacy` : prefix || "/";
   const normalizedHash = hash && !hash.startsWith("#") ? `#${hash}` : hash;
   return `${base}${normalizedHash}`;
 }
