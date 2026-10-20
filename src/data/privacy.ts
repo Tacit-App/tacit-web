@@ -77,6 +77,7 @@ const en: LegalDoc = {
             "Google Workspace: Gmail messages and Google Drive files (Docs, Sheets, Slides, Word, Excel, PowerPoint, PDF).",
             "Microsoft 365: Outlook email, OneDrive and SharePoint documents, and Microsoft Teams messages and meetings.",
             "Slack: messages and threads in the channels the workspace authorizes.",
+            "Atlassian Jira: the names, email addresses, and account IDs of the users on the Jira sites an administrator connects, used to build the team directory.",
             "Meeting notes: transcripts and summaries delivered by meeting tools such as Fathom.",
             "Manual input: text employees submit through the portal or capture with the browser extension.",
           ],
@@ -138,13 +139,13 @@ const en: LegalDoc = {
     },
     {
       id: "integrations",
-      title: "6. Google, Microsoft, and Slack data",
+      title: "6. Google, Microsoft, Slack, and Atlassian data",
       blocks: [
         {
           p: "Tacit's use and transfer to any other app of information received from Google APIs will adhere to the Google API Services User Data Policy, including the Limited Use requirements.",
         },
         {
-          p: "In particular, for data received from Google Workspace, Microsoft 365, and Slack:",
+          p: "In particular, for data received from Google Workspace, Microsoft 365, Slack, and Atlassian:",
         },
         {
           ul: [
@@ -156,7 +157,7 @@ const en: LegalDoc = {
           ],
         },
         {
-          p: "An administrator can disconnect a source at any time from the app, or revoke access directly in the Google, Microsoft, or Slack admin console. Disconnecting stops all further collection.",
+          p: "An administrator can disconnect a source at any time from the app, or revoke access directly in the Google, Microsoft, Slack, or Atlassian admin console. Disconnecting stops all further collection. When an Atlassian user closes their account, we update or delete their data as reported through Atlassian's personal data reporting API.",
         },
       ],
     },
@@ -345,6 +346,7 @@ const es: LegalDoc = {
             "Google Workspace: mensajes de Gmail y archivos de Google Drive (Docs, Sheets, Slides, Word, Excel, PowerPoint, PDF).",
             "Microsoft 365: correo de Outlook, documentos de OneDrive y SharePoint, y mensajes y reuniones de Microsoft Teams.",
             "Slack: mensajes e hilos en los canales que el espacio de trabajo autoriza.",
+            "Atlassian Jira: nombre, correo y ID de cuenta de los usuarios de los sitios de Jira que conecta un administrador, para armar el directorio del equipo.",
             "Notas de reuniones: transcripciones y resúmenes que envían herramientas como Fathom.",
             "Captura manual: texto que los empleados envían por el portal o capturan con la extensión de navegador.",
           ],
@@ -410,13 +412,13 @@ const es: LegalDoc = {
     },
     {
       id: "integrations",
-      title: "6. Datos de Google, Microsoft y Slack",
+      title: "6. Datos de Google, Microsoft, Slack y Atlassian",
       blocks: [
         {
           p: "El uso y la transferencia a cualquier otra aplicación, por parte de Tacit, de la información recibida de las API de Google se apegará a la Política de Datos de Usuario de los Servicios de API de Google (Google API Services User Data Policy), incluidos los requisitos de Uso Limitado.",
         },
         {
-          p: "En particular, respecto de los datos recibidos de Google Workspace, Microsoft 365 y Slack:",
+          p: "En particular, respecto de los datos recibidos de Google Workspace, Microsoft 365, Slack y Atlassian:",
         },
         {
           ul: [
@@ -428,7 +430,7 @@ const es: LegalDoc = {
           ],
         },
         {
-          p: "Un administrador puede desconectar una fuente en cualquier momento desde la aplicación o revocar el acceso en la consola de administración de Google, Microsoft o Slack. Al desconectarla se detiene toda recolección.",
+          p: "Un administrador puede desconectar una fuente en cualquier momento desde la aplicación o revocar el acceso en la consola de administración de Google, Microsoft, Slack o Atlassian. Al desconectarla se detiene toda recolección. Cuando un usuario de Atlassian cierra su cuenta, actualizamos o eliminamos sus datos según lo que reporta la API de datos personales de Atlassian.",
         },
       ],
     },
