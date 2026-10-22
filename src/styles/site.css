@@ -1509,3 +1509,37 @@ body {
 @media (max-width: 720px) {
   .platform-motion { display: none; }
 }
+
+.privacy-updated {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--mist);
+}
+
+.privacy-body h2 {
+  margin-top: 2.75rem;
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+}
+
+.privacy-body section:first-child h2 {
+  margin-top: 0;
+}
+
+.privacy-body h3 {
+  font-size: 1.1rem;
+}
+
+.privacy-body ul {
+  margin: 0.9rem 0 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.5rem;
+  color: #3f4d5a;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.privacy-body a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}

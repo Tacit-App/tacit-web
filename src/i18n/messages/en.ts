@@ -213,5 +213,6 @@ export const en: LandingCopy = {
   footer: {
     aria: "Footer",
     tagline: "Experience behind execution.",
+    privacy: "Privacy",
   },
 };

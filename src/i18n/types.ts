@@ -98,5 +98,6 @@ export type LandingCopy = {
   footer: {
     aria: string;
     tagline: string;
+    privacy: string;
   };
 };
