@@ -81,7 +81,7 @@ function ServiceVisual({
 }
 
 export function HomePage() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const { home } = t;
 
   usePageTitle(t.meta.title);
@@ -167,7 +167,18 @@ export function HomePage() {
           <p className="kicker">{home.how.eyebrow}</p>
           <h2 id="services-title">{home.how.title}</h2>
           <p className="lede">{home.problem.title}</p>
-          <ProductFilm label={home.filmLabel} />
+          <figure className="product-media">
+            <img
+              src="/personas-board.png"
+              alt={
+                locale === "es"
+                  ? "Tablero de Personas con perfiles sugeridos, herramientas y cobertura"
+                  : "Personas board with suggested role profiles, tools, and skill coverage"
+              }
+              width={1024}
+              height={553}
+            />
+          </figure>
         </div>
       </section>
 

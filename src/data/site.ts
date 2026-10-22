@@ -3,4 +3,4 @@ export const DIAGNOSTIC_MAIL =
 
 export const CONTACT_MAIL = "mailto:sales@tacit.guru";
 
-export const TAGLINE = "The knowledge behind the work.";
+export const TAGLINE = "Experience behind execution.";

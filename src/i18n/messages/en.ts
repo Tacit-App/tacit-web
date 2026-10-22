@@ -30,7 +30,7 @@ export const en: LandingCopy = {
     kicker: "For B2B companies",
     headline: "Automate your company from your team's real experience.",
     sub: "Four services. One core.",
-    tagline: "The knowledge behind the work.",
+    tagline: "Experience behind execution.",
     problem: {
       eyebrow: "The core",
       title: "Every service starts from how the work really happens.",
@@ -128,8 +128,7 @@ export const en: LandingCopy = {
         {
           id: "consulting",
           name: "Consulting",
-          summary:
-            "AI transformation is contingent on human workflows. It succeeds only when AI is given a defined place within the organization as it actually operates. Tacit maps that operational reality, so every AI initiative is positioned where it creates measurable value.",
+          summary: "AI transformation is contingent on human workflows.",
           body: "AI transformation is contingent on human workflows. It succeeds only when AI is given a defined place within the organization as it actually operates. Tacit maps that operational reality, so every AI initiative is positioned where it creates measurable value.",
           marks: ["Human workflows", "A defined place", "Measurable value"],
         },
@@ -213,6 +212,6 @@ export const en: LandingCopy = {
   ],
   footer: {
     aria: "Footer",
-    tagline: "The knowledge behind the work.",
+    tagline: "Experience behind execution.",
   },
 };

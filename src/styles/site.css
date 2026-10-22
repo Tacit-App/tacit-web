@@ -647,6 +647,14 @@ body {
   margin-top: 1.5rem;
 }
 
+.service-intro .product-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: #f4f6f8;
+}
+
 .service-intro .product-video,
 .service-block .product-video {
   width: 100%;
@@ -1182,12 +1190,29 @@ body {
 }
 
 .chapter {
-  scroll-snap-align: start;
   scroll-margin-top: 4.5rem;
 }
 
-html {
-  scroll-snap-type: y proximity;
+.chapter.is-here {
+  animation: chapter-glide 520ms var(--ease) both;
+}
+
+@keyframes chapter-glide {
+  from {
+    opacity: 0.84;
+    transform: translateY(0.7rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chapter.is-here {
+    animation: none;
+  }
 }
 
 .platform {

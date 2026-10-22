@@ -30,7 +30,7 @@ export const es: LandingCopy = {
     kicker: "Para empresas B2B",
     headline: "Automatiza tu empresa desde la experiencia real de tu equipo.",
     sub: "Cuatro servicios. Un núcleo.",
-    tagline: "El conocimiento detrás del trabajo.",
+    tagline: "La experiencia detrás de la ejecución.",
     problem: {
       eyebrow: "El núcleo",
       title: "Cada servicio parte de cómo ocurre realmente el trabajo.",
@@ -129,8 +129,7 @@ export const es: LandingCopy = {
         {
           id: "consulting",
           name: "Consulting",
-          summary:
-            "La transformación con IA depende de los flujos de trabajo humanos. Solo tiene éxito cuando la IA ocupa un lugar definido dentro de la organización tal como opera de verdad. Tacit mapea esa realidad operativa, para que cada iniciativa de IA quede donde crea valor medible.",
+          summary: "La transformación con IA depende de los flujos de trabajo humanos.",
           body: "La transformación con IA depende de los flujos de trabajo humanos. Solo tiene éxito cuando la IA ocupa un lugar definido dentro de la organización tal como opera de verdad. Tacit mapea esa realidad operativa, para que cada iniciativa de IA quede donde crea valor medible.",
           marks: ["Flujos humanos", "Un lugar definido", "Valor medible"],
         },
@@ -217,6 +216,6 @@ export const es: LandingCopy = {
   ],
   footer: {
     aria: "Pie de página",
-    tagline: "El conocimiento detrás del trabajo.",
+    tagline: "La experiencia detrás de la ejecución.",
   },
 };

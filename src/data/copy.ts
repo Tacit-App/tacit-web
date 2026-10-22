@@ -7,7 +7,7 @@ export const CALENDLY_URL =
 export const CONTACT_MAIL = "mailto:sales@tacit.guru";
 
 export const site = {
-  tagline: "The knowledge behind the work.",
+  tagline: "Experience behind execution.",
   hero: "Your team's best thinking, preserved forever.",
   heroSupport:
     "Every employee builds years of knowledge that never gets written down. It disappears when they leave. Tacit captures it automatically from Gmail, Slack, Microsoft 365 and Zoom. Zero effort.",

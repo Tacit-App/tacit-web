@@ -6,7 +6,7 @@ Local preview companion for `tacit-landing-preview.html`.
 
 ## Tagline
 
-The knowledge behind the work.
+Experience behind execution.
 
 ## Hero
 
@@ -58,4 +58,4 @@ The knowledge behind the work.
 **Sub:** Book a diagnostic. Get the map. Then build tools and agents that fit.
 **CTA:** Book a diagnostic
 **URL:** tacit.guru
-**Tagline:** The knowledge behind the work.
+**Tagline:** Experience behind execution.
