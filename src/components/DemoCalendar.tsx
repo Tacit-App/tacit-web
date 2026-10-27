@@ -39,7 +39,7 @@ function loadCalendly(): Promise<void> {
   });
 }
 
-export function DemoCalendar({ label }: { label: string }) {
+export function DemoCalendar({ id, label }: { id: string; label: string }) {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -64,8 +64,10 @@ export function DemoCalendar({ label }: { label: string }) {
   return (
     <div className="calendly-wrapper">
       <div
+        id={id}
         ref={mountRef}
         className="calendly-inline-widget"
+        data-url={CALENDLY_URL}
         aria-label={label}
       />
     </div>

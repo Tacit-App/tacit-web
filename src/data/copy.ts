@@ -1,8 +1,7 @@
 /** In-page Calendly target — same event as tacit.guru. */
 export const DEMO_URL = "#demo";
 
-export const CALENDLY_URL =
-  "https://calendly.com/jcmartorell-gplatino/tacit-demo?hide_gdpr_banner=1&background_color=ffffff&text_color=18232E&primary_color=1A9E78";
+export const CALENDLY_URL = "https://calendly.com/jcmartorell-tacit/new-meeting";
 
 export const CONTACT_MAIL = "mailto:sales@tacit.guru";
 

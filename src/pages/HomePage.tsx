@@ -267,7 +267,7 @@ export function HomePage() {
         <div className="site-panel">
           <h2 id="close-title">{home.close.title}</h2>
           <p className="lede">{home.close.body}</p>
-          <DemoCalendar label={t.cta.bookDiagnostic} />
+          <DemoCalendar id="calendly-demo" label={t.cta.bookDiagnostic} />
         </div>
       </section>
     </>
