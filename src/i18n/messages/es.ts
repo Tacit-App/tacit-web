@@ -3,7 +3,7 @@ import type { LandingCopy } from "../types";
 /** Spanish landing copy. Brand name "Tacit" stays untranslated. */
 export const es: LandingCopy = {
   meta: {
-    title: "Tacit — Automatiza tu empresa desde la experiencia real de tu equipo",
+    title: "Tacit — Las decisiones humanas como el motor del crecimiento",
     description:
       "Capa consultiva, implementación de agentes, un agente en el ciclo y un SLA más alto. El núcleo es cómo trabaja realmente tu gente.",
   },
@@ -28,8 +28,8 @@ export const es: LandingCopy = {
   productAria: "Producto",
   home: {
     kicker: "Para empresas B2B",
-    headline: "Automatiza tu empresa desde la experiencia real de tu equipo.",
-    sub: "Cuatro servicios. Un núcleo.",
+    headline: "Las decisiones humanas como el motor del crecimiento.",
+    sub: "Rentabilidad mediante una estrategia agéntica construida sobre cómo las personas en la empresa ya piensan y trabajan.",
     tagline: "La experiencia detrás de la ejecución.",
     problem: {
       eyebrow: "El núcleo",
@@ -120,38 +120,44 @@ export const es: LandingCopy = {
     research: {
       eyebrow: "Research",
       title: "Un engine que comprende las organizaciones como están.",
-      body: "Un equipo empresarial y académico — dos ingenieros con formación en neurociencias, inteligencia artificial y matemáticas — construye, desde la academia y la empresa, un engine que integra sistemas complejos, la lógica proposicional, la teoría bayesiana, la teoría de grafos, LIWC y las teorías modernas del pensamiento. Ese engine comprende las organizaciones tal como son, para potenciar su transformación digital mediante agentes.",
+      body: "Un equipo empresarial y académico de dos ingenieros con formación en neurociencias, inteligencia artificial y matemáticas construye un engine que une sistemas complejos, algoritmos lógicos, la teoría bayesiana, la teoría de grafos, LIWC y las teorías modernas del pensamiento. El engine comprende las organizaciones tal como son y fortalece su transformación digital mediante agentes.",
     },
     platform: {
       eyebrow: "Plataforma",
       title: "Cuatro partes del mismo trabajo.",
+      intro:
+        "El éxito agéntico se sostiene en el juicio y la cultura. Tacit hace legibles ambos. Tacit captura los flujos de trabajo diarios y las decisiones tácitas que hay detrás, y detecta las ineficiencias donde los agentes crean el mayor valor. La tecnología es una capa, no toda la historia.",
+      diagramAlt: "Agents, Tech, Operations y Culture, con Culture como base.",
       parts: [
         {
           id: "consulting",
-          name: "Consulting",
-          summary: "La transformación con IA depende de los flujos de trabajo humanos.",
-          body: "La transformación con IA depende de los flujos de trabajo humanos. Solo tiene éxito cuando la IA ocupa un lugar definido dentro de la organización tal como opera de verdad. Tacit mapea esa realidad operativa, para que cada iniciativa de IA quede donde crea valor medible.",
+          name: "Diagnóstico",
+          summary:
+            "Mapea dónde vive la pericia, cómo se usa y qué herramientas y pasos no son productivos.",
+          body: "Mapea dónde vive la pericia, cómo se usa y qué herramientas y pasos no son productivos.",
           marks: ["Flujos humanos", "Un lugar definido", "Valor medible"],
         },
         {
           id: "agents",
-          name: "Agents",
-          summary: "Agentes simples y controlables en puntos core, y después una simbiosis humana y agéntica.",
-          body: "Empezamos con agentes simples, controlables y medibles, en puntos core de la empresa. Ese primer paso es para resultados rápidos y adopción. Después ampliamos los agentes hasta que el trabajo se vuelve una simbiosis humana y agéntica.",
+          name: "Entender las premisas",
+          summary: "Cambia cómo trabaja y se forma el equipo: educación, roles y estructura.",
+          body: "Cambia cómo trabaja y se forma el equipo: educación, roles y estructura. Saca a la superficie las ineficiencias y los cuellos de botella.",
           marks: ["Simples y medibles", "Puntos core", "Resultados rápidos", "Adopción", "Simbiosis humana y agéntica"],
         },
         {
           id: "apps",
-          name: "Apps",
-          summary: "Sistemas para centralizar, evaluar y manejar su propia operación, empoderados por Tacit.",
-          body: "Creamos sistemas para que nuestros clientes centralicen, evalúen y manejen su propio sistema. Tacit empodera ese sistema, para que entreguen a sus clientes y a otros stakeholders.",
+          name: "Agentes básicos core",
+          summary:
+            "Implementa Tacit y las herramientas que la gente sí va a usar, para que el saber hacer se vuelva una capa viva.",
+          body: "Implementa Tacit y las herramientas que la gente sí va a usar, para que el saber hacer se vuelva una capa viva.",
           marks: ["Centralizar", "Evaluar", "Manejar", "Su sistema", "Empoderado por Tacit", "Clientes", "Stakeholders"],
         },
         {
           id: "development",
-          name: "Development",
-          summary: "Infraestructura inteligente por medio de la capa de Tacit, para los problemas core del cliente.",
-          body: "Asistimos en la creación de infraestructura inteligente por medio de la capa de Tacit, para resolver los problemas core de nuestros clientes.",
+          name: "Agentificación",
+          summary:
+            "Lanza agentes específicos que muestren una ganancia visible y luego extiéndelos con las mismas personas.",
+          body: "Lanza agentes específicos que muestren una ganancia visible y luego extiéndelos con las mismas personas.",
           marks: ["Problemas core", "Capa de Tacit", "Infraestructura inteligente"],
         },
       ],

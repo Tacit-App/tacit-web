@@ -3,7 +3,7 @@ import type { LandingCopy } from "../types";
 /** English landing copy. Includes PR #5 problem wording (workflows / culture). */
 export const en: LandingCopy = {
   meta: {
-    title: "Tacit — Automate your company from your team's real experience",
+    title: "Tacit — Human decisions as the engine of growth",
     description:
       "Consulting layer, agent implementation, an agent in the loop, and a higher client SLA. The core is how your people actually work.",
   },
@@ -28,8 +28,8 @@ export const en: LandingCopy = {
   productAria: "Product",
   home: {
     kicker: "For B2B companies",
-    headline: "Automate your company from your team's real experience.",
-    sub: "Four services. One core.",
+    headline: "Human decisions as the engine of growth.",
+    sub: "Profitability through an agentic strategy built on how people in the company already think and work.",
     tagline: "Experience behind execution.",
     problem: {
       eyebrow: "The core",
@@ -119,38 +119,44 @@ export const en: LandingCopy = {
     research: {
       eyebrow: "Research",
       title: "An engine that understands organizations as they are.",
-      body: "An entrepreneurial and academic team — two engineers trained in neuroscience, artificial intelligence, and mathematics — is building, from academia and from the company, an engine that joins complex systems, propositional logic, Bayesian theory, graph theory, LIWC, and modern theories of thought. The engine understands organizations as they are, and strengthens their digital transformation through agents.",
+      body: "An entrepreneurial and academic team of two engineers trained in neuroscience, artificial intelligence, and mathematics is building an engine that joins complex systems, logic algorithms, Bayesian theory, graph theory, LIWC, and modern theories of thought. The engine understands organizations as they are, and strengthens their digital transformation through agents.",
     },
     platform: {
       eyebrow: "Platform",
       title: "Four parts of the same work.",
+      intro:
+        "Agentic success runs on judgment and culture. Tacit makes both legible. Tacit captures the daily workflows and the tacit decisions behind them, and detects the inefficiencies where agents create the most value. Tech is a layer, not the whole story.",
+      diagramAlt: "Agents, Tech, Operations, and Culture, with Culture as the base.",
       parts: [
         {
           id: "consulting",
-          name: "Consulting",
-          summary: "AI transformation is contingent on human workflows.",
-          body: "AI transformation is contingent on human workflows. It succeeds only when AI is given a defined place within the organization as it actually operates. Tacit maps that operational reality, so every AI initiative is positioned where it creates measurable value.",
+          name: "Diagnostic",
+          summary:
+            "Map where expertise lives, how it is used, and which tools and steps are not productive.",
+          body: "Map where expertise lives, how it is used, and which tools and steps are not productive.",
           marks: ["Human workflows", "A defined place", "Measurable value"],
         },
         {
           id: "agents",
-          name: "Agents",
-          summary: "Simple, controllable agents at core points, then a human-agent symbiosis.",
-          body: "We start with simple agents, controllable and measurable, at core points of the company. That first step is for quick results and adoption. We then expand the agents until the work becomes a human-agent symbiosis.",
+          name: "Understand premises",
+          summary: "Change how the team works and trains: education, roles, and structure.",
+          body: "Change how the team works and trains: education, roles, and structure. Surface the inefficiencies and the bottlenecks.",
           marks: ["Simple and measurable", "Core points", "Quick results", "Adoption", "Human-agent symbiosis"],
         },
         {
           id: "apps",
-          name: "Apps",
-          summary: "Systems to centralize, evaluate, and manage their own operation, empowered by Tacit.",
-          body: "We create systems so our clients can centralize, evaluate, and manage their own system. Tacit empowers that system, so they can deliver to their clients and to other stakeholders.",
+          name: "Core basic agents",
+          summary:
+            "Implement Tacit and the tools people will actually use, so know-how becomes a living layer.",
+          body: "Implement Tacit and the tools people will actually use, so know-how becomes a living layer.",
           marks: ["Centralize", "Evaluate", "Manage", "Their system", "Empowered by Tacit", "Clients", "Stakeholders"],
         },
         {
           id: "development",
-          name: "Development",
-          summary: "Intelligent infrastructure through the Tacit layer, for the client's core problems.",
-          body: "We assist in the creation of intelligent infrastructure through the Tacit layer, to solve our clients' core problems.",
+          name: "Agentification",
+          summary:
+            "Ship specific agents that show a visible gain, then extend them with the same people.",
+          body: "Ship specific agents that show a visible gain, then extend them with the same people.",
           marks: ["Core problems", "Tacit layer", "Intelligent infrastructure"],
         },
       ],

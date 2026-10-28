@@ -65,10 +65,23 @@ function MiniSphere({
 
 const NAV = ["Ask Tacit", "Pulse", "Explore", "Knowledge", "My team", "Agents"];
 
+const BOARD_SENTENCES = {
+  en: [
+    "AI transformation is contingent on human workflows.",
+    "It succeeds only when AI is given a defined place within the organization as it actually operates.",
+    "Tacit maps that operational reality, so every AI initiative is positioned where it creates measurable value.",
+  ],
+  es: [
+    "La transformación con IA depende de los flujos de trabajo humanos.",
+    "Solo tiene éxito cuando la IA ocupa un lugar definido dentro de la organización tal como opera de verdad.",
+    "Tacit mapea esa realidad operativa, para que cada iniciativa de IA quede donde crea valor medible.",
+  ],
+} as const;
+
 function ConsultingBoard() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const part = t.home.platform.parts.find((item) => item.id === "consulting");
-  const sentences = (part?.body ?? "").split(/(?<=\.)\s+/).filter(Boolean);
+  const sentences = BOARD_SENTENCES[locale];
 
   return (
     <div className="app-board">

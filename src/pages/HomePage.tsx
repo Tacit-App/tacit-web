@@ -134,8 +134,19 @@ export function HomePage() {
 
       <section className="platform" id="platform" aria-labelledby="platform-title">
         <div className="platform-intro chapter">
-          <p className="kicker">{home.platform.eyebrow}</p>
-          <h2 id="platform-title">{home.platform.title}</h2>
+          <div className="platform-intro-copy">
+            <p className="kicker">{home.platform.eyebrow}</p>
+            <h2 id="platform-title">{home.platform.title}</h2>
+            <p className="lede">{home.platform.intro}</p>
+          </div>
+          <figure className="platform-intro-diagram">
+            <img
+              src="/four-parts-diagram.png"
+              alt={home.platform.diagramAlt}
+              width={1792}
+              height={2568}
+            />
+          </figure>
         </div>
         {home.platform.parts.map((part, index) => (
           <article className={`platform-part chapter part-${part.id}`} key={part.id} id={`part-${part.id}`}>
