@@ -1304,7 +1304,8 @@ body {
 
 .mini-sphere,
 .mini-sphere canvas,
-.service-stage-film video {
+.service-stage-film video,
+.service-stage-film img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -1439,13 +1440,18 @@ body {
 }
 
 .service-stage-apps img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
   border-radius: 0.75rem;
   border: 1px solid rgb(24 35 46 / 8%);
   background: #fff;
 }
 
-.service-stage-film video {
-  object-fit: cover;
+.service-stage-film video,
+.service-stage-film img {
+  object-fit: contain;
+  background: #fff;
 }
 
 .part-consulting { background: #fff; }

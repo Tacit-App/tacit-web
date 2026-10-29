@@ -114,6 +114,8 @@ function ConsultingBoard() {
 }
 
 export function ServiceStage({ id }: { id: string }) {
+  const { locale } = useI18n();
+
   if (id === "agents") {
     return (
       <figure className="service-stage">
@@ -126,8 +128,16 @@ export function ServiceStage({ id }: { id: string }) {
   if (id === "apps") {
     return (
       <figure className="service-stage service-stage-apps">
-        <img src="/knowledge-profiles.png" alt="" />
-        <img src="/pulse-priorities.png" alt="" />
+        <img
+          src="/deck-living-layer.png"
+          alt={
+            locale === "es"
+              ? "Capa viva de saber hacer, con herramientas conectadas al trabajo"
+              : "A living layer of know-how, with tools connected to the work"
+          }
+          width={976}
+          height={432}
+        />
       </figure>
     );
   }
@@ -135,9 +145,16 @@ export function ServiceStage({ id }: { id: string }) {
   if (id === "development") {
     return (
       <figure className="service-stage service-stage-film">
-        <video autoPlay muted loop playsInline preload="metadata" poster="/product-graph-poster.png">
-          <source src="/product-graph-menu.mp4" type="video/mp4" />
-        </video>
+        <img
+          src="/automations-board.png"
+          alt={
+            locale === "es"
+              ? "Pantalla de Automatizaciones con borradores de Pulse, propuestas automáticas, resumen diario y vigilancia de fragilidad"
+              : "Automations screen with Pulse copy drafts, automatic proposals, Daily Pulse digest, and Fragility watchdog"
+          }
+          width={1024}
+          height={639}
+        />
       </figure>
     );
   }

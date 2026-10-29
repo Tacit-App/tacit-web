@@ -180,14 +180,14 @@ export function HomePage() {
           <p className="lede">{home.problem.title}</p>
           <figure className="product-media">
             <img
-              src="/personas-board.png"
+              src="/deck-knowhow-field.png"
               alt={
                 locale === "es"
-                  ? "Tablero de Personas con perfiles sugeridos, herramientas y cobertura"
-                  : "Personas board with suggested role profiles, tools, and skill coverage"
+                  ? "Campo de cómo ocurre el trabajo: lógica de decisión, flujos, saber tácito y las rutas entre ellos"
+                  : "Field of how the work happens: decision logic, workflows, tacit know-how, and the paths between them"
               }
-              width={1024}
-              height={553}
+              width={2021}
+              height={2246}
             />
           </figure>
         </div>
