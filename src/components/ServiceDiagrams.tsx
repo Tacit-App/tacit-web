@@ -129,14 +129,14 @@ export function ServiceStage({ id }: { id: string }) {
     return (
       <figure className="service-stage service-stage-apps">
         <img
-          src="/deck-living-layer.png"
+          src="/core-agents-impact.jpg"
           alt={
             locale === "es"
-              ? "Capa viva de saber hacer, con herramientas conectadas al trabajo"
-              : "A living layer of know-how, with tools connected to the work"
+              ? "Agente pequeño, consecuencia grande: el seguimiento salva un trato, el calendario retiene al cliente y el proceso evita un error costoso"
+              : "Small agent, big consequence: a follow-up saves a deal, a calendar holds a client, and a process avoids a costly error"
           }
-          width={976}
-          height={432}
+          width={1024}
+          height={819}
         />
       </figure>
     );
