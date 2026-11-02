@@ -31,6 +31,31 @@ export const es: LandingCopy = {
     headline: "Las decisiones humanas como el motor del crecimiento.",
     sub: "Rentabilidad mediante una estrategia agéntica construida sobre cómo las personas en la empresa ya piensan y trabajan.",
     tagline: "La experiencia detrás de la ejecución.",
+    benefits: {
+      heading: "Con Tacit tu empresa va a:",
+      items: [
+        {
+          title: "Reducir el riesgo de automatizar.",
+          body: "La mayoría quiere IA pero no sabe por dónde empezar, y poner agentes a ciegas rompe procesos. Primero diagnosticamos, luego implementamos donde está el 80% del valor.",
+        },
+        {
+          title: "Retener su conocimiento.",
+          body: "Cuando alguien se va, lo que sabía no se pierde. Cuando alguien entra, aprende en menos tiempo.",
+        },
+        {
+          title: "Ver sus ineficiencias reales.",
+          body: "Cuellos de botella, errores y dependencia de personas, no las del organigrama.",
+        },
+        {
+          title: "Tener agentes que sí funcionan.",
+          body: "Se alimentan del contexto de Tacit, no de búsqueda por texto.",
+        },
+        {
+          title: "Pagar menos por cada agente.",
+          body: "Reciben solo el contexto que necesitan, ya procesado, en lugar de leer documentos completos.",
+        },
+      ],
+    },
     problem: {
       eyebrow: "El núcleo",
       title: "Cada servicio parte de cómo ocurre realmente el trabajo.",

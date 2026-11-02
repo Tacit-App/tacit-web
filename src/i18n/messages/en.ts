@@ -31,6 +31,31 @@ export const en: LandingCopy = {
     headline: "Human decisions as the engine of growth.",
     sub: "Profitability through an agentic strategy built on how people in the company already think and work.",
     tagline: "Experience behind execution.",
+    benefits: {
+      heading: "With Tacit, your company will:",
+      items: [
+        {
+          title: "Reduce the risk of adopting agents.",
+          body: "Most companies want AI but don't know where to start, and deploying agents blindly breaks processes. We diagnose first, then implement where 80% of the value is.",
+        },
+        {
+          title: "Keep its knowledge.",
+          body: "When someone leaves, what they knew isn't lost. When someone joins, they ramp up faster.",
+        },
+        {
+          title: "See its real inefficiencies.",
+          body: "Bottlenecks, errors and people dependencies, not the ones on the org chart.",
+        },
+        {
+          title: "Run agents that actually work.",
+          body: "They feed on Tacit's context, not text search.",
+        },
+        {
+          title: "Pay less per agent.",
+          body: "They get only the context they need, already processed, instead of reading entire documents.",
+        },
+      ],
+    },
     problem: {
       eyebrow: "The core",
       title: "Every service starts from how the work really happens.",

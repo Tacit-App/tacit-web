@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Benefits } from "../components/Benefits";
 import { DemoCalendar } from "../components/DemoCalendar";
 import { ServiceStage } from "../components/ServiceDiagrams";
 import { IndustryIcon } from "../components/SiteNav";
@@ -131,6 +132,8 @@ export function HomePage() {
           </div>
         </div>
       </header>
+
+      <Benefits />
 
       <section className="platform" id="platform" aria-labelledby="platform-title">
         <div className="platform-intro chapter">

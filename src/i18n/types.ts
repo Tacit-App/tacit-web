@@ -28,6 +28,10 @@ export type LandingCopy = {
     headline: string;
     sub: string;
     tagline: string;
+    benefits: {
+      heading: string;
+      items: Array<{ title: string; body: string }>;
+    };
     problem: {
       eyebrow: string;
       title: string;
