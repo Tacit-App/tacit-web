@@ -35,7 +35,7 @@ export const en: LandingCopy = {
       heading: "With Tacit, your company will:",
       items: [
         {
-          title: "Reduce the risk of adopting agents.",
+          title: "Reduce the risk of automating.",
           body: "Most companies want AI but don't know where to start, and deploying agents blindly breaks processes. We diagnose first, then implement where 80% of the value is.",
         },
         {
