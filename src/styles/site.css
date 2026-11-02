@@ -1583,15 +1583,16 @@ body {
   text-underline-offset: 0.15em;
 }
 
-/* Benefits follows the platform chapter: same padding, type scale, and hairlines.
-   Instrument Serif only — heading, titles, body, and numbers stay Tacit's letter. */
+/* Benefits: white editorial spread. Ink type, mist rules, Instrument Serif only.
+   Heading, titles, body, and numbers stay Tacit's letter — no DM Sans here. */
 .benefits {
+  --benefits-gutter: clamp(1.25rem, 5vw, 4.5rem);
+  --benefits-rule: rgb(24 35 46 / 14%);
   margin: 0;
-  padding: clamp(4.5rem, 10vh, 7rem) clamp(1.25rem, 6vw, 5rem);
+  padding: clamp(4.5rem, 10vh, 7rem) var(--benefits-gutter) clamp(4rem, 9vh, 6rem);
+  overflow-x: clip;
   color: var(--ink);
   background: #fff;
-  border-top: 1px solid var(--line);
-  overflow-x: clip;
 }
 
 .benefits,
@@ -1602,70 +1603,104 @@ body {
 }
 
 .benefits h2 {
-  max-width: 14ch;
-  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  max-width: 16em;
+  margin: 0;
+  font-size: clamp(2.35rem, 4.2vw, 3.75rem);
   line-height: 1.05;
   letter-spacing: -0.03em;
   color: var(--ink);
 }
 
+.benefits-name {
+  color: #1a9e78;
+  background: none;
+}
+
 .benefits-list {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  margin: clamp(2.75rem, 6vh, 4.25rem) 0 0;
+  margin: clamp(2.5rem, 5vh, 3.5rem) 0 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--benefits-rule);
 }
 
 .benefits-list li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
   min-width: 0;
-  padding: clamp(1.6rem, 3.2vh, 2.25rem) 0;
-  border-bottom: 1px solid var(--line);
+  padding: 1.7rem 0 1.8rem;
+  background: transparent;
+  border-bottom: 1px solid var(--benefits-rule);
 }
 
 .benefits-index {
   display: block;
-  margin: 0 0 1rem;
+  margin: 0;
   font-size: 0.95rem;
   letter-spacing: 0.16em;
   line-height: 1;
-  color: var(--pulse);
+  color: var(--mist);
 }
 
 .benefits h3 {
   margin: 0;
-  max-width: 22em;
-  font-size: clamp(1.85rem, 2.6vw, 2.35rem);
+  max-width: 18em;
+  font-size: clamp(1.55rem, 2.2vw, 1.9rem);
   line-height: 1.15;
   letter-spacing: -0.03em;
   color: var(--ink);
 }
 
 .benefits p {
-  max-width: 36rem;
-  margin: 1rem 0 0;
-  font-size: 1.15rem;
+  max-width: 38rem;
+  margin: 0;
+  font-size: 1.125rem;
   line-height: 1.5;
   color: var(--ink);
   overflow-wrap: break-word;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 960px) {
   .benefits-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    border-bottom: 1px solid var(--benefits-rule);
   }
 
-  .benefits-list li:nth-child(odd) {
-    padding-right: clamp(1.5rem, 4vw, 3.5rem);
+  .benefits-list li {
+    min-height: 100%;
+    padding: 2.15rem 1.75rem 2.35rem 0;
+    border-bottom: 0;
   }
 
-  .benefits-list li:nth-child(even) {
-    padding-left: clamp(1.5rem, 4vw, 3.5rem);
+  .benefits-list li:nth-child(-n + 2) {
+    grid-column: span 3;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--benefits-rule);
   }
 
-  .benefits-list li:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    padding-right: 0;
+  .benefits-list li:nth-child(n + 3) {
+    grid-column: span 2;
+    padding-top: 2.15rem;
+  }
+
+  .benefits-list li:nth-child(2),
+  .benefits-list li:nth-child(4),
+  .benefits-list li:nth-child(5) {
+    padding-left: 1.75rem;
+    border-left: 1px solid var(--benefits-rule);
+  }
+
+  .benefits-list li:nth-child(-n + 2) h3 {
+    max-width: 14em;
+    font-size: clamp(1.85rem, 2.3vw, 2.25rem);
+  }
+
+  .benefits p {
+    max-width: none;
+    margin-top: auto;
+    padding-top: 0.35rem;
   }
 }
