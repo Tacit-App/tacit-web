@@ -56,16 +56,6 @@ NEW_CSS = r"""
 .c8 .tag{position:absolute;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-60);white-space:nowrap}
 .c8 .tag.c{color:var(--pulse)}
 
-/* benefits */
-.cb h2{position:absolute;left:120px;top:130px;font-size:84px}
-.cb .spokes{position:absolute;left:0;top:0;pointer-events:none}
-.cb .hub{position:absolute;left:370px;top:610px;width:192px;height:192px;margin:-96px 0 0 -96px;border-radius:50%;background:#18232E;display:flex;align-items:center;justify-content:center}
-.cb .hub [data-bigbrand]{display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--serif);font-size:30px;color:#fff}
-.cb .hub::before{content:"";position:absolute;inset:-18px;border-radius:50%;border:1.5px solid #A9DCCB}
-.cb .row{position:absolute;left:740px;right:120px;height:96px;display:grid;grid-template-columns:64px 1fr;column-gap:28px;align-items:center}
-.cb .row .nb{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:30px}
-.cb .row h3{font-family:var(--sans);font-weight:500;font-size:38px;line-height:1.1;color:var(--ink);letter-spacing:-.01em}
-.cb .row p{font-size:21px;line-height:1.4;color:var(--ink-60);font-weight:300;margin-top:6px}
 /* research */
 .c10 h2{position:absolute;left:120px;top:170px;width:760px;font-size:80px}
 .c10 .lead{position:absolute;left:120px;top:470px;width:740px;font-size:23px;line-height:1.6}
@@ -125,15 +115,8 @@ slides.append(f'''<section class="slide c1">
   <p class="lead">Four services. One core.</p>
   <div class="meta"><span>Commercial presentation · 2026</span><span>tacit.guru</span></div>
 </section>''')
-# benefits (landing "With Tacit, your company will:") as a hub-and-spoke diagram
-slides.append(f'''<section class="slide cb">
-  {top('Benefits')}
-  <h2>With Tacit, your company <span class="hl">will</span>:</h2>
-  <svg class="spokes" width="1920" height="1080" viewBox="0 0 1920 1080"><path d="M466,610 C600,610 590,330 740,330" fill="none" stroke="#1A9E78" stroke-width="2" stroke-opacity=".55"/><path d="M466,610 C600,610 590,470 740,470" fill="none" stroke="#147A5C" stroke-width="2" stroke-opacity=".55"/><path d="M466,610 C600,610 590,610 740,610" fill="none" stroke="#1A9E78" stroke-width="2" stroke-opacity=".55"/><path d="M466,610 C600,610 590,750 740,750" fill="none" stroke="#147A5C" stroke-width="2" stroke-opacity=".55"/><path d="M466,610 C600,610 590,890 740,890" fill="none" stroke="#18232E" stroke-width="2" stroke-opacity=".55"/></svg>
-  <div class="hub"><div data-bigbrand="46"></div></div>
-  <div class="row" style="top:282px"><span class="nb" style="background:#E8F7F2;color:#1A9E78">01</span><div><h3>Reduce the risk of automating.</h3><p>We diagnose first, then implement where 80% of the value is.</p></div></div><div class="row" style="top:422px"><span class="nb" style="background:#A9DCCB;color:#147A5C">02</span><div><h3>Keep its knowledge.</h3><p>When someone leaves, what they knew stays. New people ramp up faster.</p></div></div><div class="row" style="top:562px"><span class="nb" style="background:#1A9E78;color:#FFFFFF">03</span><div><h3>See its real inefficiencies.</h3><p>Bottlenecks, errors and people dependencies, not the ones on the org chart.</p></div></div><div class="row" style="top:702px"><span class="nb" style="background:#147A5C;color:#FFFFFF">04</span><div><h3>Run agents that actually work.</h3><p>They feed on Tacit’s context, not text search.</p></div></div><div class="row" style="top:842px"><span class="nb" style="background:#18232E;color:#4CC7A0">05</span><div><h3>Pay less per agent.</h3><p>They get only the context they need, already processed.</p></div></div>
-  {foot}
-</section>''')
+# benefits (shared with the investor deck)
+slides.append(section('cb'))
 # 2 problem, 3 thesis, 4 core (investor slides)
 slides.append(section('s3'))
 slides.append(section('s2'))

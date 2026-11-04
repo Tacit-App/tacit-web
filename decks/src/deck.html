@@ -88,6 +88,18 @@ h2{font-size:88px}
 .e2 .rw .t::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--pulse)}
 .e2 .closer{position:absolute;left:120px;right:120px;bottom:120px;font-family:var(--serif);font-size:38px;line-height:1.2;color:var(--pulse)}
 
+
+/* benefits (shared) */
+.cb h2{position:absolute;left:120px;top:130px;font-size:84px}
+.cb .spokes{position:absolute;left:0;top:0;pointer-events:none}
+.cb .hub{position:absolute;left:380px;top:620px;width:180px;height:180px;margin:-90px 0 0 -90px;border-radius:50%;background:#18232E;display:flex;align-items:center;justify-content:center}
+.cb .hub [data-bigbrand]{display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--serif);font-size:30px;color:#fff}
+.cb .row{position:absolute;left:800px;right:120px;height:140px;display:grid;grid-template-columns:70px 1fr;align-items:center;border-top:1px solid var(--hair)}
+.cb .row:last-of-type{border-bottom:1px solid var(--hair)}
+.cb .row .no{font-family:var(--serif);font-size:30px;color:var(--pulse)}
+.cb .row h3{font-family:var(--sans);font-weight:500;font-size:36px;line-height:1.1;color:var(--ink);letter-spacing:-.015em}
+.cb .row p{font-size:21px;line-height:1.4;color:var(--ink-60);font-weight:300;margin-top:8px}
+
 /* math annotations */
 .ann{font-family:var(--math);font-size:15px;letter-spacing:.01em;color:var(--ink-60);line-height:1.5;white-space:nowrap}
 .ann sub,.ann sup{font-size:.72em;line-height:0}
@@ -247,9 +259,19 @@ h2{font-size:88px}
   <div class="meta"><span>Investor presentation · 2026</span><span>Confidential</span></div>
 </section>
 
+<!-- BENEFITS -->
+<section class="slide cb">
+  <div class="top"><span class="lab">Benefits</span><span>02 / 13</span></div>
+  <h2>With Tacit, your company <span class="hl">will</span>:</h2>
+  <svg class="spokes" width="1920" height="1080" viewBox="0 0 1920 1080"><path d="M470,620 C620,620 600,340 760,340" fill="none" stroke="#1A9E78" stroke-width="1.6" stroke-opacity=".45"/><path d="M470,620 C620,620 600,480 760,480" fill="none" stroke="#1A9E78" stroke-width="1.6" stroke-opacity=".45"/><path d="M470,620 C620,620 600,620 760,620" fill="none" stroke="#1A9E78" stroke-width="1.6" stroke-opacity=".45"/><path d="M470,620 C620,620 600,760 760,760" fill="none" stroke="#1A9E78" stroke-width="1.6" stroke-opacity=".45"/><path d="M470,620 C620,620 600,900 760,900" fill="none" stroke="#1A9E78" stroke-width="1.6" stroke-opacity=".45"/><circle cx="760" cy="340" r="6" fill="#1A9E78"/><circle cx="760" cy="480" r="6" fill="#1A9E78"/><circle cx="760" cy="620" r="6" fill="#1A9E78"/><circle cx="760" cy="760" r="6" fill="#1A9E78"/><circle cx="760" cy="900" r="6" fill="#1A9E78"/></svg>
+  <div class="hub"><div data-bigbrand="44"></div></div>
+  <div class="row" style="top:270px"><span class="no">01</span><div><h3>Reduce the risk of automating.</h3><p>We diagnose first, then implement where 80% of the value is.</p></div></div><div class="row" style="top:410px"><span class="no">02</span><div><h3>Keep its knowledge.</h3><p>When someone leaves, what they knew stays. New people ramp up faster.</p></div></div><div class="row" style="top:550px"><span class="no">03</span><div><h3>See its real inefficiencies.</h3><p>Bottlenecks, errors and people dependencies, not the ones on the org chart.</p></div></div><div class="row" style="top:690px"><span class="no">04</span><div><h3>Run agents that actually work.</h3><p>They feed on Tacit’s context, not text search.</p></div></div><div class="row" style="top:830px"><span class="no">05</span><div><h3>Pay less per agent.</h3><p>They get only the context they need, already processed.</p></div></div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
 <!-- 2 THESIS -->
 <section class="slide s2">
-  <div class="top"><span class="lab">Thesis</span><span>02 / 12</span></div>
+  <div class="top"><span class="lab">Thesis</span><span>03 / 13</span></div>
   <h2>Companies are systems made by <span class="hl">people</span>.</h2>
   <p class="lead">Agents improve them only when the human knowledge behind the system is understood.</p>
   <div class="pair">
@@ -294,12 +316,12 @@ h2{font-size:88px}
       <span class="chip" style="left:418px;top:882px"><i></i>heuristic</span>
     </div>
   </div>
-  <div class="foot" style="right:980px"><span class="b" data-brand></span><span>Confidential · 03 / 12</span></div>
+  <div class="foot" style="right:980px"><span class="b" data-brand></span><span>Confidential · 04 / 13</span></div>
 </section>
 
 <!-- 4 CORE -->
 <section class="slide s4 dark">
-  <div class="top" style="right:600px"><span class="lab">The core</span><span>04 / 12</span></div>
+  <div class="top" style="right:600px"><span class="lab">The core</span><span>05 / 13</span></div>
   <h2>Agentic success runs on judgment and culture. <span class="hl" style="display:block;margin-top:18px">Tacit makes both legible.</span></h2>
   <p class="how">Tacit captures the daily workflows and the tacit decisions behind them, and detects the inefficiencies where agents create the most value.</p>
   <p class="lead">Tech is a layer, not the whole story.</p>
@@ -314,7 +336,7 @@ h2{font-size:88px}
 
 <!-- 5 SERVICES -->
 <section class="slide s5">
-  <div class="top"><span class="lab">The work</span><span>05 / 12</span></div>
+  <div class="top"><span class="lab">The work</span><span>06 / 13</span></div>
   <h2>Four services. One <span class="hl">sequence</span>.</h2>
   <div class="cols">
     <div class="col"><span class="n">01</span><h3>Diagnostic</h3><p>Map where expertise lives, how it is used, and which tools and steps are not productive.</p><div class="step"><img src="mv/step1.svg" alt=""></div></div>
@@ -327,7 +349,7 @@ h2{font-size:88px}
 
 <!-- 6 PRODUCT -->
 <section class="slide s6">
-  <div class="top"><span class="lab">The product</span><span>06 / 12</span></div>
+  <div class="top"><span class="lab">The product</span><span>07 / 13</span></div>
   <h2>Four views. One <span class="hl">product</span>.</h2>
   <div class="grid">
     <figure><div class="tex" style="background:url(mv/prodbg.svg) center/cover,#F6F8F7;border:1px solid var(--hair)"><div class="shot"><img src="assets/app/pulse-priorities.png" alt=""></div></div><figcaption><span>Pulse</span><span>01</span></figcaption></figure>
@@ -340,7 +362,7 @@ h2{font-size:88px}
 
 <!-- E1 EFFICIENCY: HOW -->
 <section class="slide e1">
-  <div class="top"><span class="lab">Agents on Tacit</span><span>07 / 12</span></div>
+  <div class="top"><span class="lab">Agents on Tacit</span><span>08 / 13</span></div>
   <h2>Simple, <span class="hl">cost-effective</span> agents.</h2>
   <p class="lead">The agent receives the context already structured from Tacit and resolves most of the work with deterministic code. The language model only handles small steps.</p>
   <div class="lanes">
@@ -356,7 +378,7 @@ h2{font-size:88px}
 
 <!-- 7 ROADMAP -->
 <section class="slide s7">
-  <div class="top"><span class="lab">Roadmap</span><span>08 / 12</span></div>
+  <div class="top"><span class="lab">Roadmap</span><span>09 / 13</span></div>
   <h2>From a viable engine to a <span class="hl">commercial</span> company.</h2>
   <img class="curve" src="mv/roadmap.svg" alt="">
   <div class="road">
@@ -372,7 +394,7 @@ h2{font-size:88px}
 
 <!-- 8 COMPANIES -->
 <section class="slide s8">
-  <div class="top"><span class="lab">Companies</span><span>09 / 12</span></div>
+  <div class="top"><span class="lab">Companies</span><span>10 / 13</span></div>
   <h2>Already inside real <span class="hl">companies</span>.</h2>
   <div class="wall">
     <div class="logo"><img src="assets/clients/mora.svg" style="height:30px"><span>Mora Health</span></div>
@@ -389,7 +411,7 @@ h2{font-size:88px}
 
 <!-- 9 TEAM -->
 <section class="slide s9">
-  <div class="top"><span class="lab">Founders and board</span><span>10 / 12</span></div>
+  <div class="top"><span class="lab">Founders and board</span><span>11 / 13</span></div>
   <h2>Built by academics, experienced entrepreneurs, and <span class="hl">executives</span>.</h2>
   <p class="lead">The founders come from consulting, entrepreneurship, and academia. The vision starts in academia and is shaped by real business experience.</p>
   <div class="team">
@@ -403,8 +425,8 @@ h2{font-size:88px}
 
 <!-- 10 ASK -->
 <section class="slide s10 dark">
-  <div class="top"><span class="lab">The ask</span><span>11 / 12</span></div>
-  <h2>We’re raising <span class="hl">$300,000</span>.</h2>
+  <div class="top"><span class="lab">The ask</span><span>12 / 13</span></div>
+  <h2>We’re raising <span class="hl">$500,000</span>.</h2>
   <p class="lead">Estimated runway: 12 months.</p>
   <div class="stack"><i style="flex:45;background:#4CC7A0"></i><i style="flex:35;background:#1A9E78"></i><i style="flex:20;background:#8A9BA8"></i></div>
   <div class="cats">

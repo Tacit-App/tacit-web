@@ -88,6 +88,18 @@ h2{font-size:88px}
 .e2 .rw .t::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--pulse)}
 .e2 .closer{position:absolute;left:120px;right:120px;bottom:120px;font-family:var(--serif);font-size:38px;line-height:1.2;color:var(--pulse)}
 
+
+/* benefits (shared) */
+.cb h2{position:absolute;left:120px;top:130px;font-size:84px}
+.cb .spokes{position:absolute;left:0;top:0;pointer-events:none}
+.cb .hub{position:absolute;left:380px;top:620px;width:180px;height:180px;margin:-90px 0 0 -90px;border-radius:50%;background:#18232E;display:flex;align-items:center;justify-content:center}
+.cb .hub [data-bigbrand]{display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--serif);font-size:30px;color:#fff}
+.cb .row{position:absolute;left:800px;right:120px;height:140px;display:grid;grid-template-columns:70px 1fr;align-items:center;border-top:1px solid var(--hair)}
+.cb .row:last-of-type{border-bottom:1px solid var(--hair)}
+.cb .row .no{font-family:var(--serif);font-size:30px;color:var(--pulse)}
+.cb .row h3{font-family:var(--sans);font-weight:500;font-size:36px;line-height:1.1;color:var(--ink);letter-spacing:-.015em}
+.cb .row p{font-size:21px;line-height:1.4;color:var(--ink-60);font-weight:300;margin-top:8px}
+
 /* math annotations */
 .ann{font-family:var(--math);font-size:15px;letter-spacing:.01em;color:var(--ink-60);line-height:1.5;white-space:nowrap}
 .ann sub,.ann sup{font-size:.72em;line-height:0}
@@ -278,16 +290,6 @@ h2{font-size:88px}
 .c8 .tag{position:absolute;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-60);white-space:nowrap}
 .c8 .tag.c{color:var(--pulse)}
 
-/* benefits */
-.cb h2{position:absolute;left:120px;top:130px;font-size:84px}
-.cb .spokes{position:absolute;left:0;top:0;pointer-events:none}
-.cb .hub{position:absolute;left:370px;top:610px;width:192px;height:192px;margin:-96px 0 0 -96px;border-radius:50%;background:#18232E;display:flex;align-items:center;justify-content:center}
-.cb .hub [data-bigbrand]{display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--serif);font-size:30px;color:#fff}
-.cb .hub::before{content:"";position:absolute;inset:-18px;border-radius:50%;border:1.5px solid #A9DCCB}
-.cb .row{position:absolute;left:740px;right:120px;height:96px;display:grid;grid-template-columns:64px 1fr;column-gap:28px;align-items:center}
-.cb .row .nb{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:30px}
-.cb .row h3{font-family:var(--sans);font-weight:500;font-size:38px;line-height:1.1;color:var(--ink);letter-spacing:-.01em}
-.cb .row p{font-size:21px;line-height:1.4;color:var(--ink-60);font-weight:300;margin-top:6px}
 /* research */
 .c10 h2{position:absolute;left:120px;top:170px;width:760px;font-size:80px}
 .c10 .lead{position:absolute;left:120px;top:470px;width:740px;font-size:23px;line-height:1.6}
@@ -348,9 +350,9 @@ h2{font-size:88px}
 <section class="slide cb">
   <div class="top"><span class="lab">Benefits</span><span>02 / 17</span></div>
   <h2>With Tacit, your company <span class="hl">will</span>:</h2>
-  <svg class="spokes" width="1920" height="1080" viewBox="0 0 1920 1080"><path d="M466,610 C600,610 590,330 740,330" fill="none" stroke="#1A9E78" stroke-width="2" stroke-opacity=".55"/><path d="M466,610 C600,610 590,470 740,470" fill="none" stroke="#147A5C" stroke-width="2" stroke-opacity=".55"/><path d="M466,610 C600,610 590,610 740,610" fill="none" stroke="#1A9E78" stroke-width="2" stroke-opacity=".55"/><path d="M466,610 C600,610 590,750 740,750" fill="none" stroke="#147A5C" stroke-width="2" stroke-opacity=".55"/><path d="M466,610 C600,610 590,890 740,890" fill="none" stroke="#18232E" stroke-width="2" stroke-opacity=".55"/></svg>
-  <div class="hub"><div data-bigbrand="46"></div></div>
-  <div class="row" style="top:282px"><span class="nb" style="background:#E8F7F2;color:#1A9E78">01</span><div><h3>Reduce the risk of automating.</h3><p>We diagnose first, then implement where 80% of the value is.</p></div></div><div class="row" style="top:422px"><span class="nb" style="background:#A9DCCB;color:#147A5C">02</span><div><h3>Keep its knowledge.</h3><p>When someone leaves, what they knew stays. New people ramp up faster.</p></div></div><div class="row" style="top:562px"><span class="nb" style="background:#1A9E78;color:#FFFFFF">03</span><div><h3>See its real inefficiencies.</h3><p>Bottlenecks, errors and people dependencies, not the ones on the org chart.</p></div></div><div class="row" style="top:702px"><span class="nb" style="background:#147A5C;color:#FFFFFF">04</span><div><h3>Run agents that actually work.</h3><p>They feed on Tacit’s context, not text search.</p></div></div><div class="row" style="top:842px"><span class="nb" style="background:#18232E;color:#4CC7A0">05</span><div><h3>Pay less per agent.</h3><p>They get only the context they need, already processed.</p></div></div>
+  <svg class="spokes" width="1920" height="1080" viewBox="0 0 1920 1080"><path d="M470,620 C620,620 600,340 760,340" fill="none" stroke="#1A9E78" stroke-width="1.6" stroke-opacity=".45"/><path d="M470,620 C620,620 600,480 760,480" fill="none" stroke="#1A9E78" stroke-width="1.6" stroke-opacity=".45"/><path d="M470,620 C620,620 600,620 760,620" fill="none" stroke="#1A9E78" stroke-width="1.6" stroke-opacity=".45"/><path d="M470,620 C620,620 600,760 760,760" fill="none" stroke="#1A9E78" stroke-width="1.6" stroke-opacity=".45"/><path d="M470,620 C620,620 600,900 760,900" fill="none" stroke="#1A9E78" stroke-width="1.6" stroke-opacity=".45"/><circle cx="760" cy="340" r="6" fill="#1A9E78"/><circle cx="760" cy="480" r="6" fill="#1A9E78"/><circle cx="760" cy="620" r="6" fill="#1A9E78"/><circle cx="760" cy="760" r="6" fill="#1A9E78"/><circle cx="760" cy="900" r="6" fill="#1A9E78"/></svg>
+  <div class="hub"><div data-bigbrand="44"></div></div>
+  <div class="row" style="top:270px"><span class="no">01</span><div><h3>Reduce the risk of automating.</h3><p>We diagnose first, then implement where 80% of the value is.</p></div></div><div class="row" style="top:410px"><span class="no">02</span><div><h3>Keep its knowledge.</h3><p>When someone leaves, what they knew stays. New people ramp up faster.</p></div></div><div class="row" style="top:550px"><span class="no">03</span><div><h3>See its real inefficiencies.</h3><p>Bottlenecks, errors and people dependencies, not the ones on the org chart.</p></div></div><div class="row" style="top:690px"><span class="no">04</span><div><h3>Run agents that actually work.</h3><p>They feed on Tacit’s context, not text search.</p></div></div><div class="row" style="top:830px"><span class="no">05</span><div><h3>Pay less per agent.</h3><p>They get only the context they need, already processed.</p></div></div>
   <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
 </section>
 
