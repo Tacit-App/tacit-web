@@ -1,6 +1,6 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "outputDirectory": "apps/site/dist",
   "framework": null,
   "redirects": [
     {
@@ -10,22 +10,6 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/es",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/es/",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/privacy",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/es/privacy",
-      "destination": "/index.html"
-    },
     {
       "source": "/investors",
       "destination": "/investors/index.html"

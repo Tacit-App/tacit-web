@@ -3,26 +3,21 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build && npm --prefix docs-site ci && npm --prefix docs-site run build && mkdir -p dist/docs && cp -R docs-site/dist/. dist/docs/",
-    "docs:dev": "npm --prefix docs-site run dev",
-    "lint": "oxlint",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@hugeicons/core-free-icons": "^4.2.3",
-    "@hugeicons/react": "^1.1.9",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "dev": "npm run dev --workspace site",
+    "docs:dev": "npm run dev --workspace docs",
+    "build": "npm run build --workspace site && npm run build --workspace docs && node scripts/merge-docs.mjs",
+    "preview": "npm run preview --workspace site",
+    "lint": "oxlint apps/site/src"
   },
   "devDependencies": {
-    "@types/node": "^24.13.3",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.4",
-    "oxlint": "^1.75.0",
-    "typescript": "~6.0.2",
-    "vite": "^8.2.0"
+    "oxlint": "^1.75.0"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }
