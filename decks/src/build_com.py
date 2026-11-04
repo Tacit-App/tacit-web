@@ -55,6 +55,19 @@ NEW_CSS = r"""
 .c8 .viz img{width:100%;height:100%;display:block}
 .c8 .tag{position:absolute;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-60);white-space:nowrap}
 .c8 .tag.c{color:var(--pulse)}
+
+/* benefits */
+.cb h2{position:absolute;left:120px;top:150px}
+.cb .bns{position:absolute;left:120px;right:120px;top:320px;bottom:130px;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.cb .bn{border-radius:12px;padding:34px 30px;display:flex;flex-direction:column}
+.cb .bn .no{font-family:var(--serif);font-size:56px;line-height:1}
+.cb .bn h3{font-family:var(--serif);font-weight:400;font-size:36px;line-height:1.08;margin-top:150px;min-height:78px}
+.cb .bn p{font-size:19px;line-height:1.5;font-weight:300;margin-top:16px}
+.cb .b1{background:#E8F7F2;color:#18232E}.cb .b1 .no{color:#1A9E78}.cb .b1 p{color:#4A5966}
+.cb .b2{background:#A9DCCB;color:#18232E}.cb .b2 .no{color:#147A5C}.cb .b2 p{color:#24343F}
+.cb .b3{background:#1A9E78;color:#fff}.cb .b3 .no{color:#E8F7F2}.cb .b3 p{color:#E8F7F2}
+.cb .b4{background:#147A5C;color:#fff}.cb .b4 .no{color:#A9DCCB}.cb .b4 p{color:#D8F3EA}
+.cb .b5{background:#18232E;color:#fff}.cb .b5 .no{color:#4CC7A0}.cb .b5 p{color:#C9D4DA}
 /* research */
 .c10 h2{position:absolute;left:120px;top:170px;width:760px;font-size:80px}
 .c10 .lead{position:absolute;left:120px;top:470px;width:740px;font-size:23px;line-height:1.6}
@@ -113,6 +126,13 @@ slides.append(f'''<section class="slide c1">
   <p class="sub">Profitability through an agentic strategy built on how people in the company already think and work.</p>
   <p class="lead">Four services. One core.</p>
   <div class="meta"><span>Commercial presentation · 2026</span><span>tacit.guru</span></div>
+</section>''')
+# benefits (landing "With Tacit, your company will:")
+slides.append(f'''<section class="slide cb">
+  {top('Benefits')}
+  <h2>With Tacit, your company <span class="hl">will</span>:</h2>
+  <div class="bns"><div class="bn b1"><span class="no">01</span><h3>Reduce the risk of automating.</h3><p>Most companies want AI but don’t know where to start, and deploying agents blindly breaks processes. We diagnose first, then implement where 80% of the value is.</p></div><div class="bn b2"><span class="no">02</span><h3>Keep its knowledge.</h3><p>When someone leaves, what they knew isn’t lost. When someone joins, they ramp up faster.</p></div><div class="bn b3"><span class="no">03</span><h3>See its real inefficiencies.</h3><p>Bottlenecks, errors and people dependencies, not the ones on the org chart.</p></div><div class="bn b4"><span class="no">04</span><h3>Run agents that actually work.</h3><p>They feed on Tacit’s context, not text search.</p></div><div class="bn b5"><span class="no">05</span><h3>Pay less per agent.</h3><p>They get only the context they need, already processed, instead of reading entire documents.</p></div></div>
+  {foot}
 </section>''')
 # 2 problem, 3 thesis, 4 core (investor slides)
 slides.append(section('s3'))
@@ -195,31 +215,17 @@ slides.append(f'''<section class="slide c11">
 # 12 who + industries (landing)
 inds = ['Consulting', 'Professional services', 'Technology / IT Sourcing', 'Logistics', 'Fintech', 'Healthcare']
 slides.append(f'''<section class="slide c12">
-  {top('Who it’s for')}
-  <h2>Who these services are <span class="hl">for</span>.</h2>
+  {top('Pilots')}
+  <h2>Industries where we are running <span class="hl">pilots</span>.</h2>
   <p class="lead">Complex operations that inherently have high turnover, depend entirely on a few highly experienced managers, or keep a delicate relationship with clients who need a higher level of service.</p>
   <p class="closer">Client efficiency is the goal. Yours improves with it.</p>
-  <div class="ind"><p class="kicker">Industries</p><h3>The operations we work in.</h3><ul>{"".join(f"<li>{x}<span>{i:02d}</span></li>" for i, x in enumerate(inds, 1))}</ul></div>
+  <div class="ind"><p class="kicker">Active pilots</p><h3>Where Tacit is in testing today.</h3><ul>{"".join(f"<li>{x}<span>{i:02d}</span></li>" for i, x in enumerate(inds, 1))}</ul></div>
   {foot}
 </section>''')
 # 13 clients (investor s8, note adapted for prospects)
 s8 = section('s8').replace('<p>Six companies connected. Two are already paying.</p>', '<p>Companies already working with Tacit.</p>')
 assert 'Companies already working with Tacit.' in s8
 slides.append(s8)
-# 14 trust (privacy policy, condensed; only claims the policy makes)
-trust = [('Purpose', 'Built to capture knowledge, not to monitor people.'),
-         ('People', 'Tacit does not evaluate individual performance or compare employees.'),
-         ('Control', 'Employees can confirm, correct, or flag knowledge attributed to them.'),
-         ('Security', 'Encryption in transit and at rest, with per-organization isolation on every query.'),
-         ('Redaction', 'Customer-defined redaction before anything is stored.'),
-         ('AI', 'Customer data is not used to train AI models. The knowledge engine is deterministic and auditable.')]
-tg = ''.join(f'<div class="it"><p class="k">{k}</p><p>{p}</p></div>' for k, p in trust)
-slides.append(f'''<section class="slide c14">
-  {top('Trust')}
-  <h2>Your knowledge stays <span class="hl">yours</span>.</h2>
-  <div class="grid">{tg}</div>
-  {foot}
-</section>''')
 # 15 team (investor s9)
 slides.append(section('s9'))
 # 16 close (landing close + CTA)
