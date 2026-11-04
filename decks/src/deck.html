@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tacit · Investor deck</title>
+<style>
+@font-face{font-family:'Instrument Serif';font-weight:400;src:url(../build/node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-weight:300;src:url(../build/node_modules/@fontsource/dm-sans/files/dm-sans-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-weight:400;src:url(../build/node_modules/@fontsource/dm-sans/files/dm-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-weight:400;src:url(../build/node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-weight:400;unicode-range:U+0370-03FF;src:url(../build/node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-greek-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Noto Sans Math';font-weight:400;src:url(../build/node_modules/@fontsource/noto-sans-math/files/noto-sans-math-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-weight:500;src:url(../build/node_modules/@fontsource/dm-sans/files/dm-sans-latin-500-normal.woff2) format('woff2')}
+
+:root{
+  --ink:#18232E; --ink-80:#2E3B47; --ink-60:#4A5966; --mist:#8A9BA8; --pulse:#1A9E78; --pulse-deep:#147A5C;
+  --paper:#FFFFFF; --hair:rgba(24,35,46,.14); --hair-strong:rgba(24,35,46,.28);
+  --serif:'Instrument Serif',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif; --math:'JetBrains Mono','Noto Sans Math',monospace;
+}
+@page{size:1920px 1080px;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;-webkit-font-smoothing:antialiased}
+
+.slide{width:1920px;height:1080px;position:relative;overflow:hidden;background:var(--paper);break-after:page}
+.slide:last-child{break-after:auto}
+.dark{background:var(--ink);color:#F4F6F7}
+
+/* chrome */
+.top{position:absolute;top:56px;left:120px;right:120px;display:flex;justify-content:space-between;align-items:center;font-size:15px;letter-spacing:.02em;color:var(--ink-60);z-index:5}
+.top .lab{display:flex;align-items:center;gap:14px}
+.top .lab::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--pulse)}
+.foot{position:absolute;bottom:52px;left:120px;right:120px;display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--mist);z-index:5}
+.foot .b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:20px;color:var(--ink)}
+.dark .top{color:#9FB0BA} .dark .foot .b{color:#F4F6F7} .dark .foot{color:#7F909B}
+
+/* type */
+h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.012em;line-height:1.02}
+h1{font-size:128px}
+h2{font-size:88px}
+.hl{color:var(--pulse)}
+.dark .hl{color:#4CC7A0}
+.lead{font-size:28px;line-height:1.45;color:var(--ink-60);font-weight:300}
+.dark .lead{color:#AEBCC5}
+.small{font-size:20px;line-height:1.55;color:var(--ink-60);font-weight:300}
+.kicker{font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--mist);font-weight:500}
+
+.tex{background-size:cover;background-position:center;border-radius:10px;overflow:hidden;position:relative}
+.chip{display:inline-flex;align-items:center;gap:10px;background:#FFFFFF;border:1px solid #CFD8DD;border-radius:8px;padding:12px 18px;font-size:18px;color:var(--ink)}
+.chip i{width:7px;height:7px;border-radius:50%;background:var(--pulse);display:block}
+.shot{position:absolute;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #CFD8DD}
+.shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:top left}
+
+
+/* ---------- efficiency premise (e1, e2) ---------- */
+.e1 h2{position:absolute;left:120px;top:150px;width:1500px}
+.e1 .lead{position:absolute;left:120px;top:290px;width:1260px}
+.e1 .lanes{position:absolute;left:120px;right:120px;top:460px}
+.e1 .lane{display:grid;grid-template-columns:230px 1fr;align-items:center;padding:42px 0;border-top:1px solid var(--hair)}
+.e1 .lane:last-child{border-bottom:1px solid var(--hair)}
+.e1 .lane .who{font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--mist)}
+.e1 .lane.t .who{color:var(--pulse)}
+.e1 .flow{display:flex;align-items:center;gap:0}
+.e1 .bx{border:1.4px solid #B9C4CB;border-radius:8px;padding:20px 22px;font-size:21px;color:var(--ink-60);background:#fff;white-space:nowrap}
+.e1 .ar{flex:none;width:34px;height:1.4px;background:#B9C4CB;position:relative}
+.e1 .ar::after{content:"";position:absolute;right:0;top:-4px;width:8px;height:8px;border-top:1.4px solid #B9C4CB;border-right:1.4px solid #B9C4CB;transform:rotate(45deg)}
+.e1 .t .bx{border-color:var(--ink);color:var(--ink)}
+.e1 .t .ar,.e1 .t .ar::after{background:var(--ink);border-color:var(--ink)}
+.e1 .t .ar::after{background:none}
+.e1 .lane:not(.t) .ar::after{background:none}
+.e1 .bx.ctx{background:#E8F7F2;border-color:var(--pulse);color:var(--pulse-deep)}
+.e1 .work{display:flex;align-items:stretch;border-radius:8px;overflow:hidden;border:1.4px solid var(--pulse)}
+.e1 .work .det{background:var(--pulse);color:#fff;padding:20px 28px;font-size:21px;white-space:nowrap;min-width:470px}
+.e1 .work .llm{background:#fff;color:var(--ink);padding:20px 18px;font-size:17px;white-space:nowrap;border-left:1.4px solid var(--pulse)}
+.e1 .bx.loop{border-style:dashed}
+.e1 .nope{position:absolute;left:120px;right:120px;top:850px;display:grid;grid-template-columns:repeat(3,1fr);column-gap:60px}
+.e1 .nope span{display:flex;align-items:center;gap:16px;font-family:var(--serif);font-size:36px;line-height:1.15;color:var(--ink)}
+.e1 .nope span::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--pulse)}
+.e2 h2{position:absolute;left:120px;top:150px;width:1500px}
+.e2 .tbl{position:absolute;left:120px;right:120px;top:330px}
+.e2 .hd,.e2 .rw{display:grid;grid-template-columns:300px 1fr 1fr;column-gap:60px}
+.e2 .hd{padding-bottom:16px;border-bottom:1px solid var(--hair-strong)}
+.e2 .hd span{font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--mist)}
+.e2 .hd span:last-child{color:var(--pulse)}
+.e2 .rw{padding:20px 0;border-bottom:1px solid var(--hair);align-items:center}
+.e2 .rw .c{font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--ink)}
+.e2 .rw .g{font-size:21px;line-height:1.4;color:var(--mist);font-weight:300}
+.e2 .rw .t{font-family:var(--serif);font-size:30px;line-height:1.15;color:var(--ink);display:flex;align-items:center;gap:18px}
+.e2 .rw .t::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--pulse)}
+.e2 .closer{position:absolute;left:120px;right:120px;bottom:120px;font-family:var(--serif);font-size:38px;line-height:1.2;color:var(--pulse)}
+
+/* math annotations */
+.ann{font-family:var(--math);font-size:15px;letter-spacing:.01em;color:var(--ink-60);line-height:1.5;white-space:nowrap}
+.ann sub,.ann sup{font-size:.72em;line-height:0}
+.ann.lt{color:#AFC0C9}
+.ann b{font-weight:400;color:var(--pulse)}
+.ann.lt b{color:#4CC7A0}
+.viz{position:absolute;overflow:hidden;border-radius:12px}
+.viz>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.viz .ann{position:absolute;z-index:2;padding:3px 9px;border-radius:4px;background:#FFFFFF}
+.viz .ann.lt{background:#18232E}
+.s4 .viz .ann.lt{background:none;padding:0}
+.s11 .viz .ann{background:#E8F7F2}
+
+/* ---------- 1 cover ---------- */
+.s1 .brandmark{position:absolute;left:120px;top:110px;display:flex;align-items:center;gap:20px;font-family:var(--serif);font-size:54px;color:var(--ink);letter-spacing:-.01em}
+.s1 h1{position:absolute;left:120px;top:470px;width:1000px;font-size:118px}
+.s1 .lead{position:absolute;left:120px;top:770px;width:760px;font-size:26px}
+.s1 .mk{position:absolute;right:-90px;top:110px;width:860px;height:860px}
+.s1 .meta{position:absolute;left:120px;right:120px;bottom:56px;display:flex;justify-content:space-between;font-size:15px;color:var(--mist);border-top:1px solid var(--hair);padding-top:22px}
+
+/* ---------- 2 thesis ---------- */
+.s2 h2{position:absolute;left:120px;top:170px;width:1500px}
+.s2 .lead{position:absolute;left:120px;top:300px;width:900px}
+.s2 .pair{position:absolute;left:120px;right:120px;top:470px;bottom:130px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.panel{border:1px solid var(--hair);border-radius:10px;padding:56px 56px;display:flex;flex-direction:column;justify-content:space-between}
+.panel h3{font-family:var(--serif);font-weight:400;font-size:52px;line-height:1.05}
+.panel p{font-size:28px;line-height:1.45;font-weight:300;color:var(--ink-60);max-width:640px}
+.panel .kicker{margin-bottom:22px}
+.panel{position:relative;overflow:hidden;padding:0}
+.panel .kicker{padding:40px 48px 0;margin:0}
+.panel>img.bg{display:block;width:100%;height:230px;object-fit:cover}
+.panel p.txt{padding:0 48px 44px}
+.panel.on{border:0;color:#fff;background:#18232E}
+.panel.on p.txt{color:#DCE3E7}
+.panel.on .kicker{color:#9FB0BA}
+.panel.off h3{color:var(--ink-60)}
+
+/* ---------- 3 problem ---------- */
+.s3 .l{position:absolute;left:120px;top:150px;width:780px}
+.s3 .l h2{font-size:80px}
+.s3 .l .lead{margin-top:28px;font-size:26px}
+.s3 .sub{margin-top:60px;display:flex;align-items:center;gap:22px}
+.s3 .sub::before{content:"";flex:none;width:14px;height:14px;border-radius:50%;background:var(--pulse);box-shadow:none}
+.s3 .sub h3{font-family:var(--serif);font-weight:400;font-size:56px;line-height:1.05;color:var(--ink);letter-spacing:-.01em}
+.s3 .sub p{font-size:22px;line-height:1.5;color:var(--ink-60);font-weight:300;margin-top:10px}
+.s3 .callout{margin-top:36px;border-top:1px solid var(--hair);padding-top:22px}
+.s3 .callout p{font-size:22px;line-height:1.5;color:var(--ink);font-weight:300;margin-top:14px}
+.s3 .viz{left:980px;right:40px;top:40px;bottom:40px;border:1px solid var(--hair)}
+.s3 .chips{position:absolute;inset:0}
+.s3 .chip{position:absolute}
+
+/* ---------- 4 core (dark) ---------- */
+.s4 h2{position:absolute;left:120px;top:190px;width:1000px;font-size:92px;line-height:1.04}
+.s4 .how{position:absolute;left:120px;top:640px;width:880px;font-size:28px;line-height:1.5;color:#DCE3E7;font-weight:300;border-left:2px solid #4CC7A0;padding-left:28px}
+.s4 .lead{position:absolute;left:120px;bottom:150px}
+.s4 .viz{right:200px;top:40px;bottom:40px;width:520px;overflow:visible}
+.s4 .tag{position:absolute;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#9FB0BA;white-space:nowrap}
+.s4 .tag.c{color:#4CC7A0}
+.s4 .tag.o{color:#8FD3BC}
+
+/* ---------- 5 services ---------- */
+.s5 h2{position:absolute;left:120px;top:160px}
+.s5 .cols{position:absolute;left:120px;right:120px;top:330px;bottom:130px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hair-strong)}
+.s5 .col{padding:34px 34px 0 0;display:flex;flex-direction:column;border-right:1px solid var(--hair);margin-right:34px}
+.s5 .col:last-child{border-right:0;margin-right:0}
+.s5 .n{font-family:var(--serif);font-size:64px;line-height:1;color:var(--pulse)}
+.s5 h3{font-family:var(--serif);font-weight:400;font-size:40px;margin-top:22px;line-height:1.05}
+.s5 p{font-size:21px;line-height:1.5;color:var(--ink-60);font-weight:300;margin-top:16px}
+.s5 .step{margin-top:auto;height:210px;border-radius:8px;overflow:hidden;border:1px solid var(--hair);background:#fff}
+.s5 .step img{width:100%;height:100%;object-fit:contain;display:block}
+.s5 .ann{margin-top:14px}
+
+/* ---------- 6 product ---------- */
+.s6 h2{position:absolute;left:120px;top:150px}
+.s6 .grid{position:absolute;left:120px;right:120px;top:300px;bottom:110px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:28px 28px}
+.s6 figure{display:flex;flex-direction:column}
+.s6 .tex{flex:1;border-radius:10px}
+.s6 .shot{left:44px;right:44px;top:36px;bottom:-30px;border-radius:8px}
+.s6 figcaption{display:flex;justify-content:space-between;margin-top:14px;font-size:18px;color:var(--ink)}
+.s6 figcaption span:last-child{color:var(--mist)}
+
+/* ---------- 7 roadmap ---------- */
+.s7 h2{position:absolute;left:120px;top:170px;width:1300px}
+.s7 .curve{position:absolute;left:120px;top:360px;width:1680px;height:220px}
+.s7 .road{position:absolute;left:120px;right:120px;top:580px;display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+.s7 .st{padding:30px 34px 0 0;border-top:1px solid var(--hair-strong);position:relative}
+.s7 .st::before{content:"";position:absolute;top:-6px;left:0;width:11px;height:11px;border-radius:50%;background:#fff;border:1.5px solid var(--ink-60)}
+.s7 .st.now{border-top:3px solid var(--pulse)}
+.s7 .st.now::before{background:var(--pulse);border-color:var(--pulse);top:-7px}
+.s7 .when{font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--mist);font-weight:500}
+.s7 .now .when{color:var(--pulse-deep)}
+.s7 h3{font-family:var(--serif);font-weight:400;font-size:40px;margin-top:16px;line-height:1.05}
+.s7 p{font-size:20px;line-height:1.5;color:var(--ink-60);font-weight:300;margin-top:12px}
+.s7 .rail{position:absolute;left:120px;right:120px;bottom:130px;display:grid;grid-template-columns:300px 1fr;align-items:center;border-top:1px solid var(--hair);padding-top:30px}
+.s7 .rail b{font-family:var(--serif);font-weight:400;font-size:36px;color:var(--pulse)}
+.s7 .rail span{font-size:24px;line-height:1.5;color:var(--ink);font-weight:300}
+
+/* ---------- 8 companies ---------- */
+.s8 h2{position:absolute;left:120px;top:170px}
+.s8 .wall{position:absolute;left:120px;right:120px;top:400px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
+.s8 .logo{height:230px;border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
+.s8 .logo img{filter:grayscale(1) contrast(1.05);opacity:.82;max-width:240px;object-fit:contain}
+.s8 .logo span{font-size:15px;color:var(--mist);letter-spacing:.02em}
+.s8 .cell-note{background:var(--ink);align-items:flex-start;justify-content:flex-end;padding:30px 34px}
+.s8 .cell-note p{font-family:var(--serif);font-size:34px;line-height:1.12;color:#fff}
+.s8 .note{position:absolute;left:120px;bottom:130px;display:flex;align-items:baseline;gap:60px;border-top:1px solid var(--hair-strong);right:120px;padding-top:28px}
+.s8 .note .big{font-family:var(--serif);font-size:72px;line-height:1}
+.s8 .note .big em{font-style:normal;color:var(--pulse)}
+.s8 .note .small{font-size:24px}
+
+/* ---------- 9 team ---------- */
+.s9 h2{position:absolute;left:120px;top:150px;width:1300px;font-size:80px}
+.s9 .lead{position:absolute;left:120px;top:350px;width:1100px;font-size:24px}
+.s9 .team{position:absolute;left:120px;right:120px;top:500px;bottom:110px;display:grid;grid-template-columns:1fr 1fr;column-gap:80px}
+.s9 .p{display:grid;grid-template-columns:112px 1fr;gap:30px;border-top:1px solid var(--hair-strong);padding-top:30px}
+.s9 .p img{width:112px;height:112px;border-radius:50%;object-fit:cover;filter:grayscale(1)}
+.s9 .nm{font-family:var(--serif);font-size:38px;line-height:1}
+.s9 .rl{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--pulse-deep);font-weight:500;margin-top:10px}
+.s9 ul{list-style:none;margin-top:14px}
+.s9 li{font-size:19px;line-height:1.55;color:var(--ink-60);font-weight:300}
+
+/* ---------- 10 ask (dark) ---------- */
+.s10 h2{position:absolute;left:120px;top:170px;font-size:104px}
+.s10 .lead{position:absolute;left:120px;top:305px;font-size:28px}
+.s10 .uop{position:absolute;right:120px;top:150px;text-align:right}
+.s10 .uop .kicker{color:#9FB0BA}
+.s10 .uop .tot{font-family:var(--serif);font-size:44px;color:#fff;margin-top:8px;font-variant-numeric:tabular-nums}
+.s10 .stack{position:absolute;left:120px;right:120px;top:520px;display:flex;gap:4px;height:10px}
+.s10 .stack i{display:block;height:100%;border-radius:2px}
+.s10 .cats{position:absolute;left:120px;right:120px;top:580px;display:grid;grid-template-columns:repeat(3,1fr);column-gap:64px}
+.s10 .cat{border-top:2px solid var(--c);padding-top:22px}
+.s10 .cat .kicker{color:#C9D4DA}
+.s10 .cat .pct{font-family:var(--serif);font-size:150px;line-height:1;color:var(--c);margin-top:12px}
+.s10 .cat .amt{font-size:24px;color:#fff;font-weight:300;margin-top:8px;font-variant-numeric:tabular-nums}
+.s10 .cat ul{list-style:none;margin-top:30px}
+.s10 .cat li{position:relative;padding:0 0 0 24px;margin-bottom:16px;font-size:20px;line-height:1.45;color:#C9D4DA;font-weight:300}
+.s10 .cat li::before{content:"";position:absolute;left:0;top:12px;width:7px;height:7px;border-radius:50%;background:var(--c)}
+
+/* ---------- 11 horizon ---------- */
+.s11 .brandmark{position:absolute;left:120px;top:150px;display:flex;align-items:center;gap:18px;font-family:var(--serif);font-size:44px;color:var(--ink)}
+.s11 h2{position:absolute;left:120px;top:330px;width:960px;font-size:100px}
+.s11 .lead{position:absolute;left:120px;top:600px;width:780px}
+.s11 .sign{position:absolute;left:120px;top:800px;font-family:var(--serif);font-size:48px;color:var(--pulse)}
+.s11 .mk{position:absolute;right:-90px;top:110px;width:860px;height:860px}
+.s11 .chips{position:absolute;inset:0}
+.s11 .chip{position:absolute}
+</style>
+</head>
+<body>
+
+<!-- 1 COVER -->
+<section class="slide s1">
+  <img class="mk" src="mv/markbig.svg" alt="">
+  <div class="brandmark" data-bigbrand="62"></div>
+  <h1>Human decisions as the engine of <span class="hl">growth</span>.</h1>
+  <p class="lead">Profitability through an agentic strategy built on how people in the company already think and work.</p>
+  <div class="meta"><span>Investor presentation · 2026</span><span>Confidential</span></div>
+</section>
+
+<!-- 2 THESIS -->
+<section class="slide s2">
+  <div class="top"><span class="lab">Thesis</span><span>02 / 12</span></div>
+  <h2>Companies are systems made by <span class="hl">people</span>.</h2>
+  <p class="lead">Agents improve them only when the human knowledge behind the system is understood.</p>
+  <div class="pair">
+    <div class="panel off">
+      <p class="kicker">The usual bet</p>
+      <img class="bg" src="mv/usual.svg" alt="">
+      <p class="txt">Capital goes to connecting context and dropping in agents, then hoping the culture follows.</p>
+    </div>
+    <div class="panel on">
+      <p class="kicker">Our bet</p>
+      <img class="bg" src="mv/ourbet.svg" alt="">
+      <p class="txt">Capital goes to reading how work happens, restructuring, then agentizing from that culture.</p>
+    </div>
+  </div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<!-- 3 PROBLEM -->
+<section class="slide s3">
+  <div class="top" style="right:980px"><span class="lab">Problem</span><span></span></div>
+  <div class="l">
+    <h2>Companies can’t see where their work <span class="hl">breaks</span>.</h2>
+    <p class="lead">Inefficiencies and bottlenecks live silently, unrecognized, and no system in the company shows them.</p>
+    <div class="sub">
+      <h3>Companies already bought the <span class="hl">stack</span>.</h3>
+    </div>
+    <div class="callout">
+      <p class="kicker">What the spend misses</p>
+      <p>The failure is cultural: how people work, who they trust, which habits win under pressure. Another tool does not fix that. That gap is the market.</p>
+    </div>
+  </div>
+  <div class="viz"><img src="mv/problem.svg" alt="">
+    <div class="chips">
+      <span class="chip" style="left:248px;top:92px"><i></i>decision logic</span>
+      <span class="chip" style="left:618px;top:182px"><i></i>coordination pattern</span>
+      <span class="chip" style="left:318px;top:312px"><i></i>exception handling</span>
+      <span class="chip" style="left:708px;top:402px"><i></i>workflow</span>
+      <span class="chip" style="left:198px;top:512px"><i></i>troubleshooting</span>
+      <span class="chip" style="left:538px;top:592px"><i></i>tacit know-how</span>
+      <span class="chip" style="left:278px;top:742px"><i></i>deal context</span>
+      <span class="chip" style="left:658px;top:802px"><i></i>escalation path</span>
+      <span class="chip" style="left:418px;top:882px"><i></i>heuristic</span>
+    </div>
+  </div>
+  <div class="foot" style="right:980px"><span class="b" data-brand></span><span>Confidential · 03 / 12</span></div>
+</section>
+
+<!-- 4 CORE -->
+<section class="slide s4 dark">
+  <div class="top" style="right:600px"><span class="lab">The core</span><span>04 / 12</span></div>
+  <h2>Agentic success runs on judgment and culture. <span class="hl" style="display:block;margin-top:18px">Tacit makes both legible.</span></h2>
+  <p class="how">Tacit captures the daily workflows and the tacit decisions behind them, and detects the inefficiencies where agents create the most value.</p>
+  <p class="lead">Tech is a layer, not the whole story.</p>
+  <div class="viz"><img src="mv/layers.svg" alt="">
+    <span class="tag" style="left:470px;top:161px">Agents</span>
+    <span class="tag" style="left:470px;top:311px">Tech</span>
+    <span class="tag o" style="left:470px;top:461px">Operations</span>
+    <span class="tag c" style="left:470px;top:650px">Culture</span>
+  </div>
+  <div class="foot" style="right:600px"><span class="b" data-brand data-light></span><span>Confidential</span></div>
+</section>
+
+<!-- 5 SERVICES -->
+<section class="slide s5">
+  <div class="top"><span class="lab">The work</span><span>05 / 12</span></div>
+  <h2>Four services. One <span class="hl">sequence</span>.</h2>
+  <div class="cols">
+    <div class="col"><span class="n">01</span><h3>Diagnostic</h3><p>Map where expertise lives, how it is used, and which tools and steps are not productive.</p><div class="step"><img src="mv/step1.svg" alt=""></div></div>
+    <div class="col"><span class="n">02</span><h3>Change premises</h3><p>Change how the team works and trains: education, roles, and structure. Surface the inefficiencies and the bottlenecks.</p><div class="step"><img src="mv/step2.svg" alt=""></div></div>
+    <div class="col"><span class="n">03</span><h3>Core basic agents</h3><p>Implement Tacit and the tools people will actually use, so know-how becomes a living layer.</p><div class="step"><img src="mv/step3.svg" alt=""></div></div>
+    <div class="col"><span class="n">04</span><h3>Agentification</h3><p>Ship specific agents that show a visible gain, then extend them with the same people.</p><div class="step"><img src="mv/step4.svg" alt=""></div></div>
+  </div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<!-- 6 PRODUCT -->
+<section class="slide s6">
+  <div class="top"><span class="lab">The product</span><span>06 / 12</span></div>
+  <h2>Four views. One <span class="hl">product</span>.</h2>
+  <div class="grid">
+    <figure><div class="tex" style="background:url(mv/prodbg.svg) center/cover,#F6F8F7;border:1px solid var(--hair)"><div class="shot"><img src="assets/app/pulse-priorities.png" alt=""></div></div><figcaption><span>Pulse</span><span>01</span></figcaption></figure>
+    <figure><div class="tex" style="background:url(mv/prodbg.svg) center/cover,#F6F8F7;border:1px solid var(--hair)"><div class="shot"><img src="assets/app/knowledge-flow.png" alt=""></div></div><figcaption><span>Knowledge</span><span>02</span></figcaption></figure>
+    <figure><div class="tex" style="background:url(mv/prodbg.svg) center/cover,#F6F8F7;border:1px solid var(--hair)"><div class="shot"><img src="assets/app/knowledge-profiles.png" alt=""></div></div><figcaption><span>Profiles</span><span>03</span></figcaption></figure>
+    <figure><div class="tex" style="background:url(mv/prodbg.svg) center/cover,#F6F8F7;border:1px solid var(--hair)"><div class="shot"><img src="assets/app/knowledge-sop-detail.png" alt=""></div></div><figcaption><span>A procedure</span><span>04</span></figcaption></figure>
+  </div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<!-- E1 EFFICIENCY: HOW -->
+<section class="slide e1">
+  <div class="top"><span class="lab">Agents on Tacit</span><span>07 / 12</span></div>
+  <h2>Simple agents. Very low <span class="hl">cost</span>.</h2>
+  <p class="lead">The agent receives the context already structured from Tacit and resolves most of the work with deterministic code. The language model only handles small steps.</p>
+  <div class="lanes">
+    <div class="lane"><span class="who">Generic agent</span>
+      <div class="flow"><span class="bx">Prompt</span><span class="ar"></span><span class="bx">Search</span><span class="ar"></span><span class="bx">Read long documents</span><span class="ar"></span><span class="bx loop">LLM reasoning, step after step</span><span class="ar"></span><span class="bx">Result</span></div></div>
+    <div class="lane t"><span class="who">Agent with Tacit</span>
+      <div class="flow"><span class="bx">Tacit engine</span><span class="ar"></span><span class="bx ctx">Structured context</span><span class="ar"></span><div class="work"><span class="det">Deterministic code does most of the work</span><span class="llm">LLM: small steps</span></div><span class="ar"></span><span class="bx">Result</span></div></div>
+  </div>
+  <div class="nope"><span>No heavy spend on language models</span><span>No extra SaaS</span><span>No reading of long contexts</span></div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+
+<!-- 7 ROADMAP -->
+<section class="slide s7">
+  <div class="top"><span class="lab">Roadmap</span><span>08 / 12</span></div>
+  <h2>From a viable engine to a <span class="hl">commercial</span> company.</h2>
+  <img class="curve" src="mv/roadmap.svg" alt="">
+  <div class="road">
+    <div class="st"><p class="when">Months 1 to 3</p><h3>Viable engine</h3><p>Build the first engine that extracts tacit knowledge.</p></div>
+    <div class="st"><p class="when">Then</p><h3>Prove it live</h3><p>Run it inside companies. Find the errors and what to improve.</p></div>
+    <div class="st now"><p class="when">Now</p><h3>Paying clients</h3><p>First paying clients. Gauge industry appetite and set the long-term pricing model.</p></div>
+    <div class="st"><p class="when">12 months</p><h3>50 clients</h3><p>Run them as proofs of the benefit inside companies.</p></div>
+    <div class="st"><p class="when">End of 2027</p><h3>Accelerate</h3><p>Invest in the commercial structure and the positioning that speed growth.</p></div>
+  </div>
+  <div class="rail"><b>In parallel.</b><span>An academic team keeps sharpening the engine that extracts and processes tacit knowledge for agentic implementation.</span></div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<!-- 8 COMPANIES -->
+<section class="slide s8">
+  <div class="top"><span class="lab">Companies</span><span>09 / 12</span></div>
+  <h2>Already inside real <span class="hl">companies</span>.</h2>
+  <div class="wall">
+    <div class="logo"><img src="assets/clients/mora.svg" style="height:30px"><span>Mora Health</span></div>
+    <div class="logo"><img src="assets/clients/onest.png" style="height:62px"><span>Onest</span></div>
+    <div class="logo"><img src="assets/clients/disrupting.png" style="height:26px"><span>Disrupting</span></div>
+    <div class="logo"><img src="assets/clients/loyaltech.png" style="height:72px"><span>LoyalTech</span></div>
+    <div class="logo"><img src="assets/clients/platino.png" style="height:72px"><span>Grupo Platino</span></div>
+    <div class="logo"><img src="assets/clients/condor.svg" style="height:46px"><span>Condor Media</span></div>
+    <div class="logo"><img src="assets/clients/birdie.png" style="height:72px"><span>Birdie</span></div>
+    <div class="logo cell-note"><p>Six companies connected. Two are already paying.</p></div>
+  </div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<!-- 9 TEAM -->
+<section class="slide s9">
+  <div class="top"><span class="lab">Founders and board</span><span>10 / 12</span></div>
+  <h2>Built by academics, experienced entrepreneurs, and <span class="hl">executives</span>.</h2>
+  <p class="lead">The founders come from consulting, entrepreneurship, and academia. The vision starts in academia and is shaped by real business experience.</p>
+  <div class="team">
+    <div class="p"><img src="assets/team/juan-carlos.png"><div><p class="nm">Juan Carlos Martorell</p><p class="rl">Founder</p><ul><li>MBA IPADE · MSc Neuroscience · MSc AI</li><li>20 years in M&amp;A, making teams run cleaner when knowledge walked out</li><li>Helped move over $200M in deals by closing the execution gap</li></ul></div></div>
+    <div class="p"><img src="assets/team/francisco-caballero.png"><div><p class="nm">Francisco Caballero</p><p class="rl">Founder</p><ul><li>Mora · Zero-to-One, 4x founder, 7x founding engineer</li><li>AI, systems, product · US, LATAM</li></ul></div></div>
+    <div class="p"><img src="assets/team/fernando-pliego.png"><div><p class="nm">Fernando Pliego</p><p class="rl">Board</p><ul><li>GTM · Marketing, Growth, AI · Google San Francisco, Microsoft</li></ul></div></div>
+    <div class="p"><img src="assets/team/francisco-sanchez.png"><div><p class="nm">Francisco Sanchez</p><p class="rl">Board</p><ul><li>SVP, AlixPartners · management consulting</li><li>INSEAD MBA</li></ul></div></div>
+  </div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<!-- 10 ASK -->
+<section class="slide s10 dark">
+  <div class="top"><span class="lab">The ask</span><span>11 / 12</span></div>
+  <h2>We’re raising <span class="hl">$300,000</span>.</h2>
+  <p class="lead">Estimated runway: 12 months.</p>
+  <div class="stack"><i style="flex:45;background:#4CC7A0"></i><i style="flex:35;background:#1A9E78"></i><i style="flex:20;background:#8A9BA8"></i></div>
+  <div class="cats">
+    <div class="cat" style="--c:#4CC7A0"><p class="kicker">Commercial</p><p class="pct">45%</p></div>
+    <div class="cat" style="--c:#1A9E78"><p class="kicker">Engine</p><p class="pct">35%</p></div>
+    <div class="cat" style="--c:#8A9BA8"><p class="kicker">Technology</p><p class="pct">20%</p></div>
+  </div>
+  <div class="foot"><span class="b" data-brand data-light></span><span>Confidential</span></div>
+</section>
+
+<!-- 11 HORIZON -->
+<section class="slide s11">
+  <img class="mk" src="mv/markbig.svg" alt="">
+  <div class="brandmark" data-bigbrand="50"></div>
+  <h2>Start with the culture you already <span class="hl">have</span>.</h2>
+  <p class="lead">Every company will need agents. The winners will build them on how their own people work and decide.</p>
+  <p class="sign">The knowledge behind the work.</p>
+  <div class="foot"><span>tacit.guru</span><span>Confidential</span></div>
+</section>
+
+<script>
+const markSVG=(c,s)=>`<svg width="${s}" height="${s}" viewBox="0 0 100 100"><g stroke="${c}" stroke-width="4" stroke-linecap="round"><line x1="50" y1="84" x2="50" y2="48"/><line x1="50" y1="48" x2="20" y2="18"/><line x1="50" y1="48" x2="80" y2="18"/><line x1="8" y1="18" x2="32" y2="18"/><line x1="68" y1="18" x2="92" y2="18"/></g></svg>`;
+document.querySelectorAll('[data-brand]').forEach(e=>{e.innerHTML=markSVG('#1A9E78',20)+'<span>Tacit</span>'});
+document.querySelectorAll('[data-bigbrand]').forEach(e=>{const s=+e.dataset.bigbrand;e.innerHTML=markSVG('#1A9E78',s)+'<span>Tacit</span>'});
+Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r}))).then(()=>document.fonts.ready).then(()=>document.body.dataset.ready='1');
+</script>
+</body>
+</html>

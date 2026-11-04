@@ -10,7 +10,15 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+.astro
 *.local
+
+# Copied into the site at dev and build time.
+apps/site/public/investors
+apps/site/public/decks
+apps/site/public/tacit-mark.svg
+apps/site/public/tacit-logo-light.svg
+apps/site/public/tacit-logo-dark.svg
 
 # Editor directories and files
 .vscode/*
