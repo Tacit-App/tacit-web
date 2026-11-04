@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tacit · Commercial deck</title>
+<style>
+@font-face{font-family:'Instrument Serif';font-weight:400;src:url(../build/node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-weight:300;src:url(../build/node_modules/@fontsource/dm-sans/files/dm-sans-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-weight:400;src:url(../build/node_modules/@fontsource/dm-sans/files/dm-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-weight:400;src:url(../build/node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-weight:400;unicode-range:U+0370-03FF;src:url(../build/node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-greek-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Noto Sans Math';font-weight:400;src:url(../build/node_modules/@fontsource/noto-sans-math/files/noto-sans-math-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-weight:500;src:url(../build/node_modules/@fontsource/dm-sans/files/dm-sans-latin-500-normal.woff2) format('woff2')}
+
+:root{
+  --ink:#18232E; --ink-80:#2E3B47; --ink-60:#4A5966; --mist:#8A9BA8; --pulse:#1A9E78; --pulse-deep:#147A5C;
+  --paper:#FFFFFF; --hair:rgba(24,35,46,.14); --hair-strong:rgba(24,35,46,.28);
+  --serif:'Instrument Serif',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif; --math:'JetBrains Mono','Noto Sans Math',monospace;
+}
+@page{size:1920px 1080px;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;-webkit-font-smoothing:antialiased}
+
+.slide{width:1920px;height:1080px;position:relative;overflow:hidden;background:var(--paper);break-after:page}
+.slide:last-child{break-after:auto}
+.dark{background:var(--ink);color:#F4F6F7}
+
+/* chrome */
+.top{position:absolute;top:56px;left:120px;right:120px;display:flex;justify-content:space-between;align-items:center;font-size:15px;letter-spacing:.02em;color:var(--ink-60);z-index:5}
+.top .lab{display:flex;align-items:center;gap:14px}
+.top .lab::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--pulse)}
+.foot{position:absolute;bottom:52px;left:120px;right:120px;display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--mist);z-index:5}
+.foot .b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:20px;color:var(--ink)}
+.dark .top{color:#9FB0BA} .dark .foot .b{color:#F4F6F7} .dark .foot{color:#7F909B}
+
+/* type */
+h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.012em;line-height:1.02}
+h1{font-size:128px}
+h2{font-size:88px}
+.hl{color:var(--pulse)}
+.dark .hl{color:#4CC7A0}
+.lead{font-size:28px;line-height:1.45;color:var(--ink-60);font-weight:300}
+.dark .lead{color:#AEBCC5}
+.small{font-size:20px;line-height:1.55;color:var(--ink-60);font-weight:300}
+.kicker{font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--mist);font-weight:500}
+
+.tex{background-size:cover;background-position:center;border-radius:10px;overflow:hidden;position:relative}
+.chip{display:inline-flex;align-items:center;gap:10px;background:#FFFFFF;border:1px solid #CFD8DD;border-radius:8px;padding:12px 18px;font-size:18px;color:var(--ink)}
+.chip i{width:7px;height:7px;border-radius:50%;background:var(--pulse);display:block}
+.shot{position:absolute;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #CFD8DD}
+.shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:top left}
+
+
+/* ---------- efficiency premise (e1, e2) ---------- */
+.e1 h2{position:absolute;left:120px;top:150px;width:1500px}
+.e1 .lead{position:absolute;left:120px;top:290px;width:1260px}
+.e1 .lanes{position:absolute;left:120px;right:120px;top:460px}
+.e1 .lane{display:grid;grid-template-columns:230px 1fr;align-items:center;padding:42px 0;border-top:1px solid var(--hair)}
+.e1 .lane:last-child{border-bottom:1px solid var(--hair)}
+.e1 .lane .who{font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--mist)}
+.e1 .lane.t .who{color:var(--pulse)}
+.e1 .flow{display:flex;align-items:center;gap:0}
+.e1 .bx{border:1.4px solid #B9C4CB;border-radius:8px;padding:20px 22px;font-size:21px;color:var(--ink-60);background:#fff;white-space:nowrap}
+.e1 .ar{flex:none;width:34px;height:1.4px;background:#B9C4CB;position:relative}
+.e1 .ar::after{content:"";position:absolute;right:0;top:-4px;width:8px;height:8px;border-top:1.4px solid #B9C4CB;border-right:1.4px solid #B9C4CB;transform:rotate(45deg)}
+.e1 .t .bx{border-color:var(--ink);color:var(--ink)}
+.e1 .t .ar,.e1 .t .ar::after{background:var(--ink);border-color:var(--ink)}
+.e1 .t .ar::after{background:none}
+.e1 .lane:not(.t) .ar::after{background:none}
+.e1 .bx.ctx{background:#E8F7F2;border-color:var(--pulse);color:var(--pulse-deep)}
+.e1 .work{display:flex;align-items:stretch;border-radius:8px;overflow:hidden;border:1.4px solid var(--pulse)}
+.e1 .work .det{background:var(--pulse);color:#fff;padding:20px 28px;font-size:21px;white-space:nowrap;min-width:470px}
+.e1 .work .llm{background:#fff;color:var(--ink);padding:20px 18px;font-size:17px;white-space:nowrap;border-left:1.4px solid var(--pulse)}
+.e1 .bx.loop{border-style:dashed}
+.e1 .nope{position:absolute;left:120px;right:120px;top:850px;display:grid;grid-template-columns:repeat(3,1fr);column-gap:60px}
+.e1 .nope span{display:flex;align-items:center;gap:16px;font-family:var(--serif);font-size:36px;line-height:1.15;color:var(--ink)}
+.e1 .nope span::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--pulse)}
+.e2 h2{position:absolute;left:120px;top:150px;width:1500px}
+.e2 .tbl{position:absolute;left:120px;right:120px;top:330px}
+.e2 .hd,.e2 .rw{display:grid;grid-template-columns:300px 1fr 1fr;column-gap:60px}
+.e2 .hd{padding-bottom:16px;border-bottom:1px solid var(--hair-strong)}
+.e2 .hd span{font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--mist)}
+.e2 .hd span:last-child{color:var(--pulse)}
+.e2 .rw{padding:20px 0;border-bottom:1px solid var(--hair);align-items:center}
+.e2 .rw .c{font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--ink)}
+.e2 .rw .g{font-size:21px;line-height:1.4;color:var(--mist);font-weight:300}
+.e2 .rw .t{font-family:var(--serif);font-size:30px;line-height:1.15;color:var(--ink);display:flex;align-items:center;gap:18px}
+.e2 .rw .t::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--pulse)}
+.e2 .closer{position:absolute;left:120px;right:120px;bottom:120px;font-family:var(--serif);font-size:38px;line-height:1.2;color:var(--pulse)}
+
+/* math annotations */
+.ann{font-family:var(--math);font-size:15px;letter-spacing:.01em;color:var(--ink-60);line-height:1.5;white-space:nowrap}
+.ann sub,.ann sup{font-size:.72em;line-height:0}
+.ann.lt{color:#AFC0C9}
+.ann b{font-weight:400;color:var(--pulse)}
+.ann.lt b{color:#4CC7A0}
+.viz{position:absolute;overflow:hidden;border-radius:12px}
+.viz>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.viz .ann{position:absolute;z-index:2;padding:3px 9px;border-radius:4px;background:#FFFFFF}
+.viz .ann.lt{background:#18232E}
+.s4 .viz .ann.lt{background:none;padding:0}
+.s11 .viz .ann{background:#E8F7F2}
+
+/* ---------- 1 cover ---------- */
+.s1 .brandmark{position:absolute;left:120px;top:110px;display:flex;align-items:center;gap:20px;font-family:var(--serif);font-size:54px;color:var(--ink);letter-spacing:-.01em}
+.s1 h1{position:absolute;left:120px;top:470px;width:1000px;font-size:118px}
+.s1 .lead{position:absolute;left:120px;top:770px;width:760px;font-size:26px}
+.s1 .mk{position:absolute;right:-90px;top:110px;width:860px;height:860px}
+.s1 .meta{position:absolute;left:120px;right:120px;bottom:56px;display:flex;justify-content:space-between;font-size:15px;color:var(--mist);border-top:1px solid var(--hair);padding-top:22px}
+
+/* ---------- 2 thesis ---------- */
+.s2 h2{position:absolute;left:120px;top:170px;width:1500px}
+.s2 .lead{position:absolute;left:120px;top:300px;width:900px}
+.s2 .pair{position:absolute;left:120px;right:120px;top:470px;bottom:130px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.panel{border:1px solid var(--hair);border-radius:10px;padding:56px 56px;display:flex;flex-direction:column;justify-content:space-between}
+.panel h3{font-family:var(--serif);font-weight:400;font-size:52px;line-height:1.05}
+.panel p{font-size:28px;line-height:1.45;font-weight:300;color:var(--ink-60);max-width:640px}
+.panel .kicker{margin-bottom:22px}
+.panel{position:relative;overflow:hidden;padding:0}
+.panel .kicker{padding:40px 48px 0;margin:0}
+.panel>img.bg{display:block;width:100%;height:230px;object-fit:cover}
+.panel p.txt{padding:0 48px 44px}
+.panel.on{border:0;color:#fff;background:#18232E}
+.panel.on p.txt{color:#DCE3E7}
+.panel.on .kicker{color:#9FB0BA}
+.panel.off h3{color:var(--ink-60)}
+
+/* ---------- 3 problem ---------- */
+.s3 .l{position:absolute;left:120px;top:150px;width:780px}
+.s3 .l h2{font-size:80px}
+.s3 .l .lead{margin-top:28px;font-size:26px}
+.s3 .sub{margin-top:60px;display:flex;align-items:center;gap:22px}
+.s3 .sub::before{content:"";flex:none;width:14px;height:14px;border-radius:50%;background:var(--pulse);box-shadow:none}
+.s3 .sub h3{font-family:var(--serif);font-weight:400;font-size:56px;line-height:1.05;color:var(--ink);letter-spacing:-.01em}
+.s3 .sub p{font-size:22px;line-height:1.5;color:var(--ink-60);font-weight:300;margin-top:10px}
+.s3 .callout{margin-top:36px;border-top:1px solid var(--hair);padding-top:22px}
+.s3 .callout p{font-size:22px;line-height:1.5;color:var(--ink);font-weight:300;margin-top:14px}
+.s3 .viz{left:980px;right:40px;top:40px;bottom:40px;border:1px solid var(--hair)}
+.s3 .chips{position:absolute;inset:0}
+.s3 .chip{position:absolute}
+
+/* ---------- 4 core (dark) ---------- */
+.s4 h2{position:absolute;left:120px;top:190px;width:1000px;font-size:92px;line-height:1.04}
+.s4 .how{position:absolute;left:120px;top:640px;width:880px;font-size:28px;line-height:1.5;color:#DCE3E7;font-weight:300;border-left:2px solid #4CC7A0;padding-left:28px}
+.s4 .lead{position:absolute;left:120px;bottom:150px}
+.s4 .viz{right:200px;top:40px;bottom:40px;width:520px;overflow:visible}
+.s4 .tag{position:absolute;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#9FB0BA;white-space:nowrap}
+.s4 .tag.c{color:#4CC7A0}
+.s4 .tag.o{color:#8FD3BC}
+
+/* ---------- 5 services ---------- */
+.s5 h2{position:absolute;left:120px;top:160px}
+.s5 .cols{position:absolute;left:120px;right:120px;top:330px;bottom:130px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hair-strong)}
+.s5 .col{padding:34px 34px 0 0;display:flex;flex-direction:column;border-right:1px solid var(--hair);margin-right:34px}
+.s5 .col:last-child{border-right:0;margin-right:0}
+.s5 .n{font-family:var(--serif);font-size:64px;line-height:1;color:var(--pulse)}
+.s5 h3{font-family:var(--serif);font-weight:400;font-size:40px;margin-top:22px;line-height:1.05}
+.s5 p{font-size:21px;line-height:1.5;color:var(--ink-60);font-weight:300;margin-top:16px}
+.s5 .step{margin-top:auto;height:210px;border-radius:8px;overflow:hidden;border:1px solid var(--hair);background:#fff}
+.s5 .step img{width:100%;height:100%;object-fit:contain;display:block}
+.s5 .ann{margin-top:14px}
+
+/* ---------- 6 product ---------- */
+.s6 h2{position:absolute;left:120px;top:150px}
+.s6 .grid{position:absolute;left:120px;right:120px;top:300px;bottom:110px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:28px 28px}
+.s6 figure{display:flex;flex-direction:column}
+.s6 .tex{flex:1;border-radius:10px}
+.s6 .shot{left:44px;right:44px;top:36px;bottom:-30px;border-radius:8px}
+.s6 figcaption{display:flex;justify-content:space-between;margin-top:14px;font-size:18px;color:var(--ink)}
+.s6 figcaption span:last-child{color:var(--mist)}
+
+/* ---------- 7 roadmap ---------- */
+.s7 h2{position:absolute;left:120px;top:170px;width:1300px}
+.s7 .curve{position:absolute;left:120px;top:360px;width:1680px;height:220px}
+.s7 .road{position:absolute;left:120px;right:120px;top:580px;display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+.s7 .st{padding:30px 34px 0 0;border-top:1px solid var(--hair-strong);position:relative}
+.s7 .st::before{content:"";position:absolute;top:-6px;left:0;width:11px;height:11px;border-radius:50%;background:#fff;border:1.5px solid var(--ink-60)}
+.s7 .st.now{border-top:3px solid var(--pulse)}
+.s7 .st.now::before{background:var(--pulse);border-color:var(--pulse);top:-7px}
+.s7 .when{font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--mist);font-weight:500}
+.s7 .now .when{color:var(--pulse-deep)}
+.s7 h3{font-family:var(--serif);font-weight:400;font-size:40px;margin-top:16px;line-height:1.05}
+.s7 p{font-size:20px;line-height:1.5;color:var(--ink-60);font-weight:300;margin-top:12px}
+.s7 .rail{position:absolute;left:120px;right:120px;bottom:130px;display:grid;grid-template-columns:300px 1fr;align-items:center;border-top:1px solid var(--hair);padding-top:30px}
+.s7 .rail b{font-family:var(--serif);font-weight:400;font-size:36px;color:var(--pulse)}
+.s7 .rail span{font-size:24px;line-height:1.5;color:var(--ink);font-weight:300}
+
+/* ---------- 8 companies ---------- */
+.s8 h2{position:absolute;left:120px;top:170px}
+.s8 .wall{position:absolute;left:120px;right:120px;top:400px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
+.s8 .logo{height:230px;border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
+.s8 .logo img{filter:grayscale(1) contrast(1.05);opacity:.82;max-width:240px;object-fit:contain}
+.s8 .logo span{font-size:15px;color:var(--mist);letter-spacing:.02em}
+.s8 .cell-note{background:var(--ink);align-items:flex-start;justify-content:flex-end;padding:30px 34px}
+.s8 .cell-note p{font-family:var(--serif);font-size:34px;line-height:1.12;color:#fff}
+.s8 .note{position:absolute;left:120px;bottom:130px;display:flex;align-items:baseline;gap:60px;border-top:1px solid var(--hair-strong);right:120px;padding-top:28px}
+.s8 .note .big{font-family:var(--serif);font-size:72px;line-height:1}
+.s8 .note .big em{font-style:normal;color:var(--pulse)}
+.s8 .note .small{font-size:24px}
+
+/* ---------- 9 team ---------- */
+.s9 h2{position:absolute;left:120px;top:150px;width:1300px;font-size:80px}
+.s9 .lead{position:absolute;left:120px;top:350px;width:1100px;font-size:24px}
+.s9 .team{position:absolute;left:120px;right:120px;top:500px;bottom:110px;display:grid;grid-template-columns:1fr 1fr;column-gap:80px}
+.s9 .p{display:grid;grid-template-columns:112px 1fr;gap:30px;border-top:1px solid var(--hair-strong);padding-top:30px}
+.s9 .p img{width:112px;height:112px;border-radius:50%;object-fit:cover;filter:grayscale(1)}
+.s9 .nm{font-family:var(--serif);font-size:38px;line-height:1}
+.s9 .rl{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--pulse-deep);font-weight:500;margin-top:10px}
+.s9 ul{list-style:none;margin-top:14px}
+.s9 li{font-size:19px;line-height:1.55;color:var(--ink-60);font-weight:300}
+
+/* ---------- 10 ask (dark) ---------- */
+.s10 h2{position:absolute;left:120px;top:170px;font-size:104px}
+.s10 .lead{position:absolute;left:120px;top:305px;font-size:28px}
+.s10 .uop{position:absolute;right:120px;top:150px;text-align:right}
+.s10 .uop .kicker{color:#9FB0BA}
+.s10 .uop .tot{font-family:var(--serif);font-size:44px;color:#fff;margin-top:8px;font-variant-numeric:tabular-nums}
+.s10 .stack{position:absolute;left:120px;right:120px;top:520px;display:flex;gap:4px;height:10px}
+.s10 .stack i{display:block;height:100%;border-radius:2px}
+.s10 .cats{position:absolute;left:120px;right:120px;top:580px;display:grid;grid-template-columns:repeat(3,1fr);column-gap:64px}
+.s10 .cat{border-top:2px solid var(--c);padding-top:22px}
+.s10 .cat .kicker{color:#C9D4DA}
+.s10 .cat .pct{font-family:var(--serif);font-size:150px;line-height:1;color:var(--c);margin-top:12px}
+.s10 .cat .amt{font-size:24px;color:#fff;font-weight:300;margin-top:8px;font-variant-numeric:tabular-nums}
+.s10 .cat ul{list-style:none;margin-top:30px}
+.s10 .cat li{position:relative;padding:0 0 0 24px;margin-bottom:16px;font-size:20px;line-height:1.45;color:#C9D4DA;font-weight:300}
+.s10 .cat li::before{content:"";position:absolute;left:0;top:12px;width:7px;height:7px;border-radius:50%;background:var(--c)}
+
+/* ---------- 11 horizon ---------- */
+.s11 .brandmark{position:absolute;left:120px;top:150px;display:flex;align-items:center;gap:18px;font-family:var(--serif);font-size:44px;color:var(--ink)}
+.s11 h2{position:absolute;left:120px;top:330px;width:960px;font-size:100px}
+.s11 .lead{position:absolute;left:120px;top:600px;width:780px}
+.s11 .sign{position:absolute;left:120px;top:800px;font-family:var(--serif);font-size:48px;color:var(--pulse)}
+.s11 .mk{position:absolute;right:-90px;top:110px;width:860px;height:860px}
+.s11 .chips{position:absolute;inset:0}
+.s11 .chip{position:absolute}
+
+/* ================= commercial deck additions ================= */
+.eyebrow-slide{position:absolute}
+/* cover */
+.c1 .brandmark{position:absolute;left:120px;top:110px;display:flex;align-items:center;gap:20px;font-family:var(--serif);font-size:54px;color:var(--ink)}
+.c1 .kick{position:absolute;left:120px;top:330px;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--pulse);font-weight:500}
+.c1 h1{position:absolute;left:120px;top:380px;width:960px;font-size:104px}
+.c1 .sub{position:absolute;left:120px;top:640px;width:760px;font-size:26px;line-height:1.45;color:var(--ink-60);font-weight:300}
+.c1 .lead{position:absolute;left:120px;top:780px;width:760px;font-size:30px;font-family:var(--serif);color:var(--ink)}
+.c1 .mk{position:absolute;right:-90px;top:110px;width:860px;height:860px}
+.c1 .meta{position:absolute;left:120px;right:120px;bottom:56px;display:flex;justify-content:space-between;font-size:15px;color:var(--mist);border-top:1px solid var(--hair);padding-top:22px}
+/* what we do */
+.c5 h2{position:absolute;left:120px;top:190px;width:700px;font-size:84px}
+.c5 .lead{position:absolute;left:120px;top:470px;width:680px}
+.c5 .frame{position:absolute;left:900px;right:120px;top:230px;bottom:250px;border-radius:12px;overflow:hidden;border:1px solid var(--hair);background:url(mv/prodbg.svg) center/cover,#F6F8F7}
+.c5 .frame .shot{left:36px;right:36px;top:36px;bottom:36px}
+.c5 .frame .shot img{object-fit:contain;object-position:center}
+.c5 .cap{position:absolute;left:900px;bottom:210px;font-size:17px;color:var(--ink)}
+/* services */
+.c6 h2{position:absolute;left:120px;top:150px}
+.c6 .lead{position:absolute;left:120px;top:270px;width:1100px;font-size:24px}
+.c6 .cols{position:absolute;left:120px;right:120px;top:360px;bottom:120px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hair-strong)}
+.c6 .col{padding:30px 30px 0 0;border-right:1px solid var(--hair);margin-right:30px}
+.c6 .col:last-child{border-right:0;margin-right:0}
+.c6 .n{font-family:var(--serif);font-size:56px;line-height:1;color:var(--pulse)}
+.c6 h3{font-family:var(--serif);font-weight:400;font-size:38px;margin-top:18px;line-height:1.05}
+.c6 .b{font-size:20px;line-height:1.5;color:var(--ink);font-weight:300;margin-top:14px}
+.c6 ul{list-style:none;margin-top:22px;border-top:1px solid var(--hair);padding-top:18px}
+.c6 li{position:relative;padding-left:20px;margin-bottom:12px;font-size:17px;line-height:1.45;color:var(--ink-60);font-weight:300}
+.c6 li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--pulse)}
+/* platform */
+.c8 h2{position:absolute;left:120px;top:150px}
+.c8 .list{position:absolute;left:120px;top:310px;width:960px;border-top:1px solid var(--hair-strong)}
+.c8 .part{display:grid;grid-template-columns:210px 1fr;column-gap:30px;padding:22px 0;border-bottom:1px solid var(--hair)}
+.c8 .nm{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--pulse);font-weight:500;padding-top:10px}
+.c8 .sm{font-family:var(--serif);font-size:34px;line-height:1.12;color:var(--ink)}
+.c8 .marks{grid-column:2;display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.c8 .marks span{font-size:14px;color:var(--ink-60);border:1px solid #CFD8DD;border-radius:999px;padding:5px 12px}
+.c8 .viz{position:absolute;right:130px;top:290px;width:560px;height:560px;overflow:visible}
+.c8 .tag.core{font-size:13px;color:var(--pulse-deep)}
+.c8 .viz img{width:100%;height:100%;display:block}
+.c8 .tag{position:absolute;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-60);white-space:nowrap}
+.c8 .tag.c{color:var(--pulse)}
+/* research */
+.c10 h2{position:absolute;left:120px;top:170px;width:760px;font-size:80px}
+.c10 .lead{position:absolute;left:120px;top:470px;width:740px;font-size:23px;line-height:1.6}
+.c10 .frame{position:absolute;left:960px;right:120px;top:230px;bottom:250px;border-radius:12px;overflow:hidden;border:1px solid var(--hair);background:#F4EFE6}
+.c10 .frame img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:#fff}
+.c10 .cap{position:absolute;left:960px;bottom:210px;font-size:17px;color:var(--ink)}
+/* contrast */
+.c11 h2{position:absolute;left:120px;top:150px}
+.c11 .tbl{position:absolute;left:120px;right:120px;top:340px}
+.c11 .hd,.c11 .rw{display:grid;grid-template-columns:1fr 1fr;column-gap:80px}
+.c11 .hd{padding-bottom:18px;border-bottom:1px solid var(--hair-strong)}
+.c11 .hd span{font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--mist)}
+.c11 .hd span:last-child{color:var(--pulse)}
+.c11 .rw{padding:30px 0;border-bottom:1px solid var(--hair);align-items:center}
+.c11 .rw .u{font-size:26px;color:var(--mist);font-weight:300}
+.c11 .rw .t{font-family:var(--serif);font-size:40px;line-height:1.1;color:var(--ink);display:flex;align-items:center;gap:22px}
+.c11 .rw .t::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--pulse)}
+/* who + industries */
+.c12 h2{position:absolute;left:120px;top:170px;width:780px;font-size:84px}
+.c12 .lead{position:absolute;left:120px;top:400px;width:740px}
+.c12 .closer{position:absolute;left:120px;top:640px;width:740px;font-family:var(--serif);font-size:40px;line-height:1.15;color:var(--pulse)}
+.c12 .ind{position:absolute;left:1040px;right:120px;top:170px}
+.c12 .ind .kicker{color:var(--mist)}
+.c12 .ind h3{font-family:var(--serif);font-weight:400;font-size:44px;margin-top:12px;line-height:1.05}
+.c12 .ind ul{list-style:none;margin-top:30px;border-top:1px solid var(--hair-strong)}
+.c12 .ind li{display:flex;justify-content:space-between;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--hair);font-family:var(--serif);font-size:40px;color:var(--ink)}
+.c12 .ind li span{font-family:var(--sans);font-size:16px;color:var(--mist)}
+/* trust */
+.c14 h2{position:absolute;left:120px;top:150px;width:1300px}
+.c14 .grid{position:absolute;left:120px;right:120px;top:400px;display:grid;grid-template-columns:repeat(3,1fr);column-gap:60px;row-gap:0}
+.c14 .it{border-top:1px solid var(--hair-strong);padding:30px 0 44px}
+.c14 .it .k{display:flex;align-items:center;gap:14px;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--pulse);font-weight:500}
+.c14 .it .k::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--pulse)}
+.c14 .it p{font-family:var(--serif);font-size:34px;line-height:1.15;margin-top:16px;color:var(--ink)}
+/* close */
+.c16 .brandmark{position:absolute;left:120px;top:130px;display:flex;align-items:center;gap:18px;font-family:var(--serif);font-size:44px;color:var(--ink)}
+.c16 h2{position:absolute;left:120px;top:290px;width:1000px;font-size:68px;line-height:1.08}
+.c16 .lead{position:absolute;left:120px;top:620px;width:820px}
+.c16 .cta{position:absolute;left:120px;top:790px;display:flex;align-items:center;gap:28px}
+.c16 .cta .btn{background:var(--ink);color:#fff;border-radius:8px;padding:18px 30px;font-size:22px;font-weight:500}
+.c16 .cta .mail{font-size:22px;color:var(--ink)}
+.c16 .tagl{position:absolute;left:120px;bottom:120px;font-family:var(--serif);font-size:40px;color:var(--pulse)}
+.c16 .mk{position:absolute;right:-90px;top:110px;width:860px;height:860px}
+</style>
+</head>
+<body>
+
+<section class="slide c1">
+  <img class="mk" src="mv/markbig.svg" alt="">
+  <div class="brandmark" data-bigbrand="62"></div>
+  <p class="kick">For B2B companies</p>
+  <h1>Human decisions as the engine of <span class="hl">growth</span>.</h1>
+  <p class="sub">Profitability through an agentic strategy built on how people in the company already think and work.</p>
+  <p class="lead">Four services. One core.</p>
+  <div class="meta"><span>Commercial presentation · 2026</span><span>tacit.guru</span></div>
+</section>
+
+<section class="slide s3">
+  <div class="top" style="right:980px"><span class="lab">Problem</span><span></span></div>
+  <div class="l">
+    <h2>Companies can’t see where their work <span class="hl">breaks</span>.</h2>
+    <p class="lead">Inefficiencies and bottlenecks live silently, unrecognized, and no system in the company shows them.</p>
+    <div class="sub">
+      <h3>Companies already bought the <span class="hl">stack</span>.</h3>
+    </div>
+    <div class="callout">
+      <p class="kicker">What the spend misses</p>
+      <p>The failure is cultural: how people work, who they trust, which habits win under pressure. Another tool does not fix that. That gap is the market.</p>
+    </div>
+  </div>
+  <div class="viz"><img src="mv/problem.svg" alt="">
+    <div class="chips">
+      <span class="chip" style="left:248px;top:92px"><i></i>decision logic</span>
+      <span class="chip" style="left:618px;top:182px"><i></i>coordination pattern</span>
+      <span class="chip" style="left:318px;top:312px"><i></i>exception handling</span>
+      <span class="chip" style="left:708px;top:402px"><i></i>workflow</span>
+      <span class="chip" style="left:198px;top:512px"><i></i>troubleshooting</span>
+      <span class="chip" style="left:538px;top:592px"><i></i>tacit know-how</span>
+      <span class="chip" style="left:278px;top:742px"><i></i>deal context</span>
+      <span class="chip" style="left:658px;top:802px"><i></i>escalation path</span>
+      <span class="chip" style="left:418px;top:882px"><i></i>heuristic</span>
+    </div>
+  </div>
+  <div class="foot" style="right:980px"><span class="b" data-brand></span><span>Confidential · 02 / 17</span></div>
+</section>
+
+<section class="slide s2">
+  <div class="top"><span class="lab">Thesis</span><span>03 / 17</span></div>
+  <h2>Companies are systems made by <span class="hl">people</span>.</h2>
+  <p class="lead">Agents improve them only when the human knowledge behind the system is understood.</p>
+  <div class="pair">
+    <div class="panel off">
+      <p class="kicker">The usual bet</p>
+      <img class="bg" src="mv/usual.svg" alt="">
+      <p class="txt">Capital goes to connecting context and dropping in agents, then hoping the culture follows.</p>
+    </div>
+    <div class="panel on">
+      <p class="kicker">Our bet</p>
+      <img class="bg" src="mv/ourbet.svg" alt="">
+      <p class="txt">Capital goes to reading how work happens, restructuring, then agentizing from that culture.</p>
+    </div>
+  </div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<section class="slide s4 dark">
+  <div class="top" style="right:600px"><span class="lab">The core</span><span>04 / 17</span></div>
+  <h2>Agentic success runs on judgment and culture. <span class="hl" style="display:block;margin-top:18px">Tacit makes both legible.</span></h2>
+  <p class="how">Tacit captures the daily workflows and the tacit decisions behind them, and detects the inefficiencies where agents create the most value.</p>
+  <p class="lead">Tech is a layer, not the whole story.</p>
+  <div class="viz"><img src="mv/layers.svg" alt="">
+    <span class="tag" style="left:470px;top:161px">Agents</span>
+    <span class="tag" style="left:470px;top:311px">Tech</span>
+    <span class="tag o" style="left:470px;top:461px">Operations</span>
+    <span class="tag c" style="left:470px;top:650px">Culture</span>
+  </div>
+  <div class="foot" style="right:600px"><span class="b" data-brand data-light></span><span>Confidential</span></div>
+</section>
+
+<section class="slide c5">
+  <div class="top"><span class="lab">What we do</span><span>05 / 17</span></div>
+  <h2>A clear picture first. <span class="hl">Agents later.</span></h2>
+  <p class="lead">Tacit maps real communication, tools in use, and company knowledge. That picture lets you change how teams work. After that, we add a judgment layer so agents act like your best people, not empty chatbots.</p>
+  <div class="frame"><div class="shot"><img src="assets/app/knowledge-profiles.png" alt=""></div></div>
+  <p class="cap">Knowledge Type Map and Cognitive Competency Profile</p>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<section class="slide c6">
+  <div class="top"><span class="lab">Services</span><span>06 / 17</span></div>
+  <h2>Four services. One <span class="hl">core</span>.</h2>
+  <p class="lead">Every service starts from how the work really happens.</p>
+  <div class="cols"><div class="col"><span class="n">01</span><h3>Consulting layer</h3><p class="b">We see how your employees actually communicate and how they work day to day.</p><ul><li>Which tools they use, what they are biased toward, and where to find bottlenecks.</li><li>That picture is extracted, so the next employee has no learning curve.</li><li>An inefficiency is caught as it is created. We act then, before the client complains.</li></ul></div><div class="col"><span class="n">02</span><h3>Implement agents</h3><p class="b">Agents are implemented from the real knowledge and the tacit workflows.</p><ul><li>The source is the real knowledge and the tacit workflows.</li><li>An 80/20 thesis decides exactly where, how, and with whom.</li><li>The aim is to raise the company’s productivity and growth.</li></ul></div><div class="col"><span class="n">03</span><h3>Agent in the loop</h3><p class="b">An agent stays in the loop as the company is agentified.</p><ul><li>The agent stays in the loop of the work.</li><li>Agentification can cover one area.</li><li>It can cover one process, or the operation as a whole.</li></ul></div><div class="col"><span class="n">04</span><h3>Higher SLA</h3><p class="b">Clients are asking for a higher SLA. Today the client is a black box, and that blocks high efficiency.</p><ul><li>Tacit is integrated to understand the client’s behavior and knowledge.</li><li>The solutions have one aim: a higher SLA, and growth in the client relationship.</li></ul></div></div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<section class="slide s5">
+  <div class="top"><span class="lab">How we work</span><span>07 / 17</span></div>
+  <h2>Four steps. One <span class="hl">sequence</span>.</h2>
+  <div class="cols">
+    <div class="col"><span class="n">01</span><h3>Diagnostic</h3><p>Map where expertise lives, how it is used, and which tools and steps are not productive.</p><div class="step"><img src="mv/step1.svg" alt=""></div></div>
+    <div class="col"><span class="n">02</span><h3>Change premises</h3><p>Change how the team works and trains: education, roles, and structure. Surface the inefficiencies and the bottlenecks.</p><div class="step"><img src="mv/step2.svg" alt=""></div></div>
+    <div class="col"><span class="n">03</span><h3>Core basic agents</h3><p>Implement Tacit and the tools people will actually use, so know-how becomes a living layer.</p><div class="step"><img src="mv/step3.svg" alt=""></div></div>
+    <div class="col"><span class="n">04</span><h3>Agentification</h3><p>Ship specific agents that show a visible gain, then extend them with the same people.</p><div class="step"><img src="mv/step4.svg" alt=""></div></div>
+  </div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<section class="slide c8">
+  <div class="top"><span class="lab">Platform</span><span>08 / 17</span></div>
+  <h2>Four parts of the same <span class="hl">work</span>.</h2>
+  <div class="list"><div class="part"><p class="nm">Consulting</p><p class="sm">AI transformation is contingent on human workflows.</p><div class="marks"><span>Human workflows</span><span>A defined place</span><span>Measurable value</span></div></div><div class="part"><p class="nm">Agents</p><p class="sm">Simple, controllable agents at core points, then a human-agent symbiosis.</p><div class="marks"><span>Simple and measurable</span><span>Core points</span><span>Quick results</span><span>Adoption</span></div></div><div class="part"><p class="nm">Apps</p><p class="sm">Systems to centralize, evaluate, and manage their own operation, empowered by Tacit.</p><div class="marks"><span>Centralize</span><span>Evaluate</span><span>Manage</span><span>Empowered by Tacit</span></div></div><div class="part"><p class="nm">Development</p><p class="sm">Intelligent infrastructure through the Tacit layer, for the client’s core problems.</p><div class="marks"><span>Core problems</span><span>Tacit layer</span><span>Intelligent infrastructure</span></div></div></div>
+  <div class="viz"><img src="mv/parts_ring.svg" alt="">
+    <span class="tag c" style="left:280px;top:-6px;transform:translateX(-50%)">Consulting</span>
+    <span class="tag" style="left:534px;top:270px">Agents</span>
+    <span class="tag" style="left:280px;top:550px;transform:translateX(-50%)">Apps</span>
+    <span class="tag" style="right:534px;top:270px">Development</span>
+    <span class="tag core" style="left:280px;top:304px;transform:translateX(-50%)">One core</span>
+  </div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<section class="slide s6">
+  <div class="top"><span class="lab">The product</span><span>09 / 17</span></div>
+  <h2>Four views. One <span class="hl">product</span>.</h2>
+  <div class="grid">
+    <figure><div class="tex" style="background:url(mv/prodbg.svg) center/cover,#F6F8F7;border:1px solid var(--hair)"><div class="shot"><img src="assets/app/pulse-priorities.png" alt=""></div></div><figcaption><span>Pulse</span><span>01</span></figcaption></figure>
+    <figure><div class="tex" style="background:url(mv/prodbg.svg) center/cover,#F6F8F7;border:1px solid var(--hair)"><div class="shot"><img src="assets/app/knowledge-flow.png" alt=""></div></div><figcaption><span>Knowledge</span><span>02</span></figcaption></figure>
+    <figure><div class="tex" style="background:url(mv/prodbg.svg) center/cover,#F6F8F7;border:1px solid var(--hair)"><div class="shot"><img src="assets/app/knowledge-profiles.png" alt=""></div></div><figcaption><span>Profiles</span><span>03</span></figcaption></figure>
+    <figure><div class="tex" style="background:url(mv/prodbg.svg) center/cover,#F6F8F7;border:1px solid var(--hair)"><div class="shot"><img src="assets/app/knowledge-sop-detail.png" alt=""></div></div><figcaption><span>A procedure</span><span>04</span></figcaption></figure>
+  </div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<section class="slide e1">
+  <div class="top"><span class="lab">Agents on Tacit</span><span>10 / 17</span></div>
+  <h2>Simple agents. Very low <span class="hl">cost</span>.</h2>
+  <p class="lead">The agent receives the context already structured from Tacit and resolves most of the work with deterministic code. The language model only handles small steps.</p>
+  <div class="lanes">
+    <div class="lane"><span class="who">Generic agent</span>
+      <div class="flow"><span class="bx">Prompt</span><span class="ar"></span><span class="bx">Search</span><span class="ar"></span><span class="bx">Read long documents</span><span class="ar"></span><span class="bx loop">LLM reasoning, step after step</span><span class="ar"></span><span class="bx">Result</span></div></div>
+    <div class="lane t"><span class="who">Agent with Tacit</span>
+      <div class="flow"><span class="bx">Tacit engine</span><span class="ar"></span><span class="bx ctx">Structured context</span><span class="ar"></span><div class="work"><span class="det">Deterministic code does most of the work</span><span class="llm">LLM: small steps</span></div><span class="ar"></span><span class="bx">Result</span></div></div>
+  </div>
+  <div class="nope"><span>No heavy spend on language models</span><span>No extra SaaS</span><span>No reading of long contexts</span></div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<section class="slide c10">
+  <div class="top"><span class="lab">Research</span><span>11 / 17</span></div>
+  <h2>An engine that understands organizations as they <span class="hl">are</span>.</h2>
+  <p class="lead">An entrepreneurial and academic team, two engineers trained in neuroscience, artificial intelligence, and mathematics, is building an engine that joins complex systems, propositional logic, Bayesian theory, graph theory, LIWC, and modern theories of thought. It understands organizations as they are, and strengthens their digital transformation through agents.</p>
+  <div class="frame"><img src="assets/app/product-graph-poster.png" alt=""></div>
+  <p class="cap">Explore: the company as a knowledge graph</p>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<section class="slide c11">
+  <div class="top"><span class="lab">Contrast</span><span>12 / 17</span></div>
+  <h2>Usual path vs. <span class="hl">Tacit</span>.</h2>
+  <div class="tbl"><div class="hd"><span>Usual path</span><span>With Tacit</span></div><div class="rw"><span class="u">Buy tools or agents first</span><span class="t">Start with the consulting layer</span></div><div class="rw"><span class="u">Trust the org chart</span><span class="t">See how people actually work, and which tools they use</span></div><div class="rw"><span class="u">Agents everywhere</span><span class="t">80/20: exactly where, how, and with whom</span></div><div class="rw"><span class="u">The client stays a black box</span><span class="t">Understand them, then raise the SLA</span></div></div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<section class="slide c12">
+  <div class="top"><span class="lab">Who it’s for</span><span>13 / 17</span></div>
+  <h2>Who these services are <span class="hl">for</span>.</h2>
+  <p class="lead">Complex operations that inherently have high turnover, depend entirely on a few highly experienced managers, or keep a delicate relationship with clients who need a higher level of service.</p>
+  <p class="closer">Client efficiency is the goal. Yours improves with it.</p>
+  <div class="ind"><p class="kicker">Industries</p><h3>The operations we work in.</h3><ul><li>Consulting<span>01</span></li><li>Professional services<span>02</span></li><li>Technology / IT Sourcing<span>03</span></li><li>Logistics<span>04</span></li><li>Fintech<span>05</span></li><li>Healthcare<span>06</span></li></ul></div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<section class="slide s8">
+  <div class="top"><span class="lab">Companies</span><span>14 / 17</span></div>
+  <h2>Already inside real <span class="hl">companies</span>.</h2>
+  <div class="wall">
+    <div class="logo"><img src="assets/clients/mora.svg" style="height:30px"><span>Mora Health</span></div>
+    <div class="logo"><img src="assets/clients/onest.png" style="height:62px"><span>Onest</span></div>
+    <div class="logo"><img src="assets/clients/disrupting.png" style="height:26px"><span>Disrupting</span></div>
+    <div class="logo"><img src="assets/clients/loyaltech.png" style="height:72px"><span>LoyalTech</span></div>
+    <div class="logo"><img src="assets/clients/platino.png" style="height:72px"><span>Grupo Platino</span></div>
+    <div class="logo"><img src="assets/clients/condor.svg" style="height:46px"><span>Condor Media</span></div>
+    <div class="logo"><img src="assets/clients/birdie.png" style="height:72px"><span>Birdie</span></div>
+    <div class="logo cell-note"><p>Companies already working with Tacit.</p></div>
+  </div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<section class="slide c14">
+  <div class="top"><span class="lab">Trust</span><span>15 / 17</span></div>
+  <h2>Your knowledge stays <span class="hl">yours</span>.</h2>
+  <div class="grid"><div class="it"><p class="k">Purpose</p><p>Built to capture knowledge, not to monitor people.</p></div><div class="it"><p class="k">People</p><p>Tacit does not evaluate individual performance or compare employees.</p></div><div class="it"><p class="k">Control</p><p>Employees can confirm, correct, or flag knowledge attributed to them.</p></div><div class="it"><p class="k">Security</p><p>Encryption in transit and at rest, with per-organization isolation on every query.</p></div><div class="it"><p class="k">Redaction</p><p>Customer-defined redaction before anything is stored.</p></div><div class="it"><p class="k">AI</p><p>Customer data is not used to train AI models. The knowledge engine is deterministic and auditable.</p></div></div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<section class="slide s9">
+  <div class="top"><span class="lab">Founders and board</span><span>16 / 17</span></div>
+  <h2>Built by academics, experienced entrepreneurs, and <span class="hl">executives</span>.</h2>
+  <p class="lead">The founders come from consulting, entrepreneurship, and academia. The vision starts in academia and is shaped by real business experience.</p>
+  <div class="team">
+    <div class="p"><img src="assets/team/juan-carlos.png"><div><p class="nm">Juan Carlos Martorell</p><p class="rl">Founder</p><ul><li>MBA IPADE · MSc Neuroscience · MSc AI</li><li>20 years in M&amp;A, making teams run cleaner when knowledge walked out</li><li>Helped move over $200M in deals by closing the execution gap</li></ul></div></div>
+    <div class="p"><img src="assets/team/francisco-caballero.png"><div><p class="nm">Francisco Caballero</p><p class="rl">Founder</p><ul><li>Mora · Zero-to-One, 4x founder, 7x founding engineer</li><li>AI, systems, product · US, LATAM</li></ul></div></div>
+    <div class="p"><img src="assets/team/fernando-pliego.png"><div><p class="nm">Fernando Pliego</p><p class="rl">Board</p><ul><li>GTM · Marketing, Growth, AI · Google San Francisco, Microsoft</li></ul></div></div>
+    <div class="p"><img src="assets/team/francisco-sanchez.png"><div><p class="nm">Francisco Sanchez</p><p class="rl">Board</p><ul><li>SVP, AlixPartners · management consulting</li><li>INSEAD MBA</li></ul></div></div>
+  </div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
+<section class="slide c16">
+  <img class="mk" src="mv/markbig.svg" alt="">
+  <div class="brandmark" data-bigbrand="50"></div>
+  <h2>Start with how your team thinks and what they know, then turn that real experience into <span class="hl">profitable growth</span>.</h2>
+  <p class="lead">Book a diagnostic. We start from the core, then deliver the service: consulting layer, agents, an agent in the loop, or a higher SLA.</p>
+  <div class="cta"><span class="btn">Book a diagnostic</span><span class="mail">sales@tacit.guru · tacit.guru</span></div>
+  <p class="tagl">Experience behind execution.</p>
+</section>
+
+<script>
+const markSVG=(c,s)=>`<svg width="${s}" height="${s}" viewBox="0 0 100 100"><g stroke="${c}" stroke-width="4" stroke-linecap="round"><line x1="50" y1="84" x2="50" y2="48"/><line x1="50" y1="48" x2="20" y2="18"/><line x1="50" y1="48" x2="80" y2="18"/><line x1="8" y1="18" x2="32" y2="18"/><line x1="68" y1="18" x2="92" y2="18"/></g></svg>`;
+document.querySelectorAll('[data-brand]').forEach(e=>{e.innerHTML=markSVG('#1A9E78',20)+'<span>Tacit</span>'});
+document.querySelectorAll('[data-bigbrand]').forEach(e=>{const s=+e.dataset.bigbrand;e.innerHTML=markSVG('#1A9E78',s)+'<span>Tacit</span>'});
+Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r}))).then(()=>document.fonts.ready).then(()=>document.body.dataset.ready='1');
+</script>
+</body>
+</html>
