@@ -79,8 +79,8 @@ export function SphereField() {
     engine.debug.brightBoost = 1.28;
     engine.debug.overlays = { meteors: false, connections: false, agents: false };
     engine.debug.showLabels = false;
-    engine.debug.cxFrac = 0.78;
-    engine.debug.radiusScale = 0.92;
+    engine.debug.cxFrac = 0.72;
+    engine.debug.radiusScale = 1.08;
     engine.rebuild(particleBudget());
 
     let target = sampleBeats(0);

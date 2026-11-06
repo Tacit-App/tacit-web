@@ -266,14 +266,15 @@
 }
 
 .hero-stage {
-  height: auto;
+  height: 230vh;
 }
 
 .hero-pin {
-  position: relative;
+  position: sticky;
+  top: 0;
   display: flex;
   align-items: flex-end;
-  min-height: 100vh;
+  height: 100vh;
   padding: 0 clamp(1.5rem, 5vw, 4.5rem) clamp(2.75rem, 7vh, 4.75rem);
 }
 
