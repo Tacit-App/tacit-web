@@ -46,15 +46,12 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // Canonicalize `/en` → `/` so English stays at the root.
-    if (/^\/en(\/privacy)?\/?$/.test(window.location.pathname)) {
+    if (/^\/en(\/|$)/.test(window.location.pathname)) {
+      const next = window.location.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
       window.history.replaceState(
         { locale: DEFAULT_LOCALE },
         "",
-        pathForLocale(
-          DEFAULT_LOCALE,
-          window.location.hash,
-          pageFromPathname(window.location.pathname),
-        ),
+        `${next}${window.location.hash}`,
       );
       setLocaleState(DEFAULT_LOCALE);
     }

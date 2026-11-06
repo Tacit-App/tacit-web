@@ -28,7 +28,9 @@ export function PrivacyPage() {
           <a href={pathForLocale(locale)}>{policy.crumb}</a> / {policy.title}
         </p>
         <header className="essay-header">
-          <h1>{policy.title}</h1>
+          <h1 id="content" tabIndex={-1}>
+            {policy.title}
+          </h1>
           <p className="essay-deck">{policy.deck}</p>
           <p className="privacy-updated">{policy.updated}</p>
         </header>

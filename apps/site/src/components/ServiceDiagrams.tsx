@@ -97,7 +97,7 @@ function ConsultingBoard() {
       </aside>
       <div className="app-board-main">
         <header>
-          <h4>Knowledge</h4>
+          <p className="app-board-label">Knowledge</p>
           <span>{part?.marks[0]}</span>
         </header>
         <div className="app-board-cards">

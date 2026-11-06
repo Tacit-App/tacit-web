@@ -1,5 +1,10 @@
 ---
 import AppShell from "../layouts/AppShell.astro";
+import { privacy } from "../data/privacy";
 ---
 
-<AppShell />
+<AppShell
+  page="privacy"
+  title={privacy.en.metaTitle}
+  description={privacy.en.metaDescription}
+/>

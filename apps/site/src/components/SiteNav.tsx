@@ -1,65 +1,9 @@
-import { useEffect, useState } from "react";
-import { pageFromPathname, pathForLocale, useI18n } from "../i18n";
+import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
+import { pathForLocale, useI18n, type Page } from "../i18n";
+import { LayerStack } from "./LayerStack";
 import { LocaleToggle } from "./LocaleToggle";
 
-const MARKS = ["nosotros", "research", "demo", "tesis"] as const;
-
-function NavMark({ kind }: { kind: string }) {
-  return (
-    <span className={`nav-mark nav-mark-${kind}`} aria-hidden="true">
-      <i />
-      <i />
-      <i />
-    </span>
-  );
-}
-
-export function IndustryIcon({ id }: { id: string }) {
-  const common = {
-    width: 16,
-    height: 16,
-    viewBox: "0 0 16 16",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1.35,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-    "aria-hidden": true,
-  };
-
-  if (id === "logistics") {
-    return (
-      <svg {...common}>
-        <path d="M2.5 5.2 8 2.8l5.5 2.4v5.6L8 13.2 2.5 10.8z" />
-        <path d="M2.5 5.2 8 7.6l5.5-2.4M8 7.6v5.6" />
-      </svg>
-    );
-  }
-
-  if (id === "fintech") {
-    return (
-      <svg {...common}>
-        <rect x="2" y="3.5" width="12" height="9" rx="1.5" />
-        <path d="M2 6.5h12" />
-      </svg>
-    );
-  }
-
-  if (id === "healthcare") {
-    return (
-      <svg {...common}>
-        <path d="M8 3.2v9.6M3.2 8h9.6" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg {...common}>
-      <rect x="2.2" y="3" width="11.6" height="7.6" rx="1.4" />
-      <path d="M6 13h4" />
-    </svg>
-  );
-}
+const CLOSE_DELAY_MS = 160;
 
 function ServiceIcon({ id }: { id: string }) {
   const common = {
@@ -115,20 +59,93 @@ function ServiceIcon({ id }: { id: string }) {
   );
 }
 
-export function SiteNav() {
+function canHoverOpen(event: ReactPointerEvent) {
+  if (event.pointerType === "touch") return false;
+  if (window.innerWidth < 860) return false;
+  return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+}
+
+export function SiteNav({ page }: { page: Page }) {
   const { locale, t } = useI18n();
-  const [open, setOpen] = useState<"platform" | "industries" | null>(null);
-  const home =
-    pageFromPathname(window.location.pathname) === "home" ? "" : pathForLocale(locale);
+  const [open, setOpen] = useState(false);
+  const [shown, setShown] = useState(false);
+  const [menu, setMenu] = useState(false);
+  const [panelBox, setPanelBox] = useState({ top: 72, left: 16, width: 720 });
+  const headerRef = useRef<HTMLElement>(null);
+  const triggerRef = useRef<HTMLAnchorElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function cancelClose() {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }
+
+  function closeMega() {
+    cancelClose();
+    setOpen(false);
+    setShown(false);
+  }
+
+  function scheduleClose() {
+    cancelClose();
+    closeTimer.current = setTimeout(() => {
+      setOpen(false);
+      setShown(false);
+      closeTimer.current = null;
+    }, CLOSE_DELAY_MS);
+  }
+
+  function placePanel() {
+    const header = headerRef.current;
+    if (!header) return;
+    const rect = header.getBoundingClientRect();
+    const width = Math.min(832, window.innerWidth - 32);
+    const left = Math.max(16, (window.innerWidth - width) / 2);
+    setPanelBox({ top: rect.bottom + 10, left, width });
+  }
+
+  function openMega() {
+    cancelClose();
+    placePanel();
+    setOpen(true);
+  }
 
   useEffect(() => {
+    if (!open) return;
+    const frame = requestAnimationFrame(() => setShown(true));
+    return () => cancelAnimationFrame(frame);
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    placePanel();
+    const onResize = () => placePanel();
+    window.addEventListener("resize", onResize);
+    window.addEventListener("scroll", onResize, true);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("scroll", onResize, true);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open && !menu) return;
     function onKey(event: KeyboardEvent) {
-      if (event.key === "Escape") setOpen(null);
+      if (event.key !== "Escape") return;
+      if (open) {
+        closeMega();
+        triggerRef.current?.focus();
+      }
+      setMenu(false);
     }
     function onPointer(event: PointerEvent) {
       const target = event.target;
       if (!(target instanceof Node)) return;
-      if (!document.querySelector(".site-nav")?.contains(target)) setOpen(null);
+      if (headerRef.current?.contains(target)) return;
+      if (document.getElementById("nav-platform")?.contains(target)) return;
+      closeMega();
     }
     window.addEventListener("keydown", onKey);
     window.addEventListener("pointerdown", onPointer);
@@ -136,77 +153,160 @@ export function SiteNav() {
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("pointerdown", onPointer);
     };
-  }, []);
+  }, [open, menu]);
+
+  useEffect(() => {
+    if (!menu) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [menu]);
+
+  useEffect(() => () => cancelClose(), []);
 
   return (
-    <header className="site-nav">
-      <a className="site-brand" href={pathForLocale(locale, "#top")} aria-label={t.nav.homeAria}>
+    <header
+      ref={headerRef}
+      className={`site-nav${page === "thesis" ? " is-dark" : ""}${menu ? " is-open" : ""}`}
+    >
+      <a className="skip-link" href="#content">
+        {t.nav.skip}
+      </a>
+      <a className="site-brand" href={pathForLocale(locale)} aria-label={t.nav.homeAria}>
         <img src="/tacit-mark.svg" alt="" width={28} height={28} />
         <span>Tacit</span>
       </a>
-      <nav className="site-nav-links" aria-label="Tacit">
-        <div
-          className={`nav-drop${open === "platform" ? " is-open" : ""}`}
-          onMouseEnter={() => setOpen("platform")}
-          onMouseLeave={() => setOpen(null)}
+      <nav className="site-nav-links" id="site-nav-links" aria-label="Tacit">
+        <a
+          ref={triggerRef}
+          id="nav-platform-trigger"
+          className={`nav-mega-trigger${open ? " is-open" : ""}${page === "platform" ? " is-active" : ""}`}
+          href={pathForLocale(locale, "", "platform")}
+          aria-current={page === "platform" ? "page" : undefined}
+          aria-expanded={open}
+          aria-controls="nav-platform"
+          aria-haspopup="true"
+          onPointerEnter={(event) => {
+            if (!canHoverOpen(event)) return;
+            openMega();
+          }}
+          onPointerLeave={(event) => {
+            if (!canHoverOpen(event)) return;
+            scheduleClose();
+          }}
+          onFocus={(event) => {
+            if (event.currentTarget.matches(":focus-visible")) openMega();
+          }}
+          onClick={() => {
+            closeMega();
+            setMenu(false);
+          }}
         >
-          <button
-            type="button"
-            aria-expanded={open === "platform"}
-            aria-controls="nav-platform"
-            onClick={() => setOpen(open === "platform" ? null : "platform")}
-          >
-            {t.home.platform.eyebrow}
-            <span className="nav-chevron" aria-hidden="true" />
-          </button>
-          <div className="nav-panel" id="nav-platform" hidden={open !== "platform"}>
-            {t.home.platform.parts.map((part) => (
-              <a key={part.id} href={`${home}#part-${part.id}`} onClick={() => setOpen(null)}>
-                <ServiceIcon id={part.id} />
-                <strong>{part.name}</strong>
-                <span>{part.summary}</span>
-              </a>
-            ))}
-          </div>
+          {t.home.platform.eyebrow}
+          <svg className="nav-caret" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+            <path
+              d="M4 6l4 4 4-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </a>
+        <div className="nav-mobile-parts">
+          {t.home.platform.parts.map((part) => (
+            <a
+              key={part.id}
+              href={pathForLocale(locale, `#part-${part.id}`, "platform")}
+              onClick={() => setMenu(false)}
+            >
+              {part.name}
+            </a>
+          ))}
         </div>
 
-        <div
-          className={`nav-drop${open === "industries" ? " is-open" : ""}`}
-          onMouseEnter={() => setOpen("industries")}
-          onMouseLeave={() => setOpen(null)}
-        >
-          <button
-            type="button"
-            aria-expanded={open === "industries"}
-            aria-controls="nav-industries"
-            onClick={() => setOpen(open === "industries" ? null : "industries")}
+        {t.nav.links.map((link) => (
+          <a
+            key={link.page}
+            href={pathForLocale(locale, "", link.page)}
+            aria-current={page === link.page ? "page" : undefined}
+            className={page === link.page ? "is-active" : undefined}
+            onClick={() => setMenu(false)}
           >
-            {t.home.industries.eyebrow}
-            <span className="nav-chevron" aria-hidden="true" />
-          </button>
-          <div className="nav-panel nav-panel-industries" id="nav-industries" hidden={open !== "industries"}>
-            {t.home.industries.items.map((item) => (
-              <a key={item.id} href={`${home}#${item.id}`} onClick={() => setOpen(null)}>
-                <IndustryIcon id={item.id} />
-                <strong>{item.name}</strong>
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {t.nav.links.map((link, index) => (
-          <a key={link.href} href={`${home}${link.href}`}>
-            <NavMark kind={MARKS[index] ?? "services"} />
             {link.label}
           </a>
         ))}
       </nav>
       <div className="site-nav-actions">
+        <button
+          type="button"
+          className="site-menu"
+          aria-expanded={menu}
+          aria-controls="site-nav-links"
+          onClick={() => setMenu((value) => !value)}
+        >
+          {t.nav.menuLabel}
+        </button>
         <LocaleToggle />
-        <a className="site-nav-cta" href={`${home}#demo`}>
+        <a className="site-nav-cta" href={pathForLocale(locale, "", "demo")}>
           {t.nav.bookDiagnostic}
         </a>
       </div>
+      {open ? (
+        <>
+          <div
+            className={`mega-overlay${shown ? " is-in" : ""}`}
+            style={{ top: panelBox.top - 10 }}
+            onPointerDown={() => closeMega()}
+          />
+          <div
+            className="mega-corridor"
+            style={{ top: panelBox.top - 10, left: panelBox.left, width: panelBox.width }}
+            onPointerEnter={cancelClose}
+            onPointerLeave={scheduleClose}
+          />
+          <div
+            id="nav-platform"
+            className={`mega-panel${shown ? " is-in" : ""}`}
+            style={{ top: panelBox.top, left: panelBox.left, width: panelBox.width }}
+            aria-labelledby="nav-platform-trigger"
+            onPointerEnter={cancelClose}
+            onPointerLeave={scheduleClose}
+          >
+            <div className="mega-links">
+              {t.home.platform.parts.map((part) => (
+                <a
+                  key={part.id}
+                  href={pathForLocale(locale, `#part-${part.id}`, "platform")}
+                  onClick={() => closeMega()}
+                >
+                  <span className="mega-icon">
+                    <ServiceIcon id={part.id} />
+                  </span>
+                  <span>
+                    <strong>{part.name}</strong>
+                    <span>{part.summary}</span>
+                  </span>
+                </a>
+              ))}
+            </div>
+            <a
+              className="mega-feature"
+              href={pathForLocale(locale, "", "platform")}
+              onClick={() => closeMega()}
+            >
+              <LayerStack className="mega-stack" label={t.home.platform.diagramAlt} />
+              <span>
+                <strong>{t.home.platform.title}</strong>
+                <span>{t.home.platform.eyebrow}</span>
+              </span>
+            </a>
+          </div>
+        </>
+      ) : null}
     </header>
   );
 }

@@ -14,7 +14,9 @@ export type LandingCopy = {
     bookDiagnostic: string;
     languageLabel: string;
     menuLabel: string;
-    links: Array<{ href: string; label: string }>;
+    skip: string;
+    platformMenu: string;
+    links: Array<{ page: "services" | "thesis" | "about"; label: string }>;
   };
   cta: {
     bookDiagnostic: string;
@@ -94,6 +96,38 @@ export type LandingCopy = {
       body: string;
     };
     filmLabel: string;
+  };
+  pages: {
+    platform: { title: string; description: string };
+    services: { title: string; description: string };
+    thesis: { title: string; description: string };
+    about: { title: string; description: string };
+    demo: { title: string; description: string };
+  };
+  field: {
+    captures: Array<{ source: string; body: string; person: string; role: string }>;
+    dayOne: {
+      title: string;
+      lead: string;
+      name: string;
+      role: string;
+      items: Array<{ title: string; meta: string; tag: string }>;
+      footer: string;
+    };
+    judgment: Array<{ title: string; body: string }>;
+    cost: {
+      title: string;
+      lead: string;
+      withoutTitle: string;
+      withoutBody: string;
+      withTitle: string;
+      withBody: string;
+    };
+    founder: {
+      quote: string;
+      name: string;
+      role: string;
+    };
   };
   solutions: Array<{
     slug: string;

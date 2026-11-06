@@ -51,6 +51,12 @@ function sampleBeats(progress: number): Beat {
 }
 
 function scrollProgress() {
+  const track = document.querySelector(".hero-stage");
+  if (track instanceof HTMLElement) {
+    const total = Math.max(1, track.offsetHeight - window.innerHeight);
+    const scrolled = Math.min(Math.max(-track.getBoundingClientRect().top, 0), total);
+    return clamp01(scrolled / total);
+  }
   const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
   return clamp01(window.scrollY / max);
 }

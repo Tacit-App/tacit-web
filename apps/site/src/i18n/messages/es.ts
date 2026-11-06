@@ -11,12 +11,13 @@ export const es: LandingCopy = {
     homeAria: "Inicio de Tacit",
     bookDiagnostic: "Reservar un diagnóstico",
     languageLabel: "Idioma",
-    menuLabel: "Secciones",
-      links: [
-      { href: "#nosotros", label: "Nosotros" },
-      { href: "#research", label: "Research" },
-      { href: "#demo", label: "Book a demo" },
-      { href: "#tesis", label: "Tesis" },
+    menuLabel: "Menú",
+    skip: "Saltar al contenido",
+    platformMenu: "Partes de la plataforma",
+    links: [
+      { page: "services", label: "Servicios" },
+      { page: "thesis", label: "Tesis" },
+      { page: "about", label: "Nosotros" },
     ],
   },
   cta: {
@@ -218,6 +219,126 @@ export const es: LandingCopy = {
       body: "Reserva un diagnóstico. Partimos del núcleo y entregamos el servicio: capa consultiva, agentes, un agente en el ciclo o un SLA más alto.",
     },
     filmLabel: "Grafo de Tacit y menú de la app",
+  },
+  pages: {
+    platform: {
+      title: "Tacit — Plataforma",
+      description:
+        "Cuatro partes del mismo trabajo: diagnóstico, premisas, agentes básicos y agentificación.",
+    },
+    services: {
+      title: "Tacit — Servicios",
+      description:
+        "Capa consultiva, implementación de agentes, un agente en el ciclo y un SLA más alto.",
+    },
+    thesis: {
+      title: "Tacit — Tesis",
+      description:
+        "El camino habitual compra herramientas primero. Tacit empieza por cómo ocurre realmente el trabajo.",
+    },
+    about: {
+      title: "Tacit — Nosotros",
+      description: "Para quién son los servicios, y el engine que hay detrás.",
+    },
+    demo: {
+      title: "Tacit — Reservar un diagnóstico",
+      description:
+        "Reserva un diagnóstico. Partimos de cómo piensa tu equipo y de lo que sabe.",
+    },
+  },
+  field: {
+    captures: [
+      {
+        source: "Slack #sales",
+        body: "Cuando un prospecto se queda en silencio después del demo en Zoom, manda un recap de Loom de 90 segundos, no un correo de seguimiento. La tasa de respuesta sube del 12% al 58%. Etiqueta al champion, no al DM.",
+        person: "Ana G.",
+        role: "Líder de ventas",
+      },
+      {
+        source: "Teams, canal de ventas",
+        body: 'En llamadas de Teams, comparte la pantalla en modo "Ventana", no "Escritorio". Oculta las otras pestañas y te hace ver mucho más preparado. Empieza a grabar solo después de los saludos.',
+        person: "Luis R.",
+        role: "Ejecutivo de cuenta",
+      },
+      {
+        source: "Slack #deals",
+        body: "Nunca hagas un demo con el fondo predeterminado de Zoom. Apaga a los compradores enterprise. Entorno real o desenfocado. Silencia las notificaciones de Slack antes de compartir pantalla.",
+        person: "Marco V.",
+        role: "AE senior",
+      },
+      {
+        source: "Slack #ops",
+        body: 'Pega el enlace de DocuSign en un DM de Slack al CFO con un resumen de dos líneas de lo que firma. Elimina el retraso de "lo tengo que revisar con legal". Ahorra de 3 a 5 días por trato.',
+        person: "María F.",
+        role: "Gerente de ventas",
+      },
+    ],
+    dayOne: {
+      title: "Nueva persona. Día uno. Contexto completo.",
+      lead: "Una guía viva de lo que su predecesor hizo de verdad, no una búsqueda de seis meses.",
+      name: "Sofia Martínez",
+      role: "Account manager, se unió hoy",
+      items: [
+        {
+          title: "Cómo acercarse a prospectos enterprise de SaaS",
+          meta: "14 tácticas de 3 representantes senior",
+          tag: "Ventas, negociación",
+        },
+        {
+          title: "Tiempos de seguimiento por industria",
+          meta: "Retail, finanzas y tecnología",
+          tag: "Gestión de clientes",
+        },
+        {
+          title: "Atajos de CRM y reglas del pipeline",
+          meta: "Lo que el equipo hace de verdad",
+          tag: "Herramientas, flujo de trabajo",
+        },
+      ],
+      footer: "38 piezas de conocimiento listas para tu rol",
+    },
+    judgment: [
+      {
+        title: "Conecta por MCP",
+        body: "Enchufa Tacit a Claude o ChatGPT para que las respuestas incluyan cómo trabaja tu equipo, no solo el wiki.",
+      },
+      {
+        title: "Alimenta tus propios agentes",
+        body: "Dale a los bots internos el contexto operativo: escalaciones, excepciones y el juicio que nunca se documentó.",
+      },
+      {
+        title: "El combustible que le faltaba a la IA",
+        body: "El saber hacer no escrito de tu empresa, capturado de Slack, correo y reuniones, usable por personas y máquinas.",
+      },
+      {
+        title: "Un grafo de conocimiento vivo",
+        body: "Dominios, vínculos y excepciones que los agentes pueden recorrer, no un volcado plano de documentos viejos.",
+      },
+      {
+        title: "Delega lo que corresponde",
+        body: "Las consultas de rutina y los pasos conocidos del playbook van al agente. Las decisiones ambiguas se quedan con las personas.",
+      },
+      {
+        title: "Humano en el ciclo, por diseño",
+        body: "Tacit no reemplaza al equipo. Les da contexto a los agentes para que las personas conserven las decisiones que importan.",
+      },
+    ],
+    cost: {
+      title: "Tu mejor empleado acaba de renunciar. ¿Y ahora?",
+      lead: "Cinco años de contexto de clientes y de juicio ganado a pulso se van en dos semanas. Un documento de traspaso hecho a prisa rara vez sobrevive el primer mes.",
+      withoutTitle: "Sin Tacit",
+      withoutBody:
+        "Entrevistas de salida y una página de Notion que nadie actualiza. La siguiente persona vuelve a aprender qué compradores desaparecen, qué fórmulas se rompen y qué CFO necesita dos líneas, y otra vez lo guarda solo en su cabeza.",
+      withTitle: "Con Tacit",
+      withBody:
+        "El día uno abre una guía viva armada con lo que la persona anterior hizo de verdad en Slack, correo y reuniones: se puede buscar y está lista para usarse.",
+    },
+    founder: {
+      quote:
+        "El conocimiento documentado le da a una empresa pautas y dirección. Pero el conocimiento tácito es el fundamento de su identidad, su carácter y su inteligencia. Una empresa no puede sobrevivir sin él. En el paradigma de la IA, tener este conocimiento deja de ser opcional. Se vuelve la condición que decide qué empresas sobreviven este cambio y cuáles no.",
+      name: "Juan Carlos Martorell",
+      role: "Fundador y CEO, Tacit. MBA IPADE. MSc en neurociencias e IA",
+    },
   },
   solutions: [
     {
