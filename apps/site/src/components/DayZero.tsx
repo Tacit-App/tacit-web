@@ -1,47 +1,24 @@
-import { dayZero, DEMO_URL } from "../data/copy";
+import { useI18n } from "../i18n";
 
 export function DayZero() {
-  const { guide } = dayZero;
+  const { dayOne } = useI18n().t.field;
+
   return (
-    <section className="section" aria-labelledby="dayzero-title">
-      <div className="wrap grid-2">
-        <div>
-          <p className="eyebrow">{dayZero.eyebrow}</p>
-          <h2 className="section-title" id="dayzero-title">
-            New hire. <em className="hl">Day one.</em> Full context.
-          </h2>
-          <p className="section-lead">{dayZero.lead}</p>
-          <p className="section-action">
-            <a className="btn btn-primary" href={DEMO_URL}>
-              Book a demo →
-            </a>
-          </p>
-        </div>
-        <div className="dayzero-panel">
-          <div className="dayzero-person">
-            <div className="dayzero-avatar" aria-hidden="true">
-              S
-            </div>
-            <div>
-              <strong>{guide.name}</strong>
-              <span>{guide.role}</span>
-            </div>
-          </div>
-          <p className="eyebrow eyebrow--soft">
-            Your Tacit knowledge guide
-          </p>
-          <ul className="dayzero-list">
-            {guide.items.map((item) => (
-              <li key={item.title}>
-                <strong>{item.title}</strong>
-                <p className="meta">{item.meta}</p>
-                <p className="tag">{item.tag}</p>
-              </li>
-            ))}
-          </ul>
-          <p className="dayzero-footer">{guide.footer}</p>
-        </div>
-      </div>
-    </section>
+    <article className="guide">
+      <header className="guide-person">
+        <p className="guide-name">{dayOne.name}</p>
+        <p>{dayOne.role}</p>
+      </header>
+      <ul>
+        {dayOne.items.map((item) => (
+          <li key={item.title}>
+            <h4>{item.title}</h4>
+            <p className="guide-meta">{item.meta}</p>
+            <p>{item.tag}</p>
+          </li>
+        ))}
+      </ul>
+      <p className="guide-footer">{dayOne.footer}</p>
+    </article>
   );
 }

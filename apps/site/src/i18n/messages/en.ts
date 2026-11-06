@@ -11,17 +11,18 @@ export const en: LandingCopy = {
     homeAria: "Tacit home",
     bookDiagnostic: "Book a diagnostic",
     languageLabel: "Language",
-    menuLabel: "Sections",
-      links: [
-      { href: "#nosotros", label: "About" },
-      { href: "#research", label: "Research" },
-      { href: "#demo", label: "Book a demo" },
-      { href: "#tesis", label: "Thesis" },
+    menuLabel: "Menu",
+    skip: "Skip to content",
+    platformMenu: "Platform parts",
+    links: [
+      { page: "services", label: "Services" },
+      { page: "thesis", label: "Thesis" },
+      { page: "about", label: "About" },
     ],
   },
   cta: {
     bookDiagnostic: "Book a diagnostic",
-    seeHow: "See our services",
+    seeHow: "See services",
     siteUrlLabel: "tacit.guru",
   },
   diagnosticMailSubject: "Book a diagnostic",
@@ -214,6 +215,126 @@ export const en: LandingCopy = {
       body: "Book a diagnostic. We start from the core, then deliver the service: consulting layer, agents, an agent in the loop, or a higher SLA.",
     },
     filmLabel: "Tacit graph and app menu",
+  },
+  pages: {
+    platform: {
+      title: "Tacit — Platform",
+      description:
+        "Four parts of the same work: diagnostic, premises, core agents, and agentification.",
+    },
+    services: {
+      title: "Tacit — Services",
+      description:
+        "Consulting layer, agent implementation, an agent in the loop, and a higher client SLA.",
+    },
+    thesis: {
+      title: "Tacit — Thesis",
+      description:
+        "The usual path buys tools first. Tacit starts with how the work actually happens.",
+    },
+    about: {
+      title: "Tacit — About",
+      description: "Who the services are for, and the engine behind them.",
+    },
+    demo: {
+      title: "Tacit — Book a diagnostic",
+      description:
+        "Book a diagnostic. We start from how your team thinks and what they know.",
+    },
+  },
+  field: {
+    captures: [
+      {
+        source: "Slack #sales",
+        body: "When a prospect goes dark after the Zoom demo, send a 90-second Loom recap, not a follow-up email. Reply rate jumps from 12% to 58%. Tag the champion, not the DM.",
+        person: "Ana G.",
+        role: "Sales Lead",
+      },
+      {
+        source: "Teams, sales channel",
+        body: 'On Teams calls, share screen in "Window" mode, not "Desktop". It hides your other tabs and makes you look 10× more prepared. Start recording only after pleasantries.',
+        person: "Luis R.",
+        role: "Account Executive",
+      },
+      {
+        source: "Slack #deals",
+        body: "Never demo with default Zoom background. It turns off enterprise buyers. Real environment or blurred. Mute all Slack notifications before screen sharing.",
+        person: "Marco V.",
+        role: "Senior AE",
+      },
+      {
+        source: "Slack #ops",
+        body: 'Paste the DocuSign link in a Slack DM to the CFO with a 2-line summary of what they\'re signing. Eliminates the "I need to review with legal" delay. Saves 3–5 days per deal.',
+        person: "María F.",
+        role: "Sales Manager",
+      },
+    ],
+    dayOne: {
+      title: "New hire. Day one. Full context.",
+      lead: "A living guide from what their predecessor actually did, not a six-month scavenger hunt.",
+      name: "Sofia Martínez",
+      role: "Account Manager, joined today",
+      items: [
+        {
+          title: "How to approach SaaS enterprise prospects",
+          meta: "14 tactics from 3 senior reps",
+          tag: "Sales, negotiation",
+        },
+        {
+          title: "Follow-up timing per industry",
+          meta: "Retail, finance, and tech covered",
+          tag: "Client management",
+        },
+        {
+          title: "CRM shortcuts and pipeline rules",
+          meta: "What the team actually does",
+          tag: "Tools, workflow",
+        },
+      ],
+      footer: "38 knowledge items ready for your role",
+    },
+    judgment: [
+      {
+        title: "Connect via MCP",
+        body: "Plug Tacit into Claude or ChatGPT so answers include how your team really works, not only the wiki.",
+      },
+      {
+        title: "Feed your own agents",
+        body: "Give internal bots operational context: escalations, exceptions, and the judgment that never got documented.",
+      },
+      {
+        title: "The fuel AI was missing",
+        body: "Your company's unwritten know-how, captured from Slack, email, and meetings, finally usable by people and machines.",
+      },
+      {
+        title: "A living knowledge graph",
+        body: "Domains, links, and exceptions agents can navigate, not a flat dump of stale docs.",
+      },
+      {
+        title: "Delegate the right things",
+        body: "Routine lookups and known playbook steps go to the agent. Ambiguous calls stay with people.",
+      },
+      {
+        title: "Human in the loop, by design",
+        body: "Tacit doesn't replace your team. It gives agents context so humans keep control of the decisions that matter.",
+      },
+    ],
+    cost: {
+      title: "Your best employee just resigned. Now what?",
+      lead: "Five years of client context and hard-won judgment walk out in two weeks. A rushed handoff doc rarely survives the first month.",
+      withoutTitle: "Without Tacit",
+      withoutBody:
+        "Exit interviews and a Notion page nobody updates. The next hire relearns which buyers ghost, which formulas break, which CFO needs two lines, then stores it only in their head again.",
+      withTitle: "With Tacit",
+      withBody:
+        "Day one, they open a living guide built from what the previous person actually did in Slack, email, and meetings: searchable and ready to run.",
+    },
+    founder: {
+      quote:
+        "Documented knowledge gives a company guidelines and direction. But tacit knowledge is the foundation of its identity, character and intelligence. A company cannot survive without it. In the AI paradigm, having this knowledge stops being optional. It becomes the condition for which companies survive this shift, and which don't.",
+      name: "Juan Carlos Martorell",
+      role: "Founder and CEO, Tacit. MBA IPADE. MSc Neuroscience and AI",
+    },
   },
   solutions: [
     {

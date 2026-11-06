@@ -7,5 +7,10 @@ export default defineConfig({
   redirects: {
     "/en": "/",
     "/en/privacy": "/privacy",
+    "/en/platform": "/platform",
+    "/en/services": "/services",
+    "/en/thesis": "/thesis",
+    "/en/about": "/about",
+    "/en/demo": "/demo",
   },
 });

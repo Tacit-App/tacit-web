@@ -1,5 +1,10 @@
 ---
 import AppShell from "../layouts/AppShell.astro";
+import { messages } from "../i18n/messages";
 ---
 
-<AppShell />
+<AppShell
+  page="home"
+  title={messages.en.meta.title}
+  description={messages.en.meta.description}
+/>

@@ -13,18 +13,40 @@ export function localeFromPathname(pathname: string): Locale {
   return DEFAULT_LOCALE;
 }
 
-export type Page = "home" | "privacy";
+export type Page =
+  | "home"
+  | "platform"
+  | "services"
+  | "thesis"
+  | "about"
+  | "demo"
+  | "privacy";
 
-/** Page from the path: `/privacy` and `/es/privacy` → privacy, else home. */
-export function pageFromPathname(pathname: string): Page {
-  const segments = pathname.replace(/\/+$/, "").split("/").filter(Boolean);
-  return segments.at(-1) === "privacy" ? "privacy" : "home";
+const PAGES: readonly Page[] = [
+  "platform",
+  "services",
+  "thesis",
+  "about",
+  "demo",
+  "privacy",
+];
+
+function isPage(value: string | undefined): value is Page {
+  return PAGES.includes(value as Page);
 }
 
-/** Href for a locale and page (`/`, `/es`, `/privacy`, `/es/privacy`). Keeps hash. */
+/** Last path segment, so `/es/platform` and `/platform` both resolve. */
+export function pageFromPathname(pathname: string): Page {
+  const segments = pathname.replace(/\/+$/, "").split("/").filter(Boolean);
+  const last = segments.at(-1);
+  return isPage(last) ? last : "home";
+}
+
+/** Href for a locale and page. Keeps a hash (`/es/platform#part-agents`). */
 export function pathForLocale(locale: Locale, hash = "", page: Page = "home"): string {
   const prefix = locale === DEFAULT_LOCALE ? "" : `/${locale}`;
-  const base = page === "privacy" ? `${prefix}/privacy` : prefix || "/";
+  const slug = page === "home" ? "" : `/${page}`;
+  const base = `${prefix}${slug}` || "/";
   const normalizedHash = hash && !hash.startsWith("#") ? `#${hash}` : hash;
   return `${base}${normalizedHash}`;
 }
