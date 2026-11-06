@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type PointerEvent } from "react";
+import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { pathForLocale, useI18n, type Page } from "../i18n";
 import { LayerStack } from "./LayerStack";
 import { LocaleToggle } from "./LocaleToggle";
@@ -59,7 +59,7 @@ function ServiceIcon({ id }: { id: string }) {
   );
 }
 
-function canHoverOpen(event: PointerEvent) {
+function canHoverOpen(event: ReactPointerEvent) {
   if (event.pointerType === "touch") return false;
   if (window.innerWidth < 860) return false;
   return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
