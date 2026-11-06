@@ -55,6 +55,7 @@ NEW_CSS = r"""
 .c8 .viz img{width:100%;height:100%;display:block}
 .c8 .tag{position:absolute;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-60);white-space:nowrap}
 .c8 .tag.c{color:var(--pulse)}
+
 /* research */
 .c10 h2{position:absolute;left:120px;top:170px;width:760px;font-size:80px}
 .c10 .lead{position:absolute;left:120px;top:470px;width:740px;font-size:23px;line-height:1.6}
@@ -114,6 +115,8 @@ slides.append(f'''<section class="slide c1">
   <p class="lead">Four services. One core.</p>
   <div class="meta"><span>Commercial presentation · 2026</span><span>tacit.guru</span></div>
 </section>''')
+# benefits (shared with the investor deck)
+slides.append(section('cb'))
 # 2 problem, 3 thesis, 4 core (investor slides)
 slides.append(section('s3'))
 slides.append(section('s2'))
@@ -195,31 +198,17 @@ slides.append(f'''<section class="slide c11">
 # 12 who + industries (landing)
 inds = ['Consulting', 'Professional services', 'Technology / IT Sourcing', 'Logistics', 'Fintech', 'Healthcare']
 slides.append(f'''<section class="slide c12">
-  {top('Who it’s for')}
-  <h2>Who these services are <span class="hl">for</span>.</h2>
+  {top('Pilots')}
+  <h2>Industries where we are running <span class="hl">pilots</span>.</h2>
   <p class="lead">Complex operations that inherently have high turnover, depend entirely on a few highly experienced managers, or keep a delicate relationship with clients who need a higher level of service.</p>
   <p class="closer">Client efficiency is the goal. Yours improves with it.</p>
-  <div class="ind"><p class="kicker">Industries</p><h3>The operations we work in.</h3><ul>{"".join(f"<li>{x}<span>{i:02d}</span></li>" for i, x in enumerate(inds, 1))}</ul></div>
+  <div class="ind"><p class="kicker">Active pilots</p><h3>Where Tacit is in testing today.</h3><ul>{"".join(f"<li>{x}<span>{i:02d}</span></li>" for i, x in enumerate(inds, 1))}</ul></div>
   {foot}
 </section>''')
 # 13 clients (investor s8, note adapted for prospects)
 s8 = section('s8').replace('<p>Six companies connected. Two are already paying.</p>', '<p>Companies already working with Tacit.</p>')
 assert 'Companies already working with Tacit.' in s8
 slides.append(s8)
-# 14 trust (privacy policy, condensed; only claims the policy makes)
-trust = [('Purpose', 'Built to capture knowledge, not to monitor people.'),
-         ('People', 'Tacit does not evaluate individual performance or compare employees.'),
-         ('Control', 'Employees can confirm, correct, or flag knowledge attributed to them.'),
-         ('Security', 'Encryption in transit and at rest, with per-organization isolation on every query.'),
-         ('Redaction', 'Customer-defined redaction before anything is stored.'),
-         ('AI', 'Customer data is not used to train AI models. The knowledge engine is deterministic and auditable.')]
-tg = ''.join(f'<div class="it"><p class="k">{k}</p><p>{p}</p></div>' for k, p in trust)
-slides.append(f'''<section class="slide c14">
-  {top('Trust')}
-  <h2>Your knowledge stays <span class="hl">yours</span>.</h2>
-  <div class="grid">{tg}</div>
-  {foot}
-</section>''')
 # 15 team (investor s9)
 slides.append(section('s9'))
 # 16 close (landing close + CTA)

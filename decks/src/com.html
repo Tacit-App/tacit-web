@@ -88,6 +88,18 @@ h2{font-size:88px}
 .e2 .rw .t::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--pulse)}
 .e2 .closer{position:absolute;left:120px;right:120px;bottom:120px;font-family:var(--serif);font-size:38px;line-height:1.2;color:var(--pulse)}
 
+
+/* benefits (shared) */
+.cb h2{position:absolute;left:120px;top:130px;font-size:84px}
+.cb .spokes{position:absolute;left:0;top:0;pointer-events:none}
+.cb .hub{position:absolute;left:380px;top:620px;width:180px;height:180px;margin:-90px 0 0 -90px;border-radius:50%;background:#18232E;display:flex;align-items:center;justify-content:center}
+.cb .hub [data-bigbrand]{display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--serif);font-size:30px;color:#fff}
+.cb .row{position:absolute;left:800px;right:120px;height:140px;display:grid;grid-template-columns:70px 1fr;align-items:center;border-top:1px solid var(--hair)}
+.cb .row:last-of-type{border-bottom:1px solid var(--hair)}
+.cb .row .no{font-family:var(--serif);font-size:30px;color:var(--pulse)}
+.cb .row h3{font-family:var(--sans);font-weight:500;font-size:36px;line-height:1.1;color:var(--ink);letter-spacing:-.015em}
+.cb .row p{font-size:21px;line-height:1.4;color:var(--ink-60);font-weight:300;margin-top:8px}
+
 /* math annotations */
 .ann{font-family:var(--math);font-size:15px;letter-spacing:.01em;color:var(--ink-60);line-height:1.5;white-space:nowrap}
 .ann sub,.ann sup{font-size:.72em;line-height:0}
@@ -277,6 +289,7 @@ h2{font-size:88px}
 .c8 .viz img{width:100%;height:100%;display:block}
 .c8 .tag{position:absolute;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-60);white-space:nowrap}
 .c8 .tag.c{color:var(--pulse)}
+
 /* research */
 .c10 h2{position:absolute;left:120px;top:170px;width:760px;font-size:80px}
 .c10 .lead{position:absolute;left:120px;top:470px;width:740px;font-size:23px;line-height:1.6}
@@ -334,6 +347,15 @@ h2{font-size:88px}
   <div class="meta"><span>Commercial presentation · 2026</span><span>tacit.guru</span></div>
 </section>
 
+<section class="slide cb">
+  <div class="top"><span class="lab">Benefits</span><span>02 / 17</span></div>
+  <h2>With Tacit, your company <span class="hl">will</span>:</h2>
+  <svg class="spokes" width="1920" height="1080" viewBox="0 0 1920 1080"><path d="M470,620 C620,620 600,340 760,340" fill="none" stroke="#1A9E78" stroke-width="1.6" stroke-opacity=".45"/><path d="M470,620 C620,620 600,480 760,480" fill="none" stroke="#1A9E78" stroke-width="1.6" stroke-opacity=".45"/><path d="M470,620 C620,620 600,620 760,620" fill="none" stroke="#1A9E78" stroke-width="1.6" stroke-opacity=".45"/><path d="M470,620 C620,620 600,760 760,760" fill="none" stroke="#1A9E78" stroke-width="1.6" stroke-opacity=".45"/><path d="M470,620 C620,620 600,900 760,900" fill="none" stroke="#1A9E78" stroke-width="1.6" stroke-opacity=".45"/><circle cx="760" cy="340" r="6" fill="#1A9E78"/><circle cx="760" cy="480" r="6" fill="#1A9E78"/><circle cx="760" cy="620" r="6" fill="#1A9E78"/><circle cx="760" cy="760" r="6" fill="#1A9E78"/><circle cx="760" cy="900" r="6" fill="#1A9E78"/></svg>
+  <div class="hub"><div data-bigbrand="44"></div></div>
+  <div class="row" style="top:270px"><span class="no">01</span><div><h3>Reduce the risk of automating.</h3><p>We diagnose first, then implement where 80% of the value is.</p></div></div><div class="row" style="top:410px"><span class="no">02</span><div><h3>Keep its knowledge.</h3><p>When someone leaves, what they knew stays. New people ramp up faster.</p></div></div><div class="row" style="top:550px"><span class="no">03</span><div><h3>See its real inefficiencies.</h3><p>Bottlenecks, errors and people dependencies, not the ones on the org chart.</p></div></div><div class="row" style="top:690px"><span class="no">04</span><div><h3>Run agents that actually work.</h3><p>They feed on Tacit’s context, not text search.</p></div></div><div class="row" style="top:830px"><span class="no">05</span><div><h3>Pay less per agent.</h3><p>They get only the context they need, already processed.</p></div></div>
+  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
+</section>
+
 <section class="slide s3">
   <div class="top" style="right:980px"><span class="lab">Problem</span><span></span></div>
   <div class="l">
@@ -360,11 +382,11 @@ h2{font-size:88px}
       <span class="chip" style="left:418px;top:882px"><i></i>heuristic</span>
     </div>
   </div>
-  <div class="foot" style="right:980px"><span class="b" data-brand></span><span>Confidential · 02 / 17</span></div>
+  <div class="foot" style="right:980px"><span class="b" data-brand></span><span>Confidential · 03 / 17</span></div>
 </section>
 
 <section class="slide s2">
-  <div class="top"><span class="lab">Thesis</span><span>03 / 17</span></div>
+  <div class="top"><span class="lab">Thesis</span><span>04 / 17</span></div>
   <h2>Companies are systems made by <span class="hl">people</span>.</h2>
   <p class="lead">Agents improve them only when the human knowledge behind the system is understood.</p>
   <div class="pair">
@@ -383,7 +405,7 @@ h2{font-size:88px}
 </section>
 
 <section class="slide s4 dark">
-  <div class="top" style="right:600px"><span class="lab">The core</span><span>04 / 17</span></div>
+  <div class="top" style="right:600px"><span class="lab">The core</span><span>05 / 17</span></div>
   <h2>Agentic success runs on judgment and culture. <span class="hl" style="display:block;margin-top:18px">Tacit makes both legible.</span></h2>
   <p class="how">Tacit captures the daily workflows and the tacit decisions behind them, and detects the inefficiencies where agents create the most value.</p>
   <p class="lead">Tech is a layer, not the whole story.</p>
@@ -397,7 +419,7 @@ h2{font-size:88px}
 </section>
 
 <section class="slide c5">
-  <div class="top"><span class="lab">What we do</span><span>05 / 17</span></div>
+  <div class="top"><span class="lab">What we do</span><span>06 / 17</span></div>
   <h2>A clear picture first. <span class="hl">Agents later.</span></h2>
   <p class="lead">Tacit maps real communication, tools in use, and company knowledge. That picture lets you change how teams work. After that, we add a judgment layer so agents act like your best people, not empty chatbots.</p>
   <div class="frame"><div class="shot"><img src="assets/app/knowledge-profiles.png" alt=""></div></div>
@@ -406,7 +428,7 @@ h2{font-size:88px}
 </section>
 
 <section class="slide c6">
-  <div class="top"><span class="lab">Services</span><span>06 / 17</span></div>
+  <div class="top"><span class="lab">Services</span><span>07 / 17</span></div>
   <h2>Four services. One <span class="hl">core</span>.</h2>
   <p class="lead">Every service starts from how the work really happens.</p>
   <div class="cols"><div class="col"><span class="n">01</span><h3>Consulting layer</h3><p class="b">We see how your employees actually communicate and how they work day to day.</p><ul><li>Which tools they use, what they are biased toward, and where to find bottlenecks.</li><li>That picture is extracted, so the next employee has no learning curve.</li><li>An inefficiency is caught as it is created. We act then, before the client complains.</li></ul></div><div class="col"><span class="n">02</span><h3>Implement agents</h3><p class="b">Agents are implemented from the real knowledge and the tacit workflows.</p><ul><li>The source is the real knowledge and the tacit workflows.</li><li>An 80/20 thesis decides exactly where, how, and with whom.</li><li>The aim is to raise the company’s productivity and growth.</li></ul></div><div class="col"><span class="n">03</span><h3>Agent in the loop</h3><p class="b">An agent stays in the loop as the company is agentified.</p><ul><li>The agent stays in the loop of the work.</li><li>Agentification can cover one area.</li><li>It can cover one process, or the operation as a whole.</li></ul></div><div class="col"><span class="n">04</span><h3>Higher SLA</h3><p class="b">Clients are asking for a higher SLA. Today the client is a black box, and that blocks high efficiency.</p><ul><li>Tacit is integrated to understand the client’s behavior and knowledge.</li><li>The solutions have one aim: a higher SLA, and growth in the client relationship.</li></ul></div></div>
@@ -414,7 +436,7 @@ h2{font-size:88px}
 </section>
 
 <section class="slide s5">
-  <div class="top"><span class="lab">How we work</span><span>07 / 17</span></div>
+  <div class="top"><span class="lab">How we work</span><span>08 / 17</span></div>
   <h2>Four steps. One <span class="hl">sequence</span>.</h2>
   <div class="cols">
     <div class="col"><span class="n">01</span><h3>Diagnostic</h3><p>Map where expertise lives, how it is used, and which tools and steps are not productive.</p><div class="step"><img src="mv/step1.svg" alt=""></div></div>
@@ -426,7 +448,7 @@ h2{font-size:88px}
 </section>
 
 <section class="slide c8">
-  <div class="top"><span class="lab">Platform</span><span>08 / 17</span></div>
+  <div class="top"><span class="lab">Platform</span><span>09 / 17</span></div>
   <h2>Four parts of the same <span class="hl">work</span>.</h2>
   <div class="list"><div class="part"><p class="nm">Consulting</p><p class="sm">AI transformation is contingent on human workflows.</p><div class="marks"><span>Human workflows</span><span>A defined place</span><span>Measurable value</span></div></div><div class="part"><p class="nm">Agents</p><p class="sm">Simple, controllable agents at core points, then a human-agent symbiosis.</p><div class="marks"><span>Simple and measurable</span><span>Core points</span><span>Quick results</span><span>Adoption</span></div></div><div class="part"><p class="nm">Apps</p><p class="sm">Systems to centralize, evaluate, and manage their own operation, empowered by Tacit.</p><div class="marks"><span>Centralize</span><span>Evaluate</span><span>Manage</span><span>Empowered by Tacit</span></div></div><div class="part"><p class="nm">Development</p><p class="sm">Intelligent infrastructure through the Tacit layer, for the client’s core problems.</p><div class="marks"><span>Core problems</span><span>Tacit layer</span><span>Intelligent infrastructure</span></div></div></div>
   <div class="viz"><img src="mv/parts_ring.svg" alt="">
@@ -440,7 +462,7 @@ h2{font-size:88px}
 </section>
 
 <section class="slide s6">
-  <div class="top"><span class="lab">The product</span><span>09 / 17</span></div>
+  <div class="top"><span class="lab">The product</span><span>10 / 17</span></div>
   <h2>Four views. One <span class="hl">product</span>.</h2>
   <div class="grid">
     <figure><div class="tex" style="background:url(mv/prodbg.svg) center/cover,#F6F8F7;border:1px solid var(--hair)"><div class="shot"><img src="assets/app/pulse-priorities.png" alt=""></div></div><figcaption><span>Pulse</span><span>01</span></figcaption></figure>
@@ -452,8 +474,8 @@ h2{font-size:88px}
 </section>
 
 <section class="slide e1">
-  <div class="top"><span class="lab">Agents on Tacit</span><span>10 / 17</span></div>
-  <h2>Simple agents. Very low <span class="hl">cost</span>.</h2>
+  <div class="top"><span class="lab">Agents on Tacit</span><span>11 / 17</span></div>
+  <h2>Simple, <span class="hl">cost-effective</span> agents.</h2>
   <p class="lead">The agent receives the context already structured from Tacit and resolves most of the work with deterministic code. The language model only handles small steps.</p>
   <div class="lanes">
     <div class="lane"><span class="who">Generic agent</span>
@@ -466,7 +488,7 @@ h2{font-size:88px}
 </section>
 
 <section class="slide c10">
-  <div class="top"><span class="lab">Research</span><span>11 / 17</span></div>
+  <div class="top"><span class="lab">Research</span><span>12 / 17</span></div>
   <h2>An engine that understands organizations as they <span class="hl">are</span>.</h2>
   <p class="lead">An entrepreneurial and academic team, two engineers trained in neuroscience, artificial intelligence, and mathematics, is building an engine that joins complex systems, propositional logic, Bayesian theory, graph theory, LIWC, and modern theories of thought. It understands organizations as they are, and strengthens their digital transformation through agents.</p>
   <div class="frame"><img src="assets/app/product-graph-poster.png" alt=""></div>
@@ -475,23 +497,23 @@ h2{font-size:88px}
 </section>
 
 <section class="slide c11">
-  <div class="top"><span class="lab">Contrast</span><span>12 / 17</span></div>
+  <div class="top"><span class="lab">Contrast</span><span>13 / 17</span></div>
   <h2>Usual path vs. <span class="hl">Tacit</span>.</h2>
   <div class="tbl"><div class="hd"><span>Usual path</span><span>With Tacit</span></div><div class="rw"><span class="u">Buy tools or agents first</span><span class="t">Start with the consulting layer</span></div><div class="rw"><span class="u">Trust the org chart</span><span class="t">See how people actually work, and which tools they use</span></div><div class="rw"><span class="u">Agents everywhere</span><span class="t">80/20: exactly where, how, and with whom</span></div><div class="rw"><span class="u">The client stays a black box</span><span class="t">Understand them, then raise the SLA</span></div></div>
   <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
 </section>
 
 <section class="slide c12">
-  <div class="top"><span class="lab">Who it’s for</span><span>13 / 17</span></div>
-  <h2>Who these services are <span class="hl">for</span>.</h2>
+  <div class="top"><span class="lab">Pilots</span><span>14 / 17</span></div>
+  <h2>Industries where we are running <span class="hl">pilots</span>.</h2>
   <p class="lead">Complex operations that inherently have high turnover, depend entirely on a few highly experienced managers, or keep a delicate relationship with clients who need a higher level of service.</p>
   <p class="closer">Client efficiency is the goal. Yours improves with it.</p>
-  <div class="ind"><p class="kicker">Industries</p><h3>The operations we work in.</h3><ul><li>Consulting<span>01</span></li><li>Professional services<span>02</span></li><li>Technology / IT Sourcing<span>03</span></li><li>Logistics<span>04</span></li><li>Fintech<span>05</span></li><li>Healthcare<span>06</span></li></ul></div>
+  <div class="ind"><p class="kicker">Active pilots</p><h3>Where Tacit is in testing today.</h3><ul><li>Consulting<span>01</span></li><li>Professional services<span>02</span></li><li>Technology / IT Sourcing<span>03</span></li><li>Logistics<span>04</span></li><li>Fintech<span>05</span></li><li>Healthcare<span>06</span></li></ul></div>
   <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
 </section>
 
 <section class="slide s8">
-  <div class="top"><span class="lab">Companies</span><span>14 / 17</span></div>
+  <div class="top"><span class="lab">Companies</span><span>15 / 17</span></div>
   <h2>Already inside real <span class="hl">companies</span>.</h2>
   <div class="wall">
     <div class="logo"><img src="assets/clients/mora.svg" style="height:30px"><span>Mora Health</span></div>
@@ -503,13 +525,6 @@ h2{font-size:88px}
     <div class="logo"><img src="assets/clients/birdie.png" style="height:72px"><span>Birdie</span></div>
     <div class="logo cell-note"><p>Companies already working with Tacit.</p></div>
   </div>
-  <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
-</section>
-
-<section class="slide c14">
-  <div class="top"><span class="lab">Trust</span><span>15 / 17</span></div>
-  <h2>Your knowledge stays <span class="hl">yours</span>.</h2>
-  <div class="grid"><div class="it"><p class="k">Purpose</p><p>Built to capture knowledge, not to monitor people.</p></div><div class="it"><p class="k">People</p><p>Tacit does not evaluate individual performance or compare employees.</p></div><div class="it"><p class="k">Control</p><p>Employees can confirm, correct, or flag knowledge attributed to them.</p></div><div class="it"><p class="k">Security</p><p>Encryption in transit and at rest, with per-organization isolation on every query.</p></div><div class="it"><p class="k">Redaction</p><p>Customer-defined redaction before anything is stored.</p></div><div class="it"><p class="k">AI</p><p>Customer data is not used to train AI models. The knowledge engine is deterministic and auditable.</p></div></div>
   <div class="foot"><span class="b" data-brand></span><span>Confidential</span></div>
 </section>
 
